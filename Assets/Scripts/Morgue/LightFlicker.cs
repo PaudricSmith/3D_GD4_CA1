@@ -36,13 +36,13 @@ public class LightFlicker : MonoBehaviour
         attachedLight.intensity = 0.05f;
         meshRenderer.material = lightOffMaterial;
 
-        timeDelay = Random.Range(0.1f, 0.5f);
+        timeDelay = Random.Range(0.3f, 0.7f);
         yield return new WaitForSeconds(timeDelay);
 
         attachedLight.intensity = 0.82f;
         meshRenderer.material = lightOnMaterial;
 
-        timeDelay = Random.Range(0.1f, 0.5f);
+        timeDelay = Random.Range(0.7f, 1.5f);
         yield return new WaitForSeconds(timeDelay);
 
         isFlickering = false;
