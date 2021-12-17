@@ -1,60 +1,51 @@
+using System.Collections;
 using UnityEngine;
 
 
 public class LightFlicker : MonoBehaviour
 {
-
-    [SerializeField] private GameObject pointLight;
+    [SerializeField] private float timeDelay;
     [SerializeField] private Material lightOnMaterial;
     [SerializeField] private Material lightOffMaterial;
 
+    private Light attachedLight;
     private MeshRenderer meshRenderer;
-
-    private bool isLightOn = true;
-
+    public bool isFlickering = false;
 
 
-    // Start is called before the first frame update
-    void Start()
+    private void Awake()
     {
-        meshRenderer = GetComponent<MeshRenderer>();
-
-        InvokeRepeating("TurnOffLight", 0.5f, 2);
-        InvokeRepeating("TurnOnLight", 0.5f, 3);
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-        //if (isLightOn == false)
-        //{
-        //    pointLight.SetActive(true);
-        //    isLightOn = true;
-        //}
+        attachedLight = gameObject.GetComponentInChildren<Light>();
+        meshRenderer = gameObject.GetComponent<MeshRenderer>();
     }
 
 
-    private void TurnOffLight()
+    private void Update()
     {
-        pointLight.SetActive(false);
+        if (isFlickering == false)
+        {
+            StartCoroutine(FlickerLight());
+        }
+    }
 
+
+    private IEnumerator FlickerLight()
+    {
+        isFlickering = true;
+        
+        attachedLight.intensity = 0.05f;
         meshRenderer.material = lightOffMaterial;
 
-        //isLightOn = false;
+        timeDelay = Random.Range(0.1f, 0.5f);
+        yield return new WaitForSeconds(timeDelay);
 
-        //print("invoke repeating");
-    }
-
-    private void TurnOnLight()
-    {
-        pointLight.SetActive(true);
-
+        attachedLight.intensity = 0.82f;
         meshRenderer.material = lightOnMaterial;
 
-        //isLightOn = false;
+        timeDelay = Random.Range(0.1f, 0.5f);
+        yield return new WaitForSeconds(timeDelay);
 
-        //print("invoke repeating");
+        isFlickering = false;
     }
+
 }
