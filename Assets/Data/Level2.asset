@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55b5b3b9df6abfb44a9933cec18c80ba, type: 3}
   m_Name: Level2
   m_EditorClassIdentifier: 
-  sceneName: Level1
-  shortDescription: City
-  music: {fileID: 8300000, guid: acbfe1987f2a6b54ab1d13862069f6f4, type: 3}
+  sceneName: Level2
+  shortDescription: Morgue house
+  music: {fileID: 8300000, guid: ee578920ee06f3443ae6f28d60f1b298, type: 3}
   musicVolume: 0.7
-  enemiesCount: 0
+  enemiesCount: 2

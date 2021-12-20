@@ -18,40 +18,47 @@ public class DayNight : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        // Night time
+        RenderSettings.skybox = SkyboxNight;
+        RenderSettings.fogColor = FogColorNight;
+        Night.SetActive(true);
+        Day.SetActive(false);
+
+        // Weather
+        Rain.SetActive(true);
     }
 
     // Update is called once per frame
-    void Update()
-    {
-        if (Input.GetKeyDown("t"))
-        {
-            if (Day.activeSelf)
-            {
-                RenderSettings.skybox = SkyboxNight;
-                RenderSettings.fogColor = FogColorNight;
-                Night.SetActive(true);
-                Day.SetActive(false);
-            }
-            else
-            {
-                RenderSettings.skybox = SkyboxDay;
-                RenderSettings.fogColor = FogColorDay;
-                Night.SetActive(false);
-                Day.SetActive(true);
-            }
-        }
+    //void Update()
+    //{
+    //    if (Input.GetKeyDown("t"))
+    //    {
+    //        if (Day.activeSelf)
+    //        {
+    //            RenderSettings.skybox = SkyboxNight;
+    //            RenderSettings.fogColor = FogColorNight;
+    //            Night.SetActive(true);
+    //            Day.SetActive(false);
+    //        }
+    //        else
+    //        {
+    //            RenderSettings.skybox = SkyboxDay;
+    //            RenderSettings.fogColor = FogColorDay;
+    //            Night.SetActive(false);
+    //            Day.SetActive(true);
+    //        }
+    //    }
 
-        if (Input.GetKeyDown("r"))
-        {
-            if (Rain.activeSelf)
-            {
-                Rain.SetActive(false);
-            }
-            else
-            {
-                Rain.SetActive(true);
-            }
-        }
-    }
+    //    if (Input.GetKeyDown("r"))
+    //    {
+    //        if (Rain.activeSelf)
+    //        {
+    //            Rain.SetActive(false);
+    //        }
+    //        else
+    //        {
+    //            Rain.SetActive(true);
+    //        }
+    //    }
+    //}
 }
