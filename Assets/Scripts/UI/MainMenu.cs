@@ -7,13 +7,19 @@ using System.Collections.Generic;
 
 public class MainMenu : MonoBehaviour
 {
-    public GameObject menu;
-    public GameObject loadingInterface;
-    public Image loadingProgressBar;
+    [SerializeField] private GameObject menu;
+    [SerializeField] private GameObject loadingInterface;
+    [SerializeField] private Slider loadingProgressBar;
+    [SerializeField] private Text loadingProgressPercentage;
 
     //List of the scenes to load from Main Menu
     List<AsyncOperation> scenesToLoad = new List<AsyncOperation>();
 
+
+    private void Awake()
+    {
+        loadingInterface.SetActive(false);
+    }
 
 
     public void StartGame()
@@ -40,7 +46,7 @@ public class MainMenu : MonoBehaviour
     }
 
 
-    IEnumerator LoadingScreen()
+    private IEnumerator LoadingScreen()
     {
         float totalProgress = 0;
 
@@ -48,8 +54,17 @@ public class MainMenu : MonoBehaviour
         {
             while (!scenesToLoad[i].isDone)
             {
-                //the fillAmount needs a value between 0 and 1, so we devide the progress by the number of scenes to load
-                loadingProgressBar.fillAmount = (totalProgress + scenesToLoad[i].progress) / scenesToLoad.Count;
+                // The fillAmount needs a value between 0 and 1, so we devide the progress by the number of scenes to load
+                loadingProgressBar.value = (totalProgress + scenesToLoad[i].progress) / scenesToLoad.Count;
+
+                // Update the percentage text
+                loadingProgressPercentage.text = (loadingProgressBar.value * 100.0f).ToString("F0") + "%";
+
+                // When the slider value is above 89% then change value to whole numbers so the bar loads the full way.
+                if (loadingProgressBar.wholeNumbers == false && loadingProgressBar.value >= 0.9f)
+                {
+                    loadingProgressBar.wholeNumbers = true;
+                }
 
                 yield return null;
             }
