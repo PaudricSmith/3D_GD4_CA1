@@ -12,9 +12,9 @@ EditorBuildSettings:
     path: Assets/Scenes/Menu/MainMenu/MainMenu.unity
     guid: c60d290a3876f8449b61df1a919e8558
   - enabled: 1
-    path: Assets/Scenes/City/City.unity
+    path: Assets/Scenes/City/Level1Part1.unity
     guid: 9dd46b493c1396a42b3cf2aa11fde485
   - enabled: 1
-    path: Assets/Scenes/morgue/morgue.unity
+    path: Assets/Scenes/morgue/Level1Part2.unity
     guid: 845128cf95f90184697fffb609346de8
   m_configObjects: {}
