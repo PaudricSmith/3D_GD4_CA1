@@ -1739,8 +1739,8 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 11400000, guid: 29e396d575e261348b4c6a3b273f0590, type: 2}
-        m_TargetAssemblyTypeName: SceneData, Assembly-CSharp
+      - m_Target: {fileID: 11400000, guid: 71d7e64354dda284d9bf44deb0fee820, type: 2}
+        m_TargetAssemblyTypeName: GD.GameLayout.GameLayout, Assembly-CSharp
         m_MethodName: NewGame
         m_Mode: 1
         m_Arguments:

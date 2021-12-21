@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 647c581dc2e38764aa9b96cdb3e7befd, type: 3}
+  m_Name: Level1-Downtown
+  m_EditorClassIdentifier: 
+  description: City of Lunaia and Morgue
+  gameSceneList:
+  - {fileID: 11400000, guid: 143190d9baeb66545bbcbbe2121b0ae7, type: 2}
+  - {fileID: 11400000, guid: 6a3e22556ec42e94f80ca7d0101e875e, type: 2}
+  - {fileID: 11400000, guid: 0e729057957fd0845b80b09acbd743d3, type: 2}

@@ -8,10 +8,10 @@ public enum Type
 }
 
 
-[CreateAssetMenu(fileName = "NewMenu", menuName = "Scene Data/Menu")]
-public class Menu : GameScene
-{
-    //Settings specific to menu only
-    [Header("Menu specific")]
-    [SerializeField] private Type type;
-}
+//[CreateAssetMenu(fileName = "NewMenu", menuName = "Scene Data/Menu")]
+//public class Menu : GameScene
+//{
+//    //Settings specific to menu only
+//    [Header("Menu specific")]
+//    [SerializeField] private Type type;
+//}
