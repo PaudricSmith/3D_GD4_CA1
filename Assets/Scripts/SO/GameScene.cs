@@ -5,7 +5,7 @@ using UnityEngine;
 /// Stores data relating to a scene within a level
 /// </summary>
 /// <see cref="https://blogs.unity3d.com/2020/07/01/achieve-better-scene-workflow-with-scriptableobjects/"/>
-
+/// 
 
 public class GameScene : ScriptableObject
 {

@@ -28,7 +28,19 @@ public class MainMenu : MonoBehaviour
         ShowLoadingScreen();
 
         //Load the Scene asynchronously in the background
-        scenesToLoad.Add(SceneManager.LoadSceneAsync("City"));
+        scenesToLoad.Add(SceneManager.LoadSceneAsync("Level1Part1"));
+        
+        StartCoroutine(LoadingScreen());
+    }
+
+
+    public void StartGameSO()
+    {
+        HideMenu();
+        ShowLoadingScreen();
+
+        //Load the Scene asynchronously in the background
+        scenesToLoad.Add(SceneManager.LoadSceneAsync("Level1Part1"));
         
         StartCoroutine(LoadingScreen());
     }

@@ -18,7 +18,7 @@ public class SceneData : ScriptableObject
         if (index <= levels.Count)
         {
             //Load Gameplay scene for the level
-            //SceneManager.LoadSceneAsync("Level" + index.ToString());
+            SceneManager.LoadSceneAsync("Level" + index.ToString() + "Part1");
             //Load first part of the level in additive mode
             //SceneManager.LoadSceneAsync("Level" + index.ToString() + "Part1", LoadSceneMode.Additive);
         }
