@@ -28,24 +28,15 @@ public class RaycastSelector : MonoBehaviour, ISelector
 
     public void Check(Ray ray)
     {
-        print("In Check() &&&&&&&&&&&&&&&&&&&&&&&&&");
-
         selection = null;
         if (Physics.Raycast(ray, out hitInfo, maxDistance, layerMask.value))
         {
-            print("In Physics.Raycast() £££££££££££££££££££££££££");
-
             var currentSelection = hitInfo.transform;
-
-            print(currentSelection.name + " , " + selectableTag);
 
             if (currentSelection.CompareTag(selectableTag))
             {
-                print("Equals to Selectable tag %%%%%%%%%%%%%%%%%%%%%%%%%%");
-
                 selection = currentSelection;
             }
-                
         }
     }
 }

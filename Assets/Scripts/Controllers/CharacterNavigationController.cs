@@ -54,8 +54,7 @@ public class CharacterNavigationController : MonoBehaviour
     public void OnSelectPlayer(InputAction.CallbackContext context)
     {
         //if player is selected and we click and select a different player
-        if (currentlySelectedGameObject.Value != null
-            && currentlySelectedGameObject.Value != gameObject)
+        if (currentlySelectedGameObject.Value != null && currentlySelectedGameObject.Value != gameObject)
         {
             //de-select current
             currentlySelectedGameObject.Value = null;

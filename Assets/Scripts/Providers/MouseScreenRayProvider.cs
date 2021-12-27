@@ -19,8 +19,6 @@ public class MouseScreenRayProvider : MonoBehaviour, IRayProvider
 
     public Ray CreateRay()
     {
-        print(currentCamera.ScreenPointToRay(Input.mousePosition, monoOrStereoscopicEye));
-
         return currentCamera.ScreenPointToRay(Input.mousePosition, monoOrStereoscopicEye); //Stereoscopic?
     }
 }
