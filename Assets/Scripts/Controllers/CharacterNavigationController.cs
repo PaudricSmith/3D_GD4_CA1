@@ -1,14 +1,13 @@
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.InputSystem;
+using UnityEngine.InputSystem.Interactions;
 
 
 /// <summary>
 /// Supports click to select and click to set waypoint on a mav mesh
 /// </summary>
 /// 
-
-
 [RequireComponent(typeof(NavMeshAgent))]
 public class CharacterNavigationController : MonoBehaviour
 {
@@ -36,6 +35,8 @@ public class CharacterNavigationController : MonoBehaviour
     private ISelector selector;
     private RaycastHit hitInfo;
     private bool isSelected;
+    private float navAgentWalkSpeed = 1.7f;
+    private float navAgentRunSpeed = 4f;
 
     private void Start()
     {
@@ -49,10 +50,9 @@ public class CharacterNavigationController : MonoBehaviour
     /// Called when a player selects the on-screen player avatar
     /// </summary>
     /// <param name="context"></param>
+    /// 
     public void OnSelectPlayer(InputAction.CallbackContext context)
     {
-        print("Left Mouse Clicked !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
-
         //if player is selected and we click and select a different player
         if (currentlySelectedGameObject.Value != null
             && currentlySelectedGameObject.Value != gameObject)
@@ -71,29 +71,36 @@ public class CharacterNavigationController : MonoBehaviour
     /// Called when player selects a destination point on the navmesh
     /// </summary>
     /// <param name="context"></param>
+    /// 
     public void OnSelectWaypoint(InputAction.CallbackContext context)
     {
-        print("Right Mouse Clicked !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
-
         //if a player is selected then determine destination
-        if (isSelected)
+        if (isSelected && context.performed)
         {
-            print("player is selected !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
-            ClickDestination();
+            if (context.interaction is HoldInteraction) // Run animation
+            {
+                animator.SetBool("IsWalking", false);
+                ClickDestinationRun();
+            }
+            else // Walk animation
+            {
+                animator.SetBool("IsRunning", false);
+                ClickDestination();
+            }
         }
-           
     }
 
     /// <summary>
     /// Move selected player towards active destination point
     /// </summary>
+    /// 
     private void Update()
     {
         if (Vector3.Distance(navMeshAgent.destination, transform.position) <= navMeshAgent.stoppingDistance)
         {
-            //print("Vector3.Distance() !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
             ClearWaypoint();
             animator.SetBool("IsWalking", false);
+            animator.SetBool("IsRunning", false);
         }
     }
 
@@ -103,6 +110,7 @@ public class CharacterNavigationController : MonoBehaviour
     /// Sets navmesh target
     /// </summary>
     /// <param name="target"></param>
+    /// 
     private void SetDestination(Vector3 target)
     {
         navMeshAgent.SetDestination(target);
@@ -111,30 +119,48 @@ public class CharacterNavigationController : MonoBehaviour
     /// <summary>
     /// Tests if selector ray intersects with valid destination target
     /// </summary>
+    /// 
     private void ClickDestination()
     {
-        print("ClickDestination !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"); // Getting to here *** after right clicking to move to a destination.
-
         selector.Check(rayProvider.CreateRay());
+
         if (selector.GetSelection() != null)
         {
-            print("Selection NOT null !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
-
             hitInfo = selector.GetHitInfo();
             SetDestination(hitInfo.point);
             SetWaypoint();
             SetSelected(false);
+
+            navMeshAgent.speed = navAgentWalkSpeed;
             animator.SetBool("IsWalking", true);
         }
-        else
+    }
+
+    /// <summary>
+    /// Tests if selector ray intersects with valid destination target and runs
+    /// </summary>
+    /// 
+    private void ClickDestinationRun()
+    {
+        selector.Check(rayProvider.CreateRay());
+
+        if (selector.GetSelection() != null)
         {
-            print("selector.GetSelection() == null ^^^^^^^^^^^^^^^^^^^^^^^^^^^");
+            hitInfo = selector.GetHitInfo();
+            SetDestination(hitInfo.point);
+            SetWaypoint();
+            SetSelected(false);
+
+            navMeshAgent.speed = navAgentRunSpeed;
+            animator.SetBool("IsRunning", true);
+            
         }
     }
 
     /// <summary>
     /// Set the next naviagable waypoint
     /// </summary>
+    /// 
     private void SetWaypoint()
     {
         waypointPrefab.SetActive(true);
@@ -145,6 +171,7 @@ public class CharacterNavigationController : MonoBehaviour
     /// <summary>
     /// Disable waypoint indicator and set waypoint transform back to attached player
     /// </summary>
+    /// 
     private void ClearWaypoint()
     {
         waypointPrefab.SetActive(false);
@@ -155,6 +182,7 @@ public class CharacterNavigationController : MonoBehaviour
     /// Set selected and show selection indicator around the player
     /// </summary>
     /// <param name="isSelected"></param>
+    /// 
     public void SetSelected(bool isSelected)
     {
         this.isSelected = isSelected;
