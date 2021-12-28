@@ -4,7 +4,10 @@ using UnityEngine;
 public class Zoom : MonoBehaviour
 {
     private PlayerInput playerInput;
-    private int fieldOfView = 60;
+    private float fieldOfView = 60f;
+    private float maxFOV = 70f;
+    private float minFOV = 30f;
+    private float incrementFOV = 2f;
 
 
     private void Awake()
@@ -36,16 +39,22 @@ public class Zoom : MonoBehaviour
     {
         if (playerInput.StandardControls.Zoom.ReadValue<float>() > 0) // If you scroll up
         {
-            if (fieldOfView > 30)
+            if (fieldOfView > minFOV)
             {
-                fieldOfView -= 3;
+                fieldOfView -= incrementFOV;
+
+                if (fieldOfView < minFOV)
+                    fieldOfView = minFOV;
             }
         }
         else if (playerInput.StandardControls.Zoom.ReadValue<float>() < 0) // If you scroll down
         {
-            if (fieldOfView < 70)
+            if (fieldOfView < maxFOV)
             {
-                fieldOfView += 3;
+                fieldOfView += incrementFOV;
+
+                if (fieldOfView > maxFOV)
+                    fieldOfView = maxFOV;
             }
         }
     }
