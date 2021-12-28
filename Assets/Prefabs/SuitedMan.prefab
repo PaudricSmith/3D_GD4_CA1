@@ -757,7 +757,7 @@ GameObject:
   - component: {fileID: 1335363135}
   m_Layer: 0
   m_Name: SuitedMan
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -814,7 +814,7 @@ MonoBehaviour:
   layerMask:
     serializedVersion: 2
     m_Bits: 8
-  maxDistance: 503
+  maxDistance: 1000
 --- !u!114 &5335234353417802639
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -839,7 +839,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.4
-  m_Speed: 1.4
+  m_Speed: 1.8
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
@@ -849,7 +849,7 @@ NavMeshAgent:
   m_AutoRepath: 1
   m_Height: 1.8
   m_BaseOffset: 0
-  m_WalkableMask: 4294967295
+  m_WalkableMask: 7
   m_ObstacleAvoidanceType: 4
 --- !u!136 &884896436
 CapsuleCollider:
@@ -894,7 +894,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Actions: {fileID: -944628639613478452, guid: cbd62bc201930d046b35a07da89c8e58, type: 3}
-  m_NotificationBehavior: 0
+  m_NotificationBehavior: 2
   m_UIInputModule: {fileID: 0}
   m_DeviceLostEvent:
     m_PersistentCalls:
@@ -905,7 +905,39 @@ MonoBehaviour:
   m_ControlsChangedEvent:
     m_PersistentCalls:
       m_Calls: []
-  m_ActionEvents: []
+  m_ActionEvents:
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 688495052860294979}
+        m_TargetAssemblyTypeName: CharacterNavigationController, Assembly-CSharp
+        m_MethodName: OnSelectPlayer
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: e79aa25c-2438-46bd-a88b-b3c518a814ce
+    m_ActionName: StandardControls/SelectPlayer[/Mouse/leftButton]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 688495052860294979}
+        m_TargetAssemblyTypeName: CharacterNavigationController, Assembly-CSharp
+        m_MethodName: OnSelectWaypoint
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 177c4d57-3d92-406c-bab6-912a94f08652
+    m_ActionName: StandardControls/SelectWaypoint[/Mouse/rightButton]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: StandardControls
@@ -2875,6 +2907,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: WaypointMarker
       objectReference: {fileID: 0}
+    - target: {fileID: 3255632558425602682, guid: 76ac23760ae0a204e9a2c5aa42b25fb8, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8029719858774014842, guid: 76ac23760ae0a204e9a2c5aa42b25fb8, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -2923,6 +2959,10 @@ PrefabInstance:
       propertyPath: m_Avatar
       value: 
       objectReference: {fileID: 9000000, guid: a3422ad278cd9a94aa3da8e6bff9deea, type: 3}
+    - target: {fileID: 9192602866804448972, guid: 76ac23760ae0a204e9a2c5aa42b25fb8, type: 3}
+      propertyPath: m_CullTransparentMesh
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 76ac23760ae0a204e9a2c5aa42b25fb8, type: 3}
 --- !u!1 &7181363554935427486 stripped
@@ -2942,6 +2982,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 427610}
     m_Modifications:
+    - target: {fileID: 1451139264745276558, guid: 0ab5e55e74156024c8d8eee4c71bc370, type: 3}
+      propertyPath: m_CullTransparentMesh
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1451139264933024470, guid: 0ab5e55e74156024c8d8eee4c71bc370, type: 3}
       propertyPath: m_Name
       value: SelectionMarker
