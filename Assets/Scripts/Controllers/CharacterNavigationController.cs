@@ -76,15 +76,17 @@ public class CharacterNavigationController : MonoBehaviour
         //if a player is selected then determine destination
         if (isSelected && context.performed)
         {
-            if (context.interaction is HoldInteraction) // Run animation
+            if (context.interaction is TapInteraction)// Walk animation
             {
-                animator.SetBool("IsWalking", false);
-                ClickDestinationRun();
-            }
-            else // Walk animation
-            {
+                print("Slow tap type !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
                 animator.SetBool("IsRunning", false);
                 ClickDestination();
+            }
+            if (context.interaction is HoldInteraction) // Run animation
+            {
+                print("Hold type !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+                animator.SetBool("IsWalking", false);
+                ClickDestinationRun();
             }
         }
     }
