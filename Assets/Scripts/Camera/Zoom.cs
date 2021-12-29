@@ -3,8 +3,9 @@ using UnityEngine;
 
 public class Zoom : MonoBehaviour
 {
+    private Camera thisCamera;
     private PlayerInput playerInput;
-    private float fieldOfView = 60f;
+    private float fieldOfViewValue = 60f;
     private float maxFOV = 70f;
     private float minFOV = 30f;
     private float incrementFOV = 2f;
@@ -13,6 +14,7 @@ public class Zoom : MonoBehaviour
     private void Awake()
     {
         playerInput = new PlayerInput();
+        thisCamera = GetComponent<Camera>();
     }
 
 
@@ -31,7 +33,7 @@ public class Zoom : MonoBehaviour
     private void Update()
     {
         MouseWheelZoom();
-        GetComponent<Camera>().fieldOfView = fieldOfView;
+        thisCamera.fieldOfView = fieldOfViewValue;
     }
 
 
@@ -39,22 +41,22 @@ public class Zoom : MonoBehaviour
     {
         if (playerInput.StandardControls.Zoom.ReadValue<float>() > 0) // If you scroll up
         {
-            if (fieldOfView > minFOV)
+            if (fieldOfViewValue > minFOV)
             {
-                fieldOfView -= incrementFOV;
+                fieldOfViewValue -= incrementFOV;
 
-                if (fieldOfView < minFOV)
-                    fieldOfView = minFOV;
+                if (fieldOfViewValue < minFOV)
+                    fieldOfViewValue = minFOV;
             }
         }
         else if (playerInput.StandardControls.Zoom.ReadValue<float>() < 0) // If you scroll down
         {
-            if (fieldOfView < maxFOV)
+            if (fieldOfViewValue < maxFOV)
             {
-                fieldOfView += incrementFOV;
+                fieldOfViewValue += incrementFOV;
 
-                if (fieldOfView > maxFOV)
-                    fieldOfView = maxFOV;
+                if (fieldOfViewValue > maxFOV)
+                    fieldOfViewValue = maxFOV;
             }
         }
     }

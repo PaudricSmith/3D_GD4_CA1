@@ -41,6 +41,22 @@ public class @PlayerInput : IInputActionCollection, IDisposable
                     ""expectedControlType"": ""Analog"",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""RotateCamRight"",
+                    ""type"": ""Button"",
+                    ""id"": ""a6e19ab9-8955-4a27-88d7-096bb472915f"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""RotateCamLeft"",
+                    ""type"": ""Button"",
+                    ""id"": ""8010e309-7ee7-4120-b35a-c215a71d148e"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -76,6 +92,28 @@ public class @PlayerInput : IInputActionCollection, IDisposable
                     ""action"": ""Zoom"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""8e5877bd-8fec-4040-a9c9-972903fa32ea"",
+                    ""path"": ""<Keyboard>/d"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""RotateCamRight"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""9c52bbf8-1c62-4b08-9ecd-695fb6f5a409"",
+                    ""path"": ""<Keyboard>/a"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""RotateCamLeft"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -87,6 +125,8 @@ public class @PlayerInput : IInputActionCollection, IDisposable
         m_StandardControls_SelectPlayer = m_StandardControls.FindAction("SelectPlayer", throwIfNotFound: true);
         m_StandardControls_SelectWaypoint = m_StandardControls.FindAction("SelectWaypoint", throwIfNotFound: true);
         m_StandardControls_Zoom = m_StandardControls.FindAction("Zoom", throwIfNotFound: true);
+        m_StandardControls_RotateCamRight = m_StandardControls.FindAction("RotateCamRight", throwIfNotFound: true);
+        m_StandardControls_RotateCamLeft = m_StandardControls.FindAction("RotateCamLeft", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -139,6 +179,8 @@ public class @PlayerInput : IInputActionCollection, IDisposable
     private readonly InputAction m_StandardControls_SelectPlayer;
     private readonly InputAction m_StandardControls_SelectWaypoint;
     private readonly InputAction m_StandardControls_Zoom;
+    private readonly InputAction m_StandardControls_RotateCamRight;
+    private readonly InputAction m_StandardControls_RotateCamLeft;
     public struct StandardControlsActions
     {
         private @PlayerInput m_Wrapper;
@@ -146,6 +188,8 @@ public class @PlayerInput : IInputActionCollection, IDisposable
         public InputAction @SelectPlayer => m_Wrapper.m_StandardControls_SelectPlayer;
         public InputAction @SelectWaypoint => m_Wrapper.m_StandardControls_SelectWaypoint;
         public InputAction @Zoom => m_Wrapper.m_StandardControls_Zoom;
+        public InputAction @RotateCamRight => m_Wrapper.m_StandardControls_RotateCamRight;
+        public InputAction @RotateCamLeft => m_Wrapper.m_StandardControls_RotateCamLeft;
         public InputActionMap Get() { return m_Wrapper.m_StandardControls; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -164,6 +208,12 @@ public class @PlayerInput : IInputActionCollection, IDisposable
                 @Zoom.started -= m_Wrapper.m_StandardControlsActionsCallbackInterface.OnZoom;
                 @Zoom.performed -= m_Wrapper.m_StandardControlsActionsCallbackInterface.OnZoom;
                 @Zoom.canceled -= m_Wrapper.m_StandardControlsActionsCallbackInterface.OnZoom;
+                @RotateCamRight.started -= m_Wrapper.m_StandardControlsActionsCallbackInterface.OnRotateCamRight;
+                @RotateCamRight.performed -= m_Wrapper.m_StandardControlsActionsCallbackInterface.OnRotateCamRight;
+                @RotateCamRight.canceled -= m_Wrapper.m_StandardControlsActionsCallbackInterface.OnRotateCamRight;
+                @RotateCamLeft.started -= m_Wrapper.m_StandardControlsActionsCallbackInterface.OnRotateCamLeft;
+                @RotateCamLeft.performed -= m_Wrapper.m_StandardControlsActionsCallbackInterface.OnRotateCamLeft;
+                @RotateCamLeft.canceled -= m_Wrapper.m_StandardControlsActionsCallbackInterface.OnRotateCamLeft;
             }
             m_Wrapper.m_StandardControlsActionsCallbackInterface = instance;
             if (instance != null)
@@ -177,6 +227,12 @@ public class @PlayerInput : IInputActionCollection, IDisposable
                 @Zoom.started += instance.OnZoom;
                 @Zoom.performed += instance.OnZoom;
                 @Zoom.canceled += instance.OnZoom;
+                @RotateCamRight.started += instance.OnRotateCamRight;
+                @RotateCamRight.performed += instance.OnRotateCamRight;
+                @RotateCamRight.canceled += instance.OnRotateCamRight;
+                @RotateCamLeft.started += instance.OnRotateCamLeft;
+                @RotateCamLeft.performed += instance.OnRotateCamLeft;
+                @RotateCamLeft.canceled += instance.OnRotateCamLeft;
             }
         }
     }
@@ -186,5 +242,7 @@ public class @PlayerInput : IInputActionCollection, IDisposable
         void OnSelectPlayer(InputAction.CallbackContext context);
         void OnSelectWaypoint(InputAction.CallbackContext context);
         void OnZoom(InputAction.CallbackContext context);
+        void OnRotateCamRight(InputAction.CallbackContext context);
+        void OnRotateCamLeft(InputAction.CallbackContext context);
     }
 }
