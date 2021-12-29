@@ -1,44 +1,50 @@
 using UnityEngine;
+using Cinemachine;
+using UnityEngine.InputSystem;
 
 
 public class Zoom : MonoBehaviour
 {
-    private Camera thisCamera;
+    [SerializeField] private CinemachineFreeLook thisCamera;
     private PlayerInput playerInput;
     private float fieldOfViewValue = 60f;
-    private float maxFOV = 70f;
+    private float maxFOV = 80f;
     private float minFOV = 30f;
-    private float incrementFOV = 2f;
+    private float incrementFOV = 5f;
 
 
     private void Awake()
     {
         playerInput = new PlayerInput();
-        thisCamera = GetComponent<Camera>();
+
+        thisCamera.m_CommonLens = true;
+        thisCamera.m_Lens.FieldOfView = fieldOfViewValue;
     }
 
 
     private void OnEnable()
     {
-        playerInput.Enable();
+        playerInput.StandardControls.Enable();
+        playerInput.StandardControls.Zoom.performed += OnZoomMouseWheelPerformed;
     }
-
 
     private void OnDisable()
     {
-        playerInput.Disable();
+        playerInput.StandardControls.Disable();
+        playerInput.StandardControls.Zoom.performed -= OnZoomMouseWheelPerformed;
     }
 
 
-    private void Update()
+    private void OnZoomMouseWheelPerformed(InputAction.CallbackContext context)
     {
-        MouseWheelZoom();
-        thisCamera.fieldOfView = fieldOfViewValue;
+        MoveMouseWheel();
     }
 
 
-    private void MouseWheelZoom()
+    private void MoveMouseWheel()
     {
+        thisCamera.m_Lens.FieldOfView = fieldOfViewValue;
+
         if (playerInput.StandardControls.Zoom.ReadValue<float>() > 0) // If you scroll up
         {
             if (fieldOfViewValue > minFOV)
