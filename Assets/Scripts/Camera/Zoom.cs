@@ -9,7 +9,7 @@ public class Zoom : MonoBehaviour
     private PlayerInput playerInput;
     private float fieldOfViewValue = 60f;
     private float maxFOV = 80f;
-    private float minFOV = 30f;
+    private float minFOV = 20f;
     private float incrementFOV = 5f;
 
 
