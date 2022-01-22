@@ -38,6 +38,8 @@ public class CharacterNavigationController : MonoBehaviour
     private float navAgentWalkSpeed = 1.7f;
     private float navAgentRunSpeed = 4f;
 
+    private Animator npcAnimator;
+
     private void Start()
     {
         navMeshAgent = GetComponent<NavMeshAgent>();
@@ -47,23 +49,57 @@ public class CharacterNavigationController : MonoBehaviour
     }
 
     /// <summary>
-    /// Called when a player selects the on-screen player avatar
+    /// Called when a player left clicks mouse button and can select the on-screen player avatar
     /// </summary>
     /// <param name="context"></param>
     /// 
     public void OnSelectPlayer(InputAction.CallbackContext context)
     {
-        //if player is selected and we click and select a different player
-        if (currentlySelectedGameObject.Value != null && currentlySelectedGameObject.Value != gameObject)
+
+        selector.Check(rayProvider.CreateRay());
+
+        if (selector.GetSelection() != null)
         {
-            //de-select current
-            currentlySelectedGameObject.Value = null;
-            SetSelected(false);
+            hitInfo = selector.GetHitInfo();
+
+            // If the hitInfo's transform parent object's tag is 'NPC'
+            if (hitInfo.collider.transform.root.CompareTag("NPC"))
+            {
+                //Debug.Log(hitInfo.collider.gameObject.name);
+                Debug.Log(hitInfo.GetType().BaseType);
+                npcAnimator = hitInfo.collider.GetComponent<Animator>();
+                npcAnimator.speed = 0;
+            }
+            // If the hitInfo's game object is the main player 'SuitedMan'
+            else if (hitInfo.collider.gameObject.name == "SuitedMan")
+            {
+                Debug.Log(hitInfo.collider.gameObject);
+
+                if (npcAnimator != null)
+                npcAnimator.speed = 1;
+
+
+                ////if player is selected and we click and select a different player
+                //if (currentlySelectedGameObject.Value != null && currentlySelectedGameObject.Value != gameObject)
+                //{
+                //    //de-select current
+                //    currentlySelectedGameObject.Value = null;
+                //    SetSelected(false);
+                //}
+
+                //set selected new player object
+                SetSelected(true);
+                currentlySelectedGameObject.Value = gameObject;
+            }
+            //else
+            //{
+            //    setselected(false);
+            //}
         }
 
-        //set selected new player object
-        SetSelected(true);
-        currentlySelectedGameObject.Value = gameObject;
+        
+
+        
     }
 
     /// <summary>
