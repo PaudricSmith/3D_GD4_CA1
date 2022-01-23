@@ -46,6 +46,8 @@ public class CharacterNavigationController : MonoBehaviour
         rayProvider = GetComponent<IRayProvider>();
         selector = GetComponent<ISelector>();
         animator = GetComponent<Animator>();
+
+        SetSelected(false);
     }
 
     /// <summary>
@@ -67,34 +69,33 @@ public class CharacterNavigationController : MonoBehaviour
             {
                 //Debug.Log(hitInfo.collider.gameObject.name);
                 Debug.Log(hitInfo.GetType().BaseType);
-                npcAnimator = hitInfo.collider.GetComponent<Animator>();
-                npcAnimator.speed = 0;
+                //npcAnimator = hitInfo.collider.GetComponent<Animator>();
+                //npcAnimator.speed = 0;
+
+                SetSelected(false);
             }
             // If the hitInfo's game object is the main player 'SuitedMan'
             else if (hitInfo.collider.gameObject.name == "SuitedMan")
             {
                 Debug.Log(hitInfo.collider.gameObject);
 
-                if (npcAnimator != null)
-                npcAnimator.speed = 1;
+                //if (npcAnimator != null)
+                //npcAnimator.speed = 1;
 
 
-                ////if player is selected and we click and select a different player
-                //if (currentlySelectedGameObject.Value != null && currentlySelectedGameObject.Value != gameObject)
-                //{
-                //    //de-select current
-                //    currentlySelectedGameObject.Value = null;
-                //    SetSelected(false);
-                //}
+                //if player is selected and we click and select a different player
+                if (currentlySelectedGameObject.Value != null && currentlySelectedGameObject.Value != gameObject)
+                {
+                    //de-select current
+                    currentlySelectedGameObject.Value = null;
+                    SetSelected(false);
+                }
 
                 //set selected new player object
                 SetSelected(true);
                 currentlySelectedGameObject.Value = gameObject;
             }
-            //else
-            //{
-            //    setselected(false);
-            //}
+
         }
 
         
