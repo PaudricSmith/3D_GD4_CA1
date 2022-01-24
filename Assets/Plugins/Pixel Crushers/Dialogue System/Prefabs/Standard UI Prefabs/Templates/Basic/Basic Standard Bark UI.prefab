@@ -79,7 +79,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: Hello..
+  m_Text: Only 5 euro!
 --- !u!114 &11450030
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -251,7 +251,7 @@ RectTransform:
   - {fileID: 22452682}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
@@ -276,7 +276,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 25
   m_SortingLayerID: 0
-  m_SortingOrder: 9998
+  m_SortingOrder: 9999
   m_TargetDisplay: 0
 --- !u!114 &11445360
 MonoBehaviour:
@@ -360,11 +360,11 @@ MonoBehaviour:
   includeName: 1
   portraitImage: {fileID: 0}
   showPortraitImage: 0
-  doneTime: 216.6043
+  doneTime: 58.263622
   animationTransitions:
     showTrigger: Show
     hideTrigger: Hide
-  duration: 4
+  duration: 8
   keepInView: 1
   waitUntilSequenceEnds: 0
   waitForContinueButton: 0
@@ -391,7 +391,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 1
+  m_PresetInfoIsWorld: 0
 --- !u!1 &196124
 GameObject:
   m_ObjectHideFlags: 0
@@ -470,4 +470,4 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Player
+  m_Text: Elizabeth
