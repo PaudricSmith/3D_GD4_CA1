@@ -105,7 +105,7 @@ MonoBehaviour:
   - id: 1
     fields:
     - title: Title
-      value: Brown suit interaction 1
+      value: Amon first interaction.
       type: 0
       typeString: CustomFieldType_Text
     - title: Pictures
@@ -217,7 +217,7 @@ MonoBehaviour:
           m_Calls: []
       canvasRect:
         serializedVersion: 2
-        x: 121.26663
+        x: 120
         y: 20
         width: 160
         height: 30
@@ -295,8 +295,8 @@ MonoBehaviour:
           m_Calls: []
       canvasRect:
         serializedVersion: 2
-        x: 121.0005
-        y: 68.99951
+        x: 120
+        y: 70
         width: 160
         height: 30
     - id: 2
@@ -326,7 +326,11 @@ MonoBehaviour:
         type: 0
         typeString: CustomFieldType_Text
       - title: Dialogue Text
-        value: Hey Amon, yea sorry my car wouldn't start so had to take the bus.
+        value: 'Hey Amon, your''e here same time every day since we met waiting for
+          the bus two years ago, will you ever make it home? lol.
+
+          Yea
+          my car wouldn''t start so had to take the bus.'
         type: 0
         typeString: CustomFieldType_Text
       - title: Parenthetical
@@ -366,7 +370,7 @@ MonoBehaviour:
           m_Calls: []
       canvasRect:
         serializedVersion: 2
-        x: 30
+        x: 210
         y: 120
         width: 160
         height: 30
@@ -397,7 +401,8 @@ MonoBehaviour:
         type: 0
         typeString: CustomFieldType_Text
       - title: Dialogue Text
-        value: Aww too bad
+        value: Aww too bad, a lot of strange things are happening lately, just look
+          at this weather, cold and wet in the middle of summer!
         type: 0
         typeString: CustomFieldType_Text
       - title: Parenthetical
@@ -431,8 +436,8 @@ MonoBehaviour:
           m_Calls: []
       canvasRect:
         serializedVersion: 2
-        x: 120
-        y: 170
+        x: 210
+        y: 168.85094
         width: 160
         height: 30
     - id: 4
@@ -488,6 +493,77 @@ MonoBehaviour:
       delaySimStatus: 0
       falseConditionAction: Block
       conditionPriority: 2
+      outgoingLinks:
+      - originConversationID: 1
+        originDialogueID: 4
+        destinationConversationID: 1
+        destinationDialogueID: 5
+        isConnector: 0
+        priority: 2
+      conditionsString: 
+      userScript: 
+      onExecute:
+        m_PersistentCalls:
+          m_Calls: []
+      canvasRect:
+        serializedVersion: 2
+        x: 30
+        y: 120
+        width: 160
+        height: 30
+    - id: 5
+      fields:
+      - title: Title
+        value: 
+        type: 0
+        typeString: CustomFieldType_Text
+      - title: Pictures
+        value: '[]'
+        type: 3
+        typeString: CustomFieldType_Files
+      - title: Description
+        value: 
+        type: 0
+        typeString: CustomFieldType_Text
+      - title: Actor
+        value: 2
+        type: 5
+        typeString: CustomFieldType_Actor
+      - title: Conversant
+        value: 1
+        type: 5
+        typeString: CustomFieldType_Actor
+      - title: Menu Text
+        value: 
+        type: 0
+        typeString: CustomFieldType_Text
+      - title: Dialogue Text
+        value: Alright, don't work yourself to death.
+        type: 0
+        typeString: CustomFieldType_Text
+      - title: Parenthetical
+        value: 
+        type: 0
+        typeString: CustomFieldType_Text
+      - title: Audio Files
+        value: '[]'
+        type: 3
+        typeString: CustomFieldType_Files
+      - title: Video File
+        value: 
+        type: 0
+        typeString: CustomFieldType_Text
+      - title: Sequence
+        value: 
+        type: 0
+        typeString: CustomFieldType_Text
+      conversationID: 1
+      isRoot: 0
+      isGroup: 0
+      nodeColor: 
+      delaySimStatus: 0
+      falseConditionAction: Block
+      conditionPriority: 2
       outgoingLinks: []
       conditionsString: 
       userScript: 
@@ -496,13 +572,13 @@ MonoBehaviour:
           m_Calls: []
       canvasRect:
         serializedVersion: 2
-        x: 210
-        y: 120
+        x: 30
+        y: 170
         width: 160
         height: 30
     entryGroups: []
-    canvasScrollPosition: {x: 0, y: 0}
-    canvasZoom: 0.7595004
+    canvasScrollPosition: {x: 1.1490784, y: 0}
+    canvasZoom: 0.8702503
   - id: 2
     fields:
     - title: Title
