@@ -1,15 +1,28 @@
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 
 public class MorgueDoor : MonoBehaviour
 {
+    [SerializeField] GameObject doorPanel;
+
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("Player"))
+        if (other.gameObject.CompareTag("Selectable")) // The Player has this tag 'Selectable'
         {
-            SceneManager.LoadSceneAsync("Level1Part2");
+            if (doorPanel != null)
+            {
+                doorPanel.SetActive(true);
+            }
+        }
+    }
+
+
+    public void HideDoorPanel()
+    {
+        if (doorPanel != null)
+        {
+            doorPanel.SetActive(false);
         }
     }
 }

@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55b5b3b9df6abfb44a9933cec18c80ba, type: 3}
   m_Name: Level1
   m_EditorClassIdentifier: 
-  sceneName: Level1 - City
+  sceneName: Level1Part1
   shortDescription: Downtown Lunaia, rainy night.
   music: {fileID: 8300000, guid: acbfe1987f2a6b54ab1d13862069f6f4, type: 3}
   musicVolume: 0.7
