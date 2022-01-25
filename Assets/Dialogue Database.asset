@@ -141,6 +141,20 @@ MonoBehaviour:
       value: 
       type: 0
       typeString: CustomFieldType_Text
+  - id: 3
+    fields:
+    - title: Name
+      value: hasGivenHotdog
+      type: 0
+      typeString: CustomFieldType_Text
+    - title: Initial Value
+      value: False
+      type: 2
+      typeString: CustomFieldType_Boolean
+    - title: Description
+      value: 
+      type: 0
+      typeString: CustomFieldType_Text
   conversations:
   - id: 1
     fields:
@@ -1391,6 +1405,12 @@ MonoBehaviour:
         destinationDialogueID: 12
         isConnector: 0
         priority: 2
+      - originConversationID: 4
+        originDialogueID: 0
+        destinationConversationID: 4
+        destinationDialogueID: 13
+        isConnector: 0
+        priority: 2
       conditionsString: 
       userScript: 
       onExecute:
@@ -1398,8 +1418,8 @@ MonoBehaviour:
           m_Calls: []
       canvasRect:
         serializedVersion: 2
-        x: 311
-        y: 23
+        x: 338
+        y: 22
         width: 160
         height: 30
     - id: 1
@@ -1429,7 +1449,7 @@ MonoBehaviour:
         type: 0
         typeString: CustomFieldType_Text
       - title: Dialogue Text
-        value: Hi Cris, you want the usual?
+        value: Hi Cris, you want a Hot Dog?
         type: 0
         typeString: CustomFieldType_Text
       - title: Parenthetical
@@ -1474,15 +1494,16 @@ MonoBehaviour:
         destinationDialogueID: 10
         isConnector: 0
         priority: 2
-      conditionsString: Variable["isElizabethAngry"] == false
+      conditionsString: Variable["isElizabethAngry"] == false and (Variable["hasGivenHotdog"]
+        == false)
       userScript: 
       onExecute:
         m_PersistentCalls:
           m_Calls: []
       canvasRect:
         serializedVersion: 2
-        x: 261
-        y: 68
+        x: 336
+        y: 66
         width: 160
         height: 30
     - id: 2
@@ -1512,7 +1533,7 @@ MonoBehaviour:
         type: 0
         typeString: CustomFieldType_Text
       - title: Dialogue Text
-        value: Yea sure!
+        value: Are they nice?
         type: 0
         typeString: CustomFieldType_Text
       - title: Parenthetical
@@ -1552,7 +1573,7 @@ MonoBehaviour:
           m_Calls: []
       canvasRect:
         serializedVersion: 2
-        x: 30
+        x: 97
         y: 120
         width: 160
         height: 30
@@ -1623,8 +1644,8 @@ MonoBehaviour:
           m_Calls: []
       canvasRect:
         serializedVersion: 2
-        x: 210
-        y: 120
+        x: 337
+        y: 123
         width: 160
         height: 30
     - id: 4
@@ -1700,7 +1721,7 @@ MonoBehaviour:
           m_Calls: []
       canvasRect:
         serializedVersion: 2
-        x: 30
+        x: 98
         y: 170
         width: 160
         height: 30
@@ -1771,8 +1792,8 @@ MonoBehaviour:
           m_Calls: []
       canvasRect:
         serializedVersion: 2
-        x: 30
-        y: 220
+        x: 50
+        y: 240
         width: 160
         height: 30
     - id: 6
@@ -1802,7 +1823,7 @@ MonoBehaviour:
         type: 0
         typeString: CustomFieldType_Text
       - title: Dialogue Text
-        value: Can you not take no for an answer!? I said NO!!
+        value: Don't push it, I'll pass!
         type: 0
         typeString: CustomFieldType_Text
       - title: Parenthetical
@@ -1842,8 +1863,8 @@ MonoBehaviour:
           m_Calls: []
       canvasRect:
         serializedVersion: 2
-        x: 210
-        y: 220
+        x: 240
+        y: 240
         width: 160
         height: 30
     - id: 7
@@ -1874,7 +1895,7 @@ MonoBehaviour:
         typeString: CustomFieldType_Text
       - title: Dialogue Text
         value: Aww sorry to hear that, well as soon as you feel better, there will
-          be a hot dog with your name on it.
+          be a Hot Dog with your name on it.
         type: 0
         typeString: CustomFieldType_Text
       - title: Parenthetical
@@ -1908,8 +1929,8 @@ MonoBehaviour:
           m_Calls: []
       canvasRect:
         serializedVersion: 2
-        x: 210
-        y: 170
+        x: 334
+        y: 168
         width: 160
         height: 30
     - id: 8
@@ -1967,14 +1988,14 @@ MonoBehaviour:
       conditionPriority: 2
       outgoingLinks: []
       conditionsString: 
-      userScript: 
+      userScript: Variable["hasGivenHotdog"] = true
       onExecute:
         m_PersistentCalls:
           m_Calls: []
       canvasRect:
         serializedVersion: 2
-        x: 30
-        y: 270
+        x: 51
+        y: 289
         width: 160
         height: 30
     - id: 9
@@ -2032,14 +2053,14 @@ MonoBehaviour:
       conditionPriority: 2
       outgoingLinks: []
       conditionsString: 
-      userScript: 
+      userScript: Variable["isElizabethAngry"] = true
       onExecute:
         m_PersistentCalls:
           m_Calls: []
       canvasRect:
         serializedVersion: 2
-        x: 210
-        y: 270
+        x: 240
+        y: 288
         width: 160
         height: 30
     - id: 10
@@ -2069,7 +2090,7 @@ MonoBehaviour:
         type: 0
         typeString: CustomFieldType_Text
       - title: Dialogue Text
-        value: Are you sure these hot dogs are not made from the bodies I throw in
+        value: Are you sure these Hot Dogs are not made from the bodies I throw in
           the bin around the corner? lol
         type: 0
         typeString: CustomFieldType_Text
@@ -2110,8 +2131,8 @@ MonoBehaviour:
           m_Calls: []
       canvasRect:
         serializedVersion: 2
-        x: 397
-        y: 121
+        x: 599
+        y: 119
         width: 160
         height: 30
     - id: 11
@@ -2175,8 +2196,8 @@ MonoBehaviour:
           m_Calls: []
       canvasRect:
         serializedVersion: 2
-        x: 397
-        y: 171
+        x: 600
+        y: 166
         width: 160
         height: 30
     - id: 12
@@ -2240,12 +2261,77 @@ MonoBehaviour:
           m_Calls: []
       canvasRect:
         serializedVersion: 2
-        x: 458
-        y: 69
+        x: 600
+        y: 21
+        width: 160
+        height: 30
+    - id: 13
+      fields:
+      - title: Title
+        value: 
+        type: 0
+        typeString: CustomFieldType_Text
+      - title: Pictures
+        value: '[]'
+        type: 3
+        typeString: CustomFieldType_Files
+      - title: Description
+        value: 
+        type: 0
+        typeString: CustomFieldType_Text
+      - title: Actor
+        value: 3
+        type: 5
+        typeString: CustomFieldType_Actor
+      - title: Conversant
+        value: 1
+        type: 5
+        typeString: CustomFieldType_Actor
+      - title: Menu Text
+        value: 
+        type: 0
+        typeString: CustomFieldType_Text
+      - title: Dialogue Text
+        value: Hope you liked your Hot Dog!
+        type: 0
+        typeString: CustomFieldType_Text
+      - title: Parenthetical
+        value: 
+        type: 0
+        typeString: CustomFieldType_Text
+      - title: Audio Files
+        value: '[]'
+        type: 3
+        typeString: CustomFieldType_Files
+      - title: Video File
+        value: 
+        type: 0
+        typeString: CustomFieldType_Text
+      - title: Sequence
+        value: 
+        type: 0
+        typeString: CustomFieldType_Text
+      conversationID: 4
+      isRoot: 0
+      isGroup: 0
+      nodeColor: 
+      delaySimStatus: 0
+      falseConditionAction: Block
+      conditionPriority: 2
+      outgoingLinks: []
+      conditionsString: Variable["hasGivenHotdog"] == true
+      userScript: 
+      onExecute:
+        m_PersistentCalls:
+          m_Calls: []
+      canvasRect:
+        serializedVersion: 2
+        x: 77
+        y: 25
         width: 160
         height: 30
     entryGroups: []
-    canvasScrollPosition: {x: 0, y: 0}
+    canvasScrollPosition: {x: 0, y: 5}
     canvasZoom: 1
   syncInfo:
     syncActors: 0
