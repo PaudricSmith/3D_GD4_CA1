@@ -365,7 +365,7 @@ MonoBehaviour:
     showTrigger: Show
     hideTrigger: Hide
   duration: 8
-  keepInView: 1
+  keepInView: 0
   waitUntilSequenceEnds: 0
   waitForContinueButton: 0
   textDisplaySetting: 0
@@ -391,7 +391,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 0
+  m_PresetInfoIsWorld: 1
 --- !u!1 &196124
 GameObject:
   m_ObjectHideFlags: 0
