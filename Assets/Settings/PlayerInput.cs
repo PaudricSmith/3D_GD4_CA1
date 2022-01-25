@@ -57,6 +57,14 @@ public class @PlayerInput : IInputActionCollection, IDisposable
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""Pause"",
+                    ""type"": ""Button"",
+                    ""id"": ""dd88910d-9546-458a-b4b2-698a448df993"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -158,6 +166,17 @@ public class @PlayerInput : IInputActionCollection, IDisposable
                     ""action"": ""RotateCameraVertical"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""74780f66-e07a-4e87-afad-f9cb29e3f58d"",
+                    ""path"": ""<Keyboard>/p"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Pause"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -171,6 +190,7 @@ public class @PlayerInput : IInputActionCollection, IDisposable
         m_StandardControls_Zoom = m_StandardControls.FindAction("Zoom", throwIfNotFound: true);
         m_StandardControls_RotateCameraHorizontal = m_StandardControls.FindAction("RotateCameraHorizontal", throwIfNotFound: true);
         m_StandardControls_RotateCameraVertical = m_StandardControls.FindAction("RotateCameraVertical", throwIfNotFound: true);
+        m_StandardControls_Pause = m_StandardControls.FindAction("Pause", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -225,6 +245,7 @@ public class @PlayerInput : IInputActionCollection, IDisposable
     private readonly InputAction m_StandardControls_Zoom;
     private readonly InputAction m_StandardControls_RotateCameraHorizontal;
     private readonly InputAction m_StandardControls_RotateCameraVertical;
+    private readonly InputAction m_StandardControls_Pause;
     public struct StandardControlsActions
     {
         private @PlayerInput m_Wrapper;
@@ -234,6 +255,7 @@ public class @PlayerInput : IInputActionCollection, IDisposable
         public InputAction @Zoom => m_Wrapper.m_StandardControls_Zoom;
         public InputAction @RotateCameraHorizontal => m_Wrapper.m_StandardControls_RotateCameraHorizontal;
         public InputAction @RotateCameraVertical => m_Wrapper.m_StandardControls_RotateCameraVertical;
+        public InputAction @Pause => m_Wrapper.m_StandardControls_Pause;
         public InputActionMap Get() { return m_Wrapper.m_StandardControls; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -258,6 +280,9 @@ public class @PlayerInput : IInputActionCollection, IDisposable
                 @RotateCameraVertical.started -= m_Wrapper.m_StandardControlsActionsCallbackInterface.OnRotateCameraVertical;
                 @RotateCameraVertical.performed -= m_Wrapper.m_StandardControlsActionsCallbackInterface.OnRotateCameraVertical;
                 @RotateCameraVertical.canceled -= m_Wrapper.m_StandardControlsActionsCallbackInterface.OnRotateCameraVertical;
+                @Pause.started -= m_Wrapper.m_StandardControlsActionsCallbackInterface.OnPause;
+                @Pause.performed -= m_Wrapper.m_StandardControlsActionsCallbackInterface.OnPause;
+                @Pause.canceled -= m_Wrapper.m_StandardControlsActionsCallbackInterface.OnPause;
             }
             m_Wrapper.m_StandardControlsActionsCallbackInterface = instance;
             if (instance != null)
@@ -277,6 +302,9 @@ public class @PlayerInput : IInputActionCollection, IDisposable
                 @RotateCameraVertical.started += instance.OnRotateCameraVertical;
                 @RotateCameraVertical.performed += instance.OnRotateCameraVertical;
                 @RotateCameraVertical.canceled += instance.OnRotateCameraVertical;
+                @Pause.started += instance.OnPause;
+                @Pause.performed += instance.OnPause;
+                @Pause.canceled += instance.OnPause;
             }
         }
     }
@@ -288,5 +316,6 @@ public class @PlayerInput : IInputActionCollection, IDisposable
         void OnZoom(InputAction.CallbackContext context);
         void OnRotateCameraHorizontal(InputAction.CallbackContext context);
         void OnRotateCameraVertical(InputAction.CallbackContext context);
+        void OnPause(InputAction.CallbackContext context);
     }
 }

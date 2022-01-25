@@ -33,7 +33,7 @@ public class SceneData : ScriptableObject
         LoadLevelWithIndex(CurrentLevelIndex);
     }
 
-    //Restart current level
+    // Restart current level
     public void RestartLevel()
     {
         LoadLevelWithIndex(CurrentLevelIndex);
