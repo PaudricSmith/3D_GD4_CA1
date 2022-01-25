@@ -39,10 +39,11 @@ public class SceneData : ScriptableObject
         LoadLevelWithIndex(CurrentLevelIndex);
     }
 
-    //New game, load level 1
+    // Main Menu = 0, New game = 1, load level 1
     public void NewGame()
     {
-        LoadLevelWithIndex(1);
+        CurrentLevelIndex = 1;
+        LoadLevelWithIndex(CurrentLevelIndex);
     }
 
     #endregion LEVELS
