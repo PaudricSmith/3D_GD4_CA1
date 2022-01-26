@@ -5,6 +5,7 @@ using UnityEngine.InputSystem;
 
 public class PlayerPickupBehaviour : MonoBehaviour
 {
+    private AudioSource playerAudioSource;
     private IRayProvider rayProvider;
     private ISelector selector;
     private RaycastHit hitInfo;
@@ -13,12 +14,14 @@ public class PlayerPickupBehaviour : MonoBehaviour
     private int leftClickDistance = 7;
     private bool isAlertShowing = false;
 
+    [SerializeField] private AudioClip pickupSFX;
     [SerializeField] private PickupEventSO pickupEvent;
     [SerializeField] private GameObject alertPanel;
 
 
     private void Start()
     {
+        playerAudioSource = GetComponent<AudioSource>();
         rayProvider = GetComponent<IRayProvider>();
         selector = GetComponent<ISelector>();
 
@@ -47,6 +50,8 @@ public class PlayerPickupBehaviour : MonoBehaviour
 
                         if (pickup != null)
                         {
+                            playerAudioSource.PlayOneShot(pickupSFX);                           
+
                             Destroy(hitInfo.collider.gameObject);
                             pickupEvent.Raise(pickup.PickupData);
                         }

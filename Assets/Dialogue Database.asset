@@ -1979,6 +1979,10 @@ MonoBehaviour:
         value: 
         type: 0
         typeString: CustomFieldType_Text
+      - title: EventGuid
+        value: 8a34cd06-9caf-4f5f-8b66-7eda35e1064c
+        type: 0
+        typeString: 
       conversationID: 4
       isRoot: 0
       isGroup: 0
