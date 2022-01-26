@@ -29,6 +29,11 @@ public class PlayerPickupBehaviour : MonoBehaviour
     }
 
 
+    /// <summary>
+    /// A method that is called when Left Mouse button is performed with the new Input System.
+    /// This method gets the hit info from a pickup object, plays a SFX and raises a pickup event with the pickup data.
+    /// </summary>
+    /// <param name="context"></param>
     public void OnSelectObject(InputAction.CallbackContext context)
     {
         if (context.performed)
@@ -82,11 +87,6 @@ public class PlayerPickupBehaviour : MonoBehaviour
 }
 
 //if (pickup.PickupData.type.Equals(PickupType.Note))
-//{
-//    Destroy(hitInfo.collider.gameObject);
-//    Debug.Log(hitInfo.collider.gameObject);
-//}
-//else if (pickup.PickupData.type.Equals(PickupType.HotDog))
 //{
 //    Destroy(hitInfo.collider.gameObject);
 //    Debug.Log(hitInfo.collider.gameObject);
