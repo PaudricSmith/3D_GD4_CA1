@@ -12,7 +12,7 @@ public class SceneData : ScriptableObject
 
     #region LEVELS
 
-    //Load a scene with a given index
+    // Load a scene with a given index
     public void LoadLevelWithIndex(int index)
     {
         if (index <= levels.Count)
@@ -26,7 +26,7 @@ public class SceneData : ScriptableObject
         else CurrentLevelIndex = 1;
     }
 
-    //Start next level
+    // Start next level
     public void NextLevel()
     {
         CurrentLevelIndex++;
@@ -50,13 +50,13 @@ public class SceneData : ScriptableObject
 
     #region MENUS
 
-    //Load main Menu
+    // Load main Menu
     public void LoadMainMenu()
     {
         SceneManager.LoadSceneAsync(menus[(int)Type.Main_Menu].SceneName);
     }
 
-    //Load Pause Menu
+    // Load Pause Menu
     public void LoadPauseMenu()
     {
         SceneManager.LoadSceneAsync(menus[(int)Type.Pause_Menu].SceneName);

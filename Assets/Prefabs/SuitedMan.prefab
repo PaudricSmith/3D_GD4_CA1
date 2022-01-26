@@ -755,7 +755,6 @@ GameObject:
   - component: {fileID: 884896436}
   - component: {fileID: 688495052860294979}
   - component: {fileID: 1335363135}
-  - component: {fileID: 1918576582}
   - component: {fileID: 1918576583}
   - component: {fileID: 1918576584}
   m_Layer: 3
@@ -954,59 +953,15 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: bd72a917-8271-400f-976c-7c94e12aabc9
     m_ActionName: StandardControls/RotateCameraVertical[/Keyboard/w]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: dd88910d-9546-458a-b4b2-698a448df993
+    m_ActionName: StandardControls/Pause[/Keyboard/p]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: StandardControls
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
---- !u!114 &1918576582
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 129800}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 963d6358c55a0f44d8de57bee560f184, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  useDefaultGUI: 1
-  guiSkin: {fileID: 0}
-  guiStyleName: label
-  alignment: 1
-  color: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
-  textStyle: 1
-  textStyleColor: {r: 0, g: 0, b: 0, a: 1}
-  defaultUseMessage: (spacebar to interact)
-  useKey: 32
-  useButton: Fire1
-  enableTouch: 0
-  touchArea:
-    origin: 0
-    alignment: 0
-    x:
-      scale: 0
-      value: 0
-    y:
-      scale: 0
-      value: 0
-    width:
-      scale: 0
-      value: 0
-    height:
-      scale: 0
-      value: 0
-    minPixelWidth: 0
-    minPixelHeight: 0
-  broadcastToChildren: 1
-  actorTransform: {fileID: 0}
-  onSelectedUsable:
-    m_PersistentCalls:
-      m_Calls: []
-  onDeselectedUsable:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!114 &1918576583
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3175,15 +3130,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5380594948273881617, guid: 81da2fd8702657a45a1dceb25244485d, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.018513162
+      value: 0.018513156
       objectReference: {fileID: 0}
     - target: {fileID: 5380594948273881617, guid: 81da2fd8702657a45a1dceb25244485d, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.8214092
+      value: -0.8214093
       objectReference: {fileID: 0}
     - target: {fileID: 5380594948273881617, guid: 81da2fd8702657a45a1dceb25244485d, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.026706254
+      value: -0.026706245
       objectReference: {fileID: 0}
     - target: {fileID: 5380594948510663481, guid: 81da2fd8702657a45a1dceb25244485d, type: 3}
       propertyPath: m_Layer
@@ -3215,7 +3170,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5380594948896854069, guid: 81da2fd8702657a45a1dceb25244485d, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -4.327467e-15
+      value: 3.353522e-15
       objectReference: {fileID: 0}
     - target: {fileID: 5380594948896854069, guid: 81da2fd8702657a45a1dceb25244485d, type: 3}
       propertyPath: m_LocalRotation.y
@@ -3223,7 +3178,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5380594948896854069, guid: 81da2fd8702657a45a1dceb25244485d, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 6.2426095e-15
+      value: -4.83764e-15
       objectReference: {fileID: 0}
     - target: {fileID: 5380594949871485874, guid: 81da2fd8702657a45a1dceb25244485d, type: 3}
       propertyPath: m_Layer

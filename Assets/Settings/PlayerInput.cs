@@ -19,12 +19,12 @@ public class @PlayerInput : IInputActionCollection, IDisposable
             ""id"": ""d61d3372-a49f-42b7-afa6-bdd97a0b154d"",
             ""actions"": [
                 {
-                    ""name"": ""SelectPlayer"",
+                    ""name"": ""SelectLeftClick"",
                     ""type"": ""Button"",
                     ""id"": ""e79aa25c-2438-46bd-a88b-b3c518a814ce"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
-                    ""interactions"": ""Tap,SlowTap""
+                    ""interactions"": """"
                 },
                 {
                     ""name"": ""SelectWaypoint"",
@@ -75,7 +75,7 @@ public class @PlayerInput : IInputActionCollection, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""SelectPlayer"",
+                    ""action"": ""SelectLeftClick"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -185,7 +185,7 @@ public class @PlayerInput : IInputActionCollection, IDisposable
 }");
         // StandardControls
         m_StandardControls = asset.FindActionMap("StandardControls", throwIfNotFound: true);
-        m_StandardControls_SelectPlayer = m_StandardControls.FindAction("SelectPlayer", throwIfNotFound: true);
+        m_StandardControls_SelectLeftClick = m_StandardControls.FindAction("SelectLeftClick", throwIfNotFound: true);
         m_StandardControls_SelectWaypoint = m_StandardControls.FindAction("SelectWaypoint", throwIfNotFound: true);
         m_StandardControls_Zoom = m_StandardControls.FindAction("Zoom", throwIfNotFound: true);
         m_StandardControls_RotateCameraHorizontal = m_StandardControls.FindAction("RotateCameraHorizontal", throwIfNotFound: true);
@@ -240,7 +240,7 @@ public class @PlayerInput : IInputActionCollection, IDisposable
     // StandardControls
     private readonly InputActionMap m_StandardControls;
     private IStandardControlsActions m_StandardControlsActionsCallbackInterface;
-    private readonly InputAction m_StandardControls_SelectPlayer;
+    private readonly InputAction m_StandardControls_SelectLeftClick;
     private readonly InputAction m_StandardControls_SelectWaypoint;
     private readonly InputAction m_StandardControls_Zoom;
     private readonly InputAction m_StandardControls_RotateCameraHorizontal;
@@ -250,7 +250,7 @@ public class @PlayerInput : IInputActionCollection, IDisposable
     {
         private @PlayerInput m_Wrapper;
         public StandardControlsActions(@PlayerInput wrapper) { m_Wrapper = wrapper; }
-        public InputAction @SelectPlayer => m_Wrapper.m_StandardControls_SelectPlayer;
+        public InputAction @SelectLeftClick => m_Wrapper.m_StandardControls_SelectLeftClick;
         public InputAction @SelectWaypoint => m_Wrapper.m_StandardControls_SelectWaypoint;
         public InputAction @Zoom => m_Wrapper.m_StandardControls_Zoom;
         public InputAction @RotateCameraHorizontal => m_Wrapper.m_StandardControls_RotateCameraHorizontal;
@@ -265,9 +265,9 @@ public class @PlayerInput : IInputActionCollection, IDisposable
         {
             if (m_Wrapper.m_StandardControlsActionsCallbackInterface != null)
             {
-                @SelectPlayer.started -= m_Wrapper.m_StandardControlsActionsCallbackInterface.OnSelectPlayer;
-                @SelectPlayer.performed -= m_Wrapper.m_StandardControlsActionsCallbackInterface.OnSelectPlayer;
-                @SelectPlayer.canceled -= m_Wrapper.m_StandardControlsActionsCallbackInterface.OnSelectPlayer;
+                @SelectLeftClick.started -= m_Wrapper.m_StandardControlsActionsCallbackInterface.OnSelectLeftClick;
+                @SelectLeftClick.performed -= m_Wrapper.m_StandardControlsActionsCallbackInterface.OnSelectLeftClick;
+                @SelectLeftClick.canceled -= m_Wrapper.m_StandardControlsActionsCallbackInterface.OnSelectLeftClick;
                 @SelectWaypoint.started -= m_Wrapper.m_StandardControlsActionsCallbackInterface.OnSelectWaypoint;
                 @SelectWaypoint.performed -= m_Wrapper.m_StandardControlsActionsCallbackInterface.OnSelectWaypoint;
                 @SelectWaypoint.canceled -= m_Wrapper.m_StandardControlsActionsCallbackInterface.OnSelectWaypoint;
@@ -287,9 +287,9 @@ public class @PlayerInput : IInputActionCollection, IDisposable
             m_Wrapper.m_StandardControlsActionsCallbackInterface = instance;
             if (instance != null)
             {
-                @SelectPlayer.started += instance.OnSelectPlayer;
-                @SelectPlayer.performed += instance.OnSelectPlayer;
-                @SelectPlayer.canceled += instance.OnSelectPlayer;
+                @SelectLeftClick.started += instance.OnSelectLeftClick;
+                @SelectLeftClick.performed += instance.OnSelectLeftClick;
+                @SelectLeftClick.canceled += instance.OnSelectLeftClick;
                 @SelectWaypoint.started += instance.OnSelectWaypoint;
                 @SelectWaypoint.performed += instance.OnSelectWaypoint;
                 @SelectWaypoint.canceled += instance.OnSelectWaypoint;
@@ -311,7 +311,7 @@ public class @PlayerInput : IInputActionCollection, IDisposable
     public StandardControlsActions @StandardControls => new StandardControlsActions(this);
     public interface IStandardControlsActions
     {
-        void OnSelectPlayer(InputAction.CallbackContext context);
+        void OnSelectLeftClick(InputAction.CallbackContext context);
         void OnSelectWaypoint(InputAction.CallbackContext context);
         void OnZoom(InputAction.CallbackContext context);
         void OnRotateCameraHorizontal(InputAction.CallbackContext context);

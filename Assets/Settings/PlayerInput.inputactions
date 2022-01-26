@@ -6,12 +6,12 @@
             "id": "d61d3372-a49f-42b7-afa6-bdd97a0b154d",
             "actions": [
                 {
-                    "name": "SelectPlayer",
+                    "name": "SelectLeftClick",
                     "type": "Button",
                     "id": "e79aa25c-2438-46bd-a88b-b3c518a814ce",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": "Tap,SlowTap"
+                    "interactions": ""
                 },
                 {
                     "name": "SelectWaypoint",
@@ -62,7 +62,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "SelectPlayer",
+                    "action": "SelectLeftClick",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
