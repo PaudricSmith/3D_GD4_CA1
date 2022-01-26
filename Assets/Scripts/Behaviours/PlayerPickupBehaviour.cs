@@ -10,7 +10,7 @@ public class PlayerPickupBehaviour : MonoBehaviour
     private RaycastHit hitInfo;
 
     private float alertTime = 3.0f;
-
+    private int leftClickDistance = 7;
     private bool isAlertShowing = false;
 
     [SerializeField] private PickupEventSO pickupEvent;
@@ -41,32 +41,18 @@ public class PlayerPickupBehaviour : MonoBehaviour
                 // If the hitInfo's transform parent object's tag is 'Pickups'
                 if (hitInfo.collider.transform.root.CompareTag("Pickups"))
                 {
-                    if (hitInfo.distance < 7)
+                    if (hitInfo.distance < leftClickDistance) // If Player is left clicking on pickup within a certain distance
                     {
                         var pickup = hitInfo.collider.gameObject.GetComponent<PickupBehaviour>();
 
                         if (pickup != null)
                         {
-
-                            //if (pickup.PickupData.type.Equals(PickupType.Note))
-                            //{
-                            //    Destroy(hitInfo.collider.gameObject);
-                            //    Debug.Log(hitInfo.collider.gameObject);
-                            //}
-                            //else if (pickup.PickupData.type.Equals(PickupType.HotDog))
-                            //{
-                            //    Destroy(hitInfo.collider.gameObject);
-                            //    Debug.Log(hitInfo.collider.gameObject);
-                            //}
-
                             Destroy(hitInfo.collider.gameObject);
                             pickupEvent.Raise(pickup.PickupData);
                         }
                     }
-                    else
+                    else // If left clicking too far from pickup, display alert message
                     {
-                        Debug.Log("Too Far Away to Select Item");
-
                         if (isAlertShowing == false)
                         {                          
                             StartCoroutine(AlertTimer(alertTime));
@@ -89,3 +75,14 @@ public class PlayerPickupBehaviour : MonoBehaviour
         alertPanel.SetActive(false);
     }
 }
+
+//if (pickup.PickupData.type.Equals(PickupType.Note))
+//{
+//    Destroy(hitInfo.collider.gameObject);
+//    Debug.Log(hitInfo.collider.gameObject);
+//}
+//else if (pickup.PickupData.type.Equals(PickupType.HotDog))
+//{
+//    Destroy(hitInfo.collider.gameObject);
+//    Debug.Log(hitInfo.collider.gameObject);
+//}
