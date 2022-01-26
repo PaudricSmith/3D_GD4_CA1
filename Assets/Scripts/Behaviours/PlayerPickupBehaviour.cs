@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -8,14 +9,20 @@ public class PlayerPickupBehaviour : MonoBehaviour
     private ISelector selector;
     private RaycastHit hitInfo;
 
-    [SerializeField] private LayerMask pickupTargetLayer;
+    private float alertTime = 3.0f;
+
+    private bool isAlertShowing = false;
+
     [SerializeField] private PickupEventSO pickupEvent;
+    [SerializeField] private GameObject alertPanel;
 
 
     private void Start()
     {
         rayProvider = GetComponent<IRayProvider>();
         selector = GetComponent<ISelector>();
+
+        alertPanel.SetActive(false);
     }
 
 
@@ -59,10 +66,26 @@ public class PlayerPickupBehaviour : MonoBehaviour
                     else
                     {
                         Debug.Log("Too Far Away to Select Item");
-                    }
 
+                        if (isAlertShowing == false)
+                        {                          
+                            StartCoroutine(AlertTimer(alertTime));
+                        }
+                    }
                 }
             }
         }
+    }
+
+
+    private IEnumerator AlertTimer(float alertTime)
+    {
+        isAlertShowing = true;
+        alertPanel.SetActive(true);
+
+        yield return new WaitForSeconds(alertTime);
+        
+        isAlertShowing = false;
+        alertPanel.SetActive(false);
     }
 }

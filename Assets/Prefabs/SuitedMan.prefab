@@ -756,7 +756,7 @@ GameObject:
   - component: {fileID: 688495052860294979}
   - component: {fileID: 1335363135}
   - component: {fileID: 1918576583}
-  - component: {fileID: 1918576584}
+  - component: {fileID: 1918576582}
   m_Layer: 3
   m_Name: SuitedMan
   m_TagString: Selectable
@@ -923,6 +923,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1918576582}
+        m_TargetAssemblyTypeName: PlayerPickupBehaviour, Assembly-CSharp
+        m_MethodName: OnSelectObject
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: e79aa25c-2438-46bd-a88b-b3c518a814ce
     m_ActionName: StandardControls/SelectPlayer[/Mouse/leftButton]
   - m_PersistentCalls:
@@ -1011,7 +1023,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   debug: 0
---- !u!114 &1918576584
+--- !u!114 &1918576582
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1020,74 +1032,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 129800}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5a5473918a168c44fa0294bd4d1399f0, type: 3}
+  m_Script: {fileID: 11500000, guid: b2252701a28265a4b97caa6f3bfa3b84, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  conversationEvents:
-    onConversationStart:
-      m_PersistentCalls:
-        m_Calls: []
-    onConversationEnd:
-      m_PersistentCalls:
-        m_Calls: []
-    onConversationCancelled:
-      m_PersistentCalls:
-        m_Calls: []
-    onConversationLine:
-      m_PersistentCalls:
-        m_Calls: []
-    onConversationLineEnd:
-      m_PersistentCalls:
-        m_Calls: []
-    onConversationLineCancelled:
-      m_PersistentCalls:
-        m_Calls: []
-    onConversationResponseMenu:
-      m_PersistentCalls:
-        m_Calls: []
-    onConversationResponseMenuTimeout:
-      m_PersistentCalls:
-        m_Calls: []
-    onLinkedConversationStart:
-      m_PersistentCalls:
-        m_Calls: []
-  barkEvents:
-    onBarkStart:
-      m_PersistentCalls:
-        m_Calls: []
-    onBarkEnd:
-      m_PersistentCalls:
-        m_Calls: []
-    onBarkLine:
-      m_PersistentCalls:
-        m_Calls: []
-  sequenceEvents:
-    onSequenceStart:
-      m_PersistentCalls:
-        m_Calls: []
-    onSequenceEnd:
-      m_PersistentCalls:
-        m_Calls: []
-  questEvents:
-    onQuestStateChange:
-      m_PersistentCalls:
-        m_Calls: []
-    onQuestTrackingEnabled:
-      m_PersistentCalls:
-        m_Calls: []
-    onQuestTrackingDisabled:
-      m_PersistentCalls:
-        m_Calls: []
-    onUpdateQuestTracker:
-      m_PersistentCalls:
-        m_Calls: []
-  pauseEvents:
-    onDialogueSystemPause:
-      m_PersistentCalls:
-        m_Calls: []
-    onDialogueSystemUnpause:
-      m_PersistentCalls:
-        m_Calls: []
+  pickupEvent: {fileID: 11400000, guid: 93e18878dd9fbfb49b5bc778df51c7ba, type: 2}
+  alertPanel: {fileID: 0}
 --- !u!1 &131150
 GameObject:
   m_ObjectHideFlags: 0
@@ -3170,7 +3119,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5380594948896854069, guid: 81da2fd8702657a45a1dceb25244485d, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 3.353522e-15
+      value: -4.5863963e-15
       objectReference: {fileID: 0}
     - target: {fileID: 5380594948896854069, guid: 81da2fd8702657a45a1dceb25244485d, type: 3}
       propertyPath: m_LocalRotation.y
@@ -3178,7 +3127,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5380594948896854069, guid: 81da2fd8702657a45a1dceb25244485d, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -4.83764e-15
+      value: 6.6161295e-15
       objectReference: {fileID: 0}
     - target: {fileID: 5380594949871485874, guid: 81da2fd8702657a45a1dceb25244485d, type: 3}
       propertyPath: m_Layer
