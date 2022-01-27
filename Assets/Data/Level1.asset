@@ -15,5 +15,5 @@ MonoBehaviour:
   sceneName: Level1Part1
   shortDescription: Downtown Lunaia, rainy night.
   music: {fileID: 8300000, guid: acbfe1987f2a6b54ab1d13862069f6f4, type: 3}
-  musicVolume: 0.4
+  musicVolume: 0.2
   enemiesCount: 0

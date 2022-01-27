@@ -17,9 +17,11 @@ public class GameScene : ScriptableObject
     [SerializeField] protected AudioClip music;
 
     [Range(0.0f, 1.0f)]
-    [SerializeField] protected float musicVolume;
+    [SerializeField] private float musicVolume;
+
 
     public string SceneName { get => sceneName; set => sceneName = value; }
+    public float MusicVolume { get => musicVolume; set => musicVolume = value; }
 
     //[Header("Visuals")]
     //public PostProcessProfile postprocess;
