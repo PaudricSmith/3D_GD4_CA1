@@ -7,24 +7,26 @@ public abstract class ListVariableSO<T> : NumberVariable<T>
     [SerializeField]
     private List<T> list;
 
+    public List<T> List { get => list; set => list = value; }
+
     public void Add(T obj)
     {
-        list.Add(obj);
+        List.Add(obj);
     }
 
     public void Remove(T obj)
     {
-        list.Remove(obj);
+        List.Remove(obj);
     }
 
     public int Count()
     {
-        return list.Count;
+        return List.Count;
     }
 
     public void Clear()
     {
-        list.Clear();
+        List.Clear();
     }
 
     //Sort(comparable), Remove(predicate)

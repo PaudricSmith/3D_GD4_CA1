@@ -2,7 +2,6 @@ using System;
 using UnityEngine;
 using UnityEngine.Events;
 
-
 /// <summary>
 /// Customer multi-parameter event passing
 /// </summary>
@@ -21,16 +20,18 @@ public struct PickupData
     public int value;
     public PickupType type;
     public GameObject pickup;
+    public Sprite icon;
+    public bool isStackable;
 
     public override string ToString()
     {
         if (pickup != null)
         {
-            return $"{type}, {value}, {pickup.name + " Object"}";
+            return $"{type}, {value}, {pickup.name + " Object"}, {icon}, {isStackable}";
         }
         else
         {
-            return $"{type}, {value}";
+            return $"{type}, {value}, {icon}, {isStackable}";
         }
 
     }

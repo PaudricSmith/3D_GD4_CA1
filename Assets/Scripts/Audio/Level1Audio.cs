@@ -12,9 +12,4 @@ public class Level1Audio : MonoBehaviour
         audioSource.volume = level1.MusicVolume;
     }
 
-
-    //private void Update()
-    //{
-    //    audioSource.volume = level1.MusicVolume;
-    //}
 }
