@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.UI;
 
 public class InventoryManager : MonoBehaviour
 {
@@ -10,24 +10,12 @@ public class InventoryManager : MonoBehaviour
 
     private void Awake()
     {
-        //foreach (var pocket in pockets)
-        //{
 
-        //    for (int i = 0; i < playerInventorySO.List.Count; i++)
-        //    {
-        //        PickupData item = playerInventorySO.List[i];
-
-        //        pocket.Text.text = item.type.ToString();
-
-        //    }
-        //}
-
-
-
-        //pockets[0].Text.text = playerInventorySO.List[0].type.ToString();
-
-        //Sprite sprite = pockets[0].Icon.sprite;
-        pockets[0].Icon.sprite = playerInventorySO.List[0].icon;
+        for (int i = 0; i < playerInventorySO.List.Count && i < pockets.Count; i++)
+        {
+            //pockets[i].Text.enabled = true;
+            pockets[i].Icon.sprite = playerInventorySO.List[i].icon;
+        }
 
     }
 
