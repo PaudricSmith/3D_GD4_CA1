@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
-
+using UnityEngine.UI;
 
 public class PlayerPickupBehaviour : MonoBehaviour
 {
@@ -17,6 +17,7 @@ public class PlayerPickupBehaviour : MonoBehaviour
     [SerializeField] private AudioClip pickupSFX;
     [SerializeField] private PickupEventSO pickupEvent;
     [SerializeField] private GameObject alertPanel;
+    [SerializeField] private ListPickupDataVariableSO playerInventorySO;
 
 
     private void Start()
@@ -44,8 +45,6 @@ public class PlayerPickupBehaviour : MonoBehaviour
             {
                 hitInfo = selector.GetHitInfo();
 
-                Debug.Log(hitInfo.distance);
-
                 // If the hitInfo's transform parent object's tag is 'Pickups'
                 if (hitInfo.collider.transform.root.CompareTag("Pickups"))
                 {
@@ -55,22 +54,62 @@ public class PlayerPickupBehaviour : MonoBehaviour
 
                         if (pickup != null)
                         {
-                            playerAudioSource.PlayOneShot(pickupSFX);                           
+                            // If inventory is full but the last item is stackable then keep incrementing it
+                            if (playerInventorySO.Count() == playerInventorySO.maxPickupDataSlots && pickup.PickupData.isStackable)
+                            {
+                                if (playerInventorySO.List[playerInventorySO.Count() - 1].quantity < pickup.PickupData.maxStack)
+                                {
+                                    // Play pick up SFX
+                                    playerAudioSource.PlayOneShot(pickupSFX);
 
-                            Destroy(hitInfo.collider.gameObject);
-                            pickupEvent.Raise(pickup.PickupData);
+                                    // Destroy the game object
+                                    Destroy(hitInfo.collider.gameObject);
+
+                                    // Raise a pickup event that will be listened for in the InventoryManager gameObject
+                                    pickupEvent.Raise(pickup.PickupData);
+                                }
+                                else // If inventory is full, display alert message
+                                {
+                                    if (isAlertShowing == false)
+                                    {
+                                        alertPanel.GetComponentInChildren<Text>().text = "Inventory full!";
+                                        StartCoroutine(AlertTimer(alertTime));
+                                    }
+                                }
+
+                            }
+                            // If player inventory is not yet full
+                            else if (playerInventorySO.Count() < playerInventorySO.maxPickupDataSlots)
+                            {
+
+                                // Play pick up SFX
+                                playerAudioSource.PlayOneShot(pickupSFX);
+
+                                // Destroy the game object
+                                Destroy(hitInfo.collider.gameObject);
+
+                                // Raise a pickup event that will be listened for in the InventoryManager gameObject
+                                pickupEvent.Raise(pickup.PickupData);
+                            }
+                            else // If inventory is full, display alert message
+                            {
+                                if (isAlertShowing == false)
+                                {
+                                    alertPanel.GetComponentInChildren<Text>().text = "Inventory full!";
+                                    StartCoroutine(AlertTimer(alertTime));
+                                }
+                            }
                         }
                     }
                     else // If left clicking too far from pickup, display alert message
                     {
                         if (isAlertShowing == false)
-                        {                          
+                        {
+                            alertPanel.GetComponentInChildren<Text>().text = "Too far away!";
                             StartCoroutine(AlertTimer(alertTime));
                         }
                     }
                 }
-
-                Debug.Log(hitInfo.transform);
             }
         }
     }
@@ -87,9 +126,3 @@ public class PlayerPickupBehaviour : MonoBehaviour
         alertPanel.SetActive(false);
     }
 }
-
-//if (pickup.PickupData.type.Equals(PickupType.Note))
-//{
-//    Destroy(hitInfo.collider.gameObject);
-//    Debug.Log(hitInfo.collider.gameObject);
-//}
