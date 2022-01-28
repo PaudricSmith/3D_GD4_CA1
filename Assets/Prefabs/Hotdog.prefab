@@ -183,7 +183,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &6526733425742898732
 Transform:
   m_ObjectHideFlags: 0
@@ -281,5 +281,5 @@ MonoBehaviour:
     type: 1
     value: 10
     quantity: 1
-    maxStack: 4
-    isStackable: 1
+    maxStack: 1
+    isStackable: 0
