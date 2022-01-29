@@ -16,8 +16,9 @@ MonoBehaviour:
   Description: Stores pickup data.
   Value:
     pickup: {fileID: 0}
-    icon: {fileID: 0}
+    name: 0
     type: 0
+    icon: {fileID: 0}
     value: 0
     quantity: 0
     maxStack: 0

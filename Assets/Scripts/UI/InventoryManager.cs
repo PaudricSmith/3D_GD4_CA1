@@ -27,6 +27,7 @@ public class InventoryManager : MonoBehaviour
             }
 
             pockets[i].Type = playerInventorySO.List[i].type;
+            pockets[i].Name = playerInventorySO.List[i].name;
             
             // Show the items icon
             pockets[i].Icon.sprite = playerInventorySO.List[i].icon;
@@ -46,7 +47,7 @@ public class InventoryManager : MonoBehaviour
         // Use Switch to seperate actions for each pickup type
         switch (pickupData.type)
         {
-            case PickupType.HotDog:
+            case PickupType.KeyItem:
 
                 AddItemToInventoryList(pickupData);
 
@@ -78,6 +79,7 @@ public class InventoryManager : MonoBehaviour
             playerInventorySO.Add(pickupData);
 
             // Populate the pocket at the same position as player inventory's last index
+            pockets[playerInventorySO.Count() - 1].Name = pickupData.name;
             pockets[playerInventorySO.Count() - 1].Type = pickupData.type;
             pockets[playerInventorySO.Count() - 1].Icon.sprite = pickupData.icon;
             pockets[playerInventorySO.Count() - 1].Text.text = pickupData.quantity.ToString();
@@ -127,6 +129,7 @@ public class InventoryManager : MonoBehaviour
                         playerInventorySO.Add(pickupData);
 
                         // Populate the pocket at the same position as player inventory's last index
+                        pockets[playerInventorySO.Count() - 1].Name = pickupData.name;
                         pockets[playerInventorySO.Count() - 1].Type = pickupData.type;
                         pockets[playerInventorySO.Count() - 1].Icon.sprite = pickupData.icon;
                         pockets[playerInventorySO.Count() - 1].Text.text = pickupData.quantity.ToString();
@@ -145,6 +148,7 @@ public class InventoryManager : MonoBehaviour
                 playerInventorySO.Add(pickupData);
 
                 // Populate the pocket at the same position as player inventory's last index
+                pockets[playerInventorySO.Count() - 1].Name = pickupData.name;
                 pockets[playerInventorySO.Count() - 1].Type = pickupData.type;
                 pockets[playerInventorySO.Count() - 1].Icon.sprite = pickupData.icon;
                 pockets[playerInventorySO.Count() - 1].Text.text = pickupData.quantity.ToString();

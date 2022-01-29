@@ -7,11 +7,22 @@ using UnityEngine.Events;
 /// </summary>
 /// <see cref="https://www.youtube.com/watch?v=iXNwWpG7EhM"/>
 /// 
+
+[Serializable]
+public enum PickupName : sbyte
+{
+    None,
+    HotDog,
+    Napkin,
+    TypeCount
+}
+
+
 [Serializable]
 public enum PickupType : sbyte
 {
     None,
-    HotDog, 
+    KeyItem, 
     Note,
     TypeCount
 }
@@ -21,8 +32,9 @@ public enum PickupType : sbyte
 public struct PickupData
 {
     public GameObject pickup;
-    public Sprite icon;
+    public PickupName name;
     public PickupType type;
+    public Sprite icon;
 
     public int value;
     public int quantity;
@@ -34,11 +46,11 @@ public struct PickupData
     {
         if (pickup != null)
         {
-            return $"{type}, {value}, {pickup.name + " Object"}, {icon.name}, {isStackable}, {quantity}";
+            return $"{name}, {type}, {value}, {pickup.name + " Object"}, {icon.name}, {isStackable}, {quantity}";
         }
         else
         {
-            return $"{type}, {value}, {icon.name}, {isStackable}, {quantity}";
+            return $"{name}, {type}, {value}, {icon.name}, {isStackable}, {quantity}";
         }
 
     }
