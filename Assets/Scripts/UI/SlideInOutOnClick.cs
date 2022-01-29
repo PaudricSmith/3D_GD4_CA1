@@ -17,14 +17,14 @@ public class SlideInOutOnClick : MonoBehaviour
             isOut = false;
 
             //slide in
-            LeanTween.moveX(gameObject, -150, 1).setEase(slideInTweenType);
+            LeanTween.moveX(gameObject, -100, 1).setEase(slideInTweenType);
         }
         else
         {
             isOut = true;
 
             //slide out
-            LeanTween.moveX(gameObject, 150, 1).setEase(slideOutTweenType);
+            LeanTween.moveX(gameObject, 100, 1).setEase(slideOutTweenType);
         }
     }
 

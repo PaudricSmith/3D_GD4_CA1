@@ -8,6 +8,8 @@ public class InventoryManager : MonoBehaviour
     [SerializeField] private ListPickupDataVariableSO playerInventorySO;
     [SerializeField] private List<Pocket> pockets = new List<Pocket>();
 
+    [SerializeField] private GameObject interactionPanel;
+
 
     private void Awake()
     {
@@ -33,6 +35,8 @@ public class InventoryManager : MonoBehaviour
             pockets[i].Icon.sprite = playerInventorySO.List[i].icon;
         
         }
+
+        //interactionPanel.SetActive(false);
 
     }
 

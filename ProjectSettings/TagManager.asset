@@ -9,6 +9,7 @@ TagManager:
   - NPC
   - Pickups
   - InventoryPanel
+  - InteractionPanel
   layers:
   - Default
   - TransparentFX
