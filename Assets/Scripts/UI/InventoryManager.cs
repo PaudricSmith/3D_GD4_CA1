@@ -1,12 +1,19 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 
 public class InventoryManager : MonoBehaviour
 {
+    private Text[] infoTexts;
+
     [SerializeField] private ListPickupDataVariableSO playerInventorySO;
     [SerializeField] private List<Pocket> pockets = new List<Pocket>();
+    [SerializeField] private GameObject napKinPrefab;
+    [SerializeField] private AudioSource audioSource;
+    [SerializeField] private AudioClip eatHotdogSFX;
+    [SerializeField] private GameObject itemInfo;
 
 
     private void Awake()
@@ -126,11 +133,11 @@ public class InventoryManager : MonoBehaviour
                         playerInventorySO.Add(pickupData);
 
                         // Populate the pocket at the same position as player inventory's last index
-                        pockets[playerInventorySO.Count() - 1].Name = pickupData.name;
-                        pockets[playerInventorySO.Count() - 1].Type = pickupData.type;
-                        pockets[playerInventorySO.Count() - 1].Icon.sprite = pickupData.icon;
-                        pockets[playerInventorySO.Count() - 1].QuantityText.text = pickupData.quantity.ToString();
-                        pockets[playerInventorySO.Count() - 1].Info = pickupData.info;
+                        pockets[i].Name = pickupData.name;
+                        pockets[i].Type = pickupData.type;
+                        pockets[i].Icon.sprite = pickupData.icon;
+                        pockets[i].QuantityText.text = pickupData.quantity.ToString();
+                        pockets[i].Info = pickupData.info;
 
                     }
 
@@ -154,4 +161,40 @@ public class InventoryManager : MonoBehaviour
             }
         }
     }
+
+
+    public void OnReplaceHotdog()
+    {
+        for (int i = 0; i < playerInventorySO.Count(); i++)
+        {
+            if (playerInventorySO.List[i].name == PickupName.HotDog)
+            {
+                var pickupData = napKinPrefab.GetComponent<PickupBehaviour>().PickupData;
+
+                // Remove Hotdog
+                playerInventorySO.Remove(playerInventorySO.List[i]);
+                
+                // Add Napkin in the same index as was removed
+                playerInventorySO.List.Insert(i, pickupData);
+
+                // Populate the pocket at the same position as player inventory
+                pockets[i].Name = pickupData.name;
+                pockets[i].Type = pickupData.type;
+                pockets[i].Icon.sprite = pickupData.icon;
+                pockets[i].QuantityText.text = pickupData.quantity.ToString();
+                pockets[i].Info = pickupData.info;
+
+                // Update Info Panel texts
+                infoTexts = itemInfo.GetComponentsInChildren<Text>();
+                infoTexts[0].text = pickupData.name.ToString();
+                infoTexts[1].text = pickupData.info;
+
+                // Play eating SFX
+                audioSource.PlayOneShot(eatHotdogSFX);
+
+                return;
+            }
+        }
+    }
+
 }

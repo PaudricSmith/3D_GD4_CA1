@@ -47,11 +47,4 @@ public class Pocket : MonoBehaviour, IPointerEnterHandler
                 break;
         }
     }
-
-
-    public void OnInfoButtonClicked()
-    {
-        print(Name);
-        //interactionPanel.ShowItemInfo(Name);
-    }
 }

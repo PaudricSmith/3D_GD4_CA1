@@ -8,7 +8,7 @@ public class InteractionPanel : MonoBehaviour
     private RectTransform rectTransform;
     private RectTransform inventoryPanelRectTransform;
     private bool isInfoShowing = false;
-    Text[] infoTexts;
+    private Text[] infoTexts;
 
     [SerializeField] private Button infoButton;
     [SerializeField] private Button inspectButton;
@@ -56,7 +56,6 @@ public class InteractionPanel : MonoBehaviour
             itemInfo.transform.localPosition = new Vector2(itemInfo.transform.localPosition.x, rectTransform.rect.height);
         else
             itemInfo.transform.localPosition = new Vector2(itemInfo.transform.localPosition.x, -rectTransform.rect.height);
-
     }
 
 
