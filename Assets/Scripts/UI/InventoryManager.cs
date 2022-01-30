@@ -8,36 +8,10 @@ public class InventoryManager : MonoBehaviour
     [SerializeField] private ListPickupDataVariableSO playerInventorySO;
     [SerializeField] private List<Pocket> pockets = new List<Pocket>();
 
-    [SerializeField] private GameObject interactionPanel;
-
 
     private void Awake()
     {
-        // Set the amount of pockets by the player inventory scriptable object data max slots
-        //pockets = new List<Pocket>(playerInventorySO.maxPickupDataSlots);
-
-        // Populate on screen player inventory with player inventory data
-        // Iterate through all the player inventory data
-        for (int i = 0; i < playerInventorySO.Count(); i++)
-        {
-            // If the item is stackable and you have more than 1
-            if (playerInventorySO.List[i].isStackable && playerInventorySO.List[i].quantity > 1)
-            {
-                // Enable text and show the quantity 
-                pockets[i].Text.enabled = true;
-                pockets[i].Text.text = playerInventorySO.List[i].quantity.ToString();
-            }
-
-            pockets[i].Type = playerInventorySO.List[i].type;
-            pockets[i].Name = playerInventorySO.List[i].name;
-            
-            // Show the items icon
-            pockets[i].Icon.sprite = playerInventorySO.List[i].icon;
-        
-        }
-
-        //interactionPanel.SetActive(false);
-
+        PopulateInventoryUI();
     }
 
 
@@ -52,22 +26,39 @@ public class InventoryManager : MonoBehaviour
         switch (pickupData.type)
         {
             case PickupType.KeyItem:
-
                 AddItemToInventoryList(pickupData);
-
                 break;
-
             case PickupType.Note:
-
                 AddItemToInventoryList(pickupData);
-
                 break;
             default:
                 break;
         }
+    }
 
-        //print a message
-        Debug.Log(pickupData);
+
+    /// <summary>
+    /// // Populate UI player inventory with player inventory data 
+    /// </summary>
+    /// 
+    private void PopulateInventoryUI()
+    {
+        // Iterate through all the player inventory data
+        for (int i = 0; i < playerInventorySO.Count(); i++)
+        {
+            // If the item is stackable and you have more than 1
+            if (playerInventorySO.List[i].isStackable && playerInventorySO.List[i].quantity > 1)
+            {
+                // Enable text and show the quantity 
+                pockets[i].Text.enabled = true;
+                pockets[i].Text.text = playerInventorySO.List[i].quantity.ToString();
+            }
+            pockets[i].Type = playerInventorySO.List[i].type;
+            pockets[i].Name = playerInventorySO.List[i].name;
+
+            // Show the items icon
+            pockets[i].Icon.sprite = playerInventorySO.List[i].icon;
+        }
     }
 
 
