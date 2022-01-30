@@ -50,11 +50,12 @@ public class InventoryManager : MonoBehaviour
             if (playerInventorySO.List[i].isStackable && playerInventorySO.List[i].quantity > 1)
             {
                 // Enable text and show the quantity 
-                pockets[i].Text.enabled = true;
-                pockets[i].Text.text = playerInventorySO.List[i].quantity.ToString();
+                pockets[i].QuantityText.enabled = true;
+                pockets[i].QuantityText.text = playerInventorySO.List[i].quantity.ToString();
             }
             pockets[i].Type = playerInventorySO.List[i].type;
             pockets[i].Name = playerInventorySO.List[i].name;
+            pockets[i].Info = playerInventorySO.List[i].info;
 
             // Show the items icon
             pockets[i].Icon.sprite = playerInventorySO.List[i].icon;
@@ -77,7 +78,8 @@ public class InventoryManager : MonoBehaviour
             pockets[playerInventorySO.Count() - 1].Name = pickupData.name;
             pockets[playerInventorySO.Count() - 1].Type = pickupData.type;
             pockets[playerInventorySO.Count() - 1].Icon.sprite = pickupData.icon;
-            pockets[playerInventorySO.Count() - 1].Text.text = pickupData.quantity.ToString();
+            pockets[playerInventorySO.Count() - 1].QuantityText.text = pickupData.quantity.ToString();
+            pockets[playerInventorySO.Count() - 1].Info = pickupData.info;
 
             return;
         }
@@ -109,12 +111,12 @@ public class InventoryManager : MonoBehaviour
                         playerInventorySO.Add(pickupData);
 
                         // Enable text
-                        pockets[i].Text.enabled = true;
+                        pockets[i].QuantityText.enabled = true;
 
                         // Update text quantity
-                        int tempQuantity = Int16.Parse(pockets[i].Text.text);
+                        int tempQuantity = Int16.Parse(pockets[i].QuantityText.text);
                         tempQuantity++;
-                        pockets[i].Text.text = tempQuantity.ToString();
+                        pockets[i].QuantityText.text = tempQuantity.ToString();
 
                     }
                     else
@@ -127,7 +129,8 @@ public class InventoryManager : MonoBehaviour
                         pockets[playerInventorySO.Count() - 1].Name = pickupData.name;
                         pockets[playerInventorySO.Count() - 1].Type = pickupData.type;
                         pockets[playerInventorySO.Count() - 1].Icon.sprite = pickupData.icon;
-                        pockets[playerInventorySO.Count() - 1].Text.text = pickupData.quantity.ToString();
+                        pockets[playerInventorySO.Count() - 1].QuantityText.text = pickupData.quantity.ToString();
+                        pockets[playerInventorySO.Count() - 1].Info = pickupData.info;
 
                     }
 
@@ -146,7 +149,8 @@ public class InventoryManager : MonoBehaviour
                 pockets[playerInventorySO.Count() - 1].Name = pickupData.name;
                 pockets[playerInventorySO.Count() - 1].Type = pickupData.type;
                 pockets[playerInventorySO.Count() - 1].Icon.sprite = pickupData.icon;
-                pockets[playerInventorySO.Count() - 1].Text.text = pickupData.quantity.ToString();
+                pockets[playerInventorySO.Count() - 1].QuantityText.text = pickupData.quantity.ToString();
+                pockets[playerInventorySO.Count() - 1].Info = pickupData.info;
             }
         }
     }

@@ -8,14 +8,16 @@ public class Pocket : MonoBehaviour, IPointerEnterHandler
     private PickupType type = PickupType.None;
     private PickupName itemName = PickupName.None;
     private InteractionPanel interactionPanel;
+    private string info = "";
 
     [SerializeField] private Image icon;
-    [SerializeField] private Text text;
+    [SerializeField] private Text quantityText;
 
     public Image Icon { get => icon; set => icon = value; }
-    public Text Text { get => text; set => text = value; }
+    public Text QuantityText { get => quantityText; set => quantityText = value; }
     public PickupType Type { get => type; set => type = value; }
     public PickupName Name { get => itemName; set => itemName = value; }
+    public string Info { get => info; set => info = value; }
 
 
     private void Awake()
@@ -34,13 +36,22 @@ public class Pocket : MonoBehaviour, IPointerEnterHandler
         {
             case PickupType.KeyItem:
                 interactionPanel.ShowKeyItemPanel();
+                interactionPanel.GetPocketData(Name, Info);
                 break;
             case PickupType.Note:
                 interactionPanel.ShowNotePanel();
+                interactionPanel.GetPocketData(Name, Info);
                 break;
             case PickupType.None:
                 interactionPanel.HideInteractionPanel();
                 break;
         }
+    }
+
+
+    public void OnInfoButtonClicked()
+    {
+        print(Name);
+        //interactionPanel.ShowItemInfo(Name);
     }
 }

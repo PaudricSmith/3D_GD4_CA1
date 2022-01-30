@@ -36,6 +36,8 @@ public struct PickupData
     public PickupType type;
     public Sprite icon;
 
+    [TextArea(1,3)]
+    public string info;
     public int value;
     public int quantity;
     public int maxStack;
@@ -46,11 +48,11 @@ public struct PickupData
     {
         if (pickup != null)
         {
-            return $"{name}, {type}, {value}, {pickup.name + " Object"}, {icon.name}, {isStackable}, {quantity}";
+            return $"{name}, {type}, {value}, {pickup.name + " Object"}, {icon.name}, {isStackable}, {quantity}, \n{info}";
         }
         else
         {
-            return $"{name}, {type}, {value}, {icon.name}, {isStackable}, {quantity}";
+            return $"{name}, {type}, {value}, {icon.name}, {isStackable}, {quantity}, \n{info}";
         }
 
     }

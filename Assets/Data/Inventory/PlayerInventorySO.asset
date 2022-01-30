@@ -19,6 +19,7 @@ MonoBehaviour:
     name: 0
     type: 0
     icon: {fileID: 0}
+    info: 
     value: 0
     quantity: 0
     maxStack: 0
