@@ -1,5 +1,4 @@
 using System;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -8,13 +7,16 @@ public class InteractionPanel : MonoBehaviour
 {
     private RectTransform rectTransform;
     private RectTransform inventoryPanelRectTransform;
-    private bool isInfoShowing = false;
-    private Text[] infoTexts;
-
     private Pocket pocket;
+    private Text[] infoTexts;
+    
+    private bool isInfoShowing = false;
 
     [SerializeField] private ListPickupDataVariableSO playerInventorySO;
+    
     [SerializeField] private GameObject napKinPrefab;
+    [SerializeField] private GameObject itemInfo;
+    
     [SerializeField] private AudioSource audioSource;
     [SerializeField] private AudioClip eatHotdogSFX;
 
@@ -23,8 +25,6 @@ public class InteractionPanel : MonoBehaviour
     [SerializeField] private Button useButton;
     [SerializeField] private Button combineButton;
     [SerializeField] private Button cancelButton;
-
-    [SerializeField] private GameObject itemInfo;
 
 
     public Button InfoButton { get => infoButton; set => infoButton = value; }
@@ -79,8 +79,8 @@ public class InteractionPanel : MonoBehaviour
     private void SetInfoPanelTexts()
     {
         infoTexts = itemInfo.GetComponentsInChildren<Text>();
-        infoTexts[0].text = pocket.Name.ToString();
-        infoTexts[1].text = pocket.Info;
+        infoTexts[0].text = pocket.PickupData.name.ToString();
+        infoTexts[1].text = pocket.PickupData.info;
     }
 
 
@@ -133,7 +133,7 @@ public class InteractionPanel : MonoBehaviour
     /// 
     public void OnUseButtonClicked()
     {
-        if (pocket.Name == PickupName.HotDog)
+        if (pocket.PickupData.name == PickupName.HotDog)
         {
             // Change the hotdog pickupData to a Napkin as it has been eaten
             var napkinPickupData = napKinPrefab.GetComponent<PickupBehaviour>().PickupData;
@@ -142,14 +142,10 @@ public class InteractionPanel : MonoBehaviour
             // Change the pickupdata using the pocket index as they will always be in same index as each other
             playerInventorySO.List[Int16.Parse(pocket.name)] = napkinPickupData;
 
-
             // Populate the same pocket with napkin data
-            pocket.Name = napkinPickupData.name;
-            pocket.Type = napkinPickupData.type;
+            pocket.PickupData = napkinPickupData;
             pocket.Icon.sprite = napkinPickupData.icon;
             pocket.QuantityText.text = napkinPickupData.quantity.ToString();
-            pocket.Info = napkinPickupData.info;
-
 
             // Set new Info Panel texts
             SetInfoPanelTexts();

@@ -6,30 +6,23 @@ using UnityEngine.UI;
 
 public class Pocket : MonoBehaviour, IPointerEnterHandler
 {
-    private PickupType type = PickupType.None;
-    private PickupName itemName = PickupName.None;
     private InteractionPanel interactionPanel;
-    private string info = "";
 
+    [SerializeField] private PickupData pickupData;
     [SerializeField] private Image icon;
     [SerializeField] private Text quantityText;
+    
 
-    public PickupName Name { get => itemName; set => itemName = value; }
-    public PickupType Type { get => type; set => type = value; }
-    public string Info { get => info; set => info = value; }
+    public PickupData PickupData { get => pickupData; set => pickupData = value; }
     public Text QuantityText { get => quantityText; set => quantityText = value; }
     public Image Icon { get => icon; set => icon = value; }
-
-
-    private void Awake()
-    {
-        interactionPanel = GameObject.FindGameObjectWithTag("InteractionPanel").GetComponent<InteractionPanel>();
-    }
-
+    
 
     public void OnPointerEnter(PointerEventData pointerEventData)
     {
-        switch (Type)
+        interactionPanel = GameObject.FindGameObjectWithTag("InteractionPanel").GetComponent<InteractionPanel>();
+
+        switch (pickupData.type)
         {
             case PickupType.KeyItem:
                 interactionPanel.SetPocketData(this);

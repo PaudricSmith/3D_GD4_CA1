@@ -1,12 +1,10 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 
 public class InventoryManager : MonoBehaviour
 {
-    private Text[] infoTexts;
 
     [SerializeField] private ListPickupDataVariableSO playerInventorySO;
     [SerializeField] private List<Pocket> pockets = new List<Pocket>();
@@ -49,19 +47,19 @@ public class InventoryManager : MonoBehaviour
         // Iterate through all the player inventory data
         for (int i = 0; i < playerInventorySO.Count(); i++)
         {
+            // Copy the playerInventory data to the pocket pickupdata at same index position
+            pockets[i].PickupData = playerInventorySO.List[i];
+            
             // If the item is stackable and you have more than 1
             if (playerInventorySO.List[i].isStackable && playerInventorySO.List[i].quantity > 1)
             {
                 // Enable text and show the quantity 
                 pockets[i].QuantityText.enabled = true;
-                pockets[i].QuantityText.text = playerInventorySO.List[i].quantity.ToString();
+                pockets[i].QuantityText.text = pockets[i].PickupData.quantity.ToString();
             }
-            pockets[i].Type = playerInventorySO.List[i].type;
-            pockets[i].Name = playerInventorySO.List[i].name;
-            pockets[i].Info = playerInventorySO.List[i].info;
 
             // Set the items icon
-            pockets[i].Icon.sprite = playerInventorySO.List[i].icon;
+            pockets[i].Icon.sprite = pockets[i].PickupData.icon;
         }
     }
 
@@ -77,12 +75,10 @@ public class InventoryManager : MonoBehaviour
             // Store to a Scriptable Object list that is serialized on game exit
             playerInventorySO.Add(pickupData);
 
-            // Populate the pocket at the same position as player inventory's last index
-            pockets[0].Name = pickupData.name;
-            pockets[0].Type = pickupData.type;
+            // Populate the pocket at the first index position
+            pockets[0].PickupData = pickupData;
             pockets[0].Icon.sprite = pickupData.icon;
             pockets[0].QuantityText.text = pickupData.quantity.ToString();
-            pockets[0].Info = pickupData.info;
 
             return;
         }
@@ -95,8 +91,6 @@ public class InventoryManager : MonoBehaviour
             {
                 if (playerInventorySO.List[i].type == pickupData.type)
                 {
-                    print("In Contains Pickup method in if isStackable");
-
                     // If the pocket has max items in it and there are still more items to search then 'continue' to next pocket.
                     if (playerInventorySO.List[i].quantity == pickupData.maxStack && i < playerInventorySO.Count() - 1)
                     {
@@ -107,11 +101,12 @@ public class InventoryManager : MonoBehaviour
                         // Increment the items quantity
                         pickupData.quantity += playerInventorySO.List[i].quantity;
 
-                        // Remove the deprecated item
-                        playerInventorySO.Remove(playerInventorySO.List[i]);
+                        //// Remove the deprecated item
+                        //playerInventorySO.Remove(playerInventorySO.List[i]);
 
                         // Then add the new updated item 
-                        playerInventorySO.Add(pickupData);
+                        playerInventorySO.List[i] = pickupData;
+                        pockets[i].PickupData = pickupData;
 
                         // Enable text
                         pockets[i].QuantityText.enabled = true;
@@ -128,13 +123,10 @@ public class InventoryManager : MonoBehaviour
                         // Store to a Scriptable Object list that is serialized on game exit
                         playerInventorySO.Add(pickupData);
 
-                        // Populate the pocket at the same position as player inventory's last index
-                        pockets[i].Name = pickupData.name;
-                        pockets[i].Type = pickupData.type;
+                        // Populate the pocket 
+                        pockets[i].PickupData = pickupData;
                         pockets[i].Icon.sprite = pickupData.icon;
                         pockets[i].QuantityText.text = pickupData.quantity.ToString();
-                        pockets[i].Info = pickupData.info;
-
                     }
 
                     return;
@@ -149,11 +141,9 @@ public class InventoryManager : MonoBehaviour
                 playerInventorySO.Add(pickupData);
 
                 // Populate the pocket at the same position as player inventory's last index
-                pockets[playerInventorySO.Count() - 1].Name = pickupData.name;
-                pockets[playerInventorySO.Count() - 1].Type = pickupData.type;
+                pockets[playerInventorySO.Count() - 1].PickupData = pickupData;
                 pockets[playerInventorySO.Count() - 1].Icon.sprite = pickupData.icon;
                 pockets[playerInventorySO.Count() - 1].QuantityText.text = pickupData.quantity.ToString();
-                pockets[playerInventorySO.Count() - 1].Info = pickupData.info;
             }
         }
     }
