@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -9,6 +10,13 @@ public class InteractionPanel : MonoBehaviour
     private RectTransform inventoryPanelRectTransform;
     private bool isInfoShowing = false;
     private Text[] infoTexts;
+
+    private Pocket pocket;
+
+    [SerializeField] private ListPickupDataVariableSO playerInventorySO;
+    [SerializeField] private GameObject napKinPrefab;
+    [SerializeField] private AudioSource audioSource;
+    [SerializeField] private AudioClip eatHotdogSFX;
 
     [SerializeField] private Button infoButton;
     [SerializeField] private Button inspectButton;
@@ -38,14 +46,23 @@ public class InteractionPanel : MonoBehaviour
 
     private void Start()
     {
+        // If this interaction panel is not active, activate it at the start of game
         if (gameObject.activeSelf == false)
-            ActivateInteractionPanel();
+        {
+            gameObject.SetActive(true);
+        }
 
         // Move this Panel off screen to left at start
         transform.localPosition = new Vector3(-1000, 0, 0);
+    }
 
-        // Move Info Panel off screen to left at start
-        //itemInfo.transform.localPosition = new Vector3(-1000, 0, 0);
+
+    private void SetInteractionPanelPosition()
+    {
+        // Hide this Panel off screen to left
+        transform.localPosition = new Vector3(inventoryPanelRectTransform.rect.xMax, pocket.transform.localPosition.y);
+
+        SetItemInfoPosition();
     }
 
 
@@ -56,6 +73,14 @@ public class InteractionPanel : MonoBehaviour
             itemInfo.transform.localPosition = new Vector2(itemInfo.transform.localPosition.x, rectTransform.rect.height);
         else
             itemInfo.transform.localPosition = new Vector2(itemInfo.transform.localPosition.x, -rectTransform.rect.height);
+    }
+
+
+    private void SetInfoPanelTexts()
+    {
+        infoTexts = itemInfo.GetComponentsInChildren<Text>();
+        infoTexts[0].text = pocket.Name.ToString();
+        infoTexts[1].text = pocket.Info;
     }
 
 
@@ -78,15 +103,7 @@ public class InteractionPanel : MonoBehaviour
         CombineButton.gameObject.SetActive(false);
     }
 
-    public void ShowInteractionPanel(float y, float z)
-    {
-        // Hide this Panel off screen to left
-        transform.localPosition = new Vector3(inventoryPanelRectTransform.rect.xMax, y, z);
-
-        SetItemInfoPosition();
-    }
-
-
+    
     public void HideInteractionPanel()
     {
         // Hide this Panel off screen to left
@@ -97,17 +114,49 @@ public class InteractionPanel : MonoBehaviour
     }
 
 
-    public void ActivateInteractionPanel()
+    public void SetPocketData(Pocket pocketRef)
     {
-        gameObject.SetActive(true);
-    }
-    
+        // Get the data from the current pocket that was hovered over
+        pocket = pocketRef;
 
-    public void GetPocketData(PickupName name, string info)
+        // Set the position of the Interaction Panel to the right of the Inventory Panel and 'y' of the hovered Pocket
+        SetInteractionPanelPosition();
+
+        // Set new Info Panel texts
+        SetInfoPanelTexts();
+    }
+
+
+    /// <summary>
+    /// Called by the 'Use' button when clicked on a pocket interaction panel
+    /// </summary>
+    /// 
+    public void OnUseButtonClicked()
     {
-        infoTexts = itemInfo.GetComponentsInChildren<Text>();
-        infoTexts[0].text = name.ToString();
-        infoTexts[1].text = info;
+        if (pocket.Name == PickupName.HotDog)
+        {
+            // Change the hotdog pickupData to a Napkin as it has been eaten
+            var napkinPickupData = napKinPrefab.GetComponent<PickupBehaviour>().PickupData;
+
+            // Using the 'Pocket' name as an index as it spans from '0 to 7' corresponding to its List index
+            // Change the pickupdata using the pocket index as they will always be in same index as each other
+            playerInventorySO.List[Int16.Parse(pocket.name)] = napkinPickupData;
+
+
+            // Populate the same pocket with napkin data
+            pocket.Name = napkinPickupData.name;
+            pocket.Type = napkinPickupData.type;
+            pocket.Icon.sprite = napkinPickupData.icon;
+            pocket.QuantityText.text = napkinPickupData.quantity.ToString();
+            pocket.Info = napkinPickupData.info;
+
+
+            // Set new Info Panel texts
+            SetInfoPanelTexts();
+
+            // Play eating SFX
+            audioSource.PlayOneShot(eatHotdogSFX);
+        }
     }
 
 
