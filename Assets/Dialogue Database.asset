@@ -1449,7 +1449,7 @@ MonoBehaviour:
         type: 0
         typeString: CustomFieldType_Text
       - title: Dialogue Text
-        value: Hi Cris, you want a Hot Dog?
+        value: Hi Cris, be careful going down the alleyway to work, fancy a Hot Dog?
         type: 0
         typeString: CustomFieldType_Text
       - title: Parenthetical
