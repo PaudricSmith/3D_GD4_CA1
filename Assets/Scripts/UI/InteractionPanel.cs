@@ -118,6 +118,8 @@ public class InteractionPanel : MonoBehaviour
     /// 
     public void OnInfoButtonClicked()
     {
+        print("In OnInfoButtonClicked");
+
         if (isInfoShowing == false)
         {
             isInfoShowing = true;

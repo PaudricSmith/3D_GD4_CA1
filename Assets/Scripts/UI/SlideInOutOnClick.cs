@@ -12,6 +12,8 @@ public class SlideInOutOnClick : MonoBehaviour
 
     public void SlideInSlideOut()
     {
+        print("In SlideInSlideOut method");
+
         if (isOut)
         {
             isOut = false;
