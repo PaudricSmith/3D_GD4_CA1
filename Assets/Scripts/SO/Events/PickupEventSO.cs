@@ -23,7 +23,7 @@ public enum PickupType : sbyte
 {
     None,
     KeyItem, 
-    Note,
+    Clue,
     TypeCount
 }
 
@@ -35,6 +35,7 @@ public struct PickupData
     public PickupName name;
     public PickupType type;
     public Sprite icon;
+    public Sprite inspectImage;
 
     [TextArea(1,3)]
     public string info;
@@ -48,11 +49,11 @@ public struct PickupData
     {
         if (pickup != null)
         {
-            return $"{name}, {type}, {value}, {pickup.name + " Object"}, {icon.name}, {isStackable}, {quantity}, \n{info}";
+            return $"{name}, {type}, {value}, {pickup.name + " Object"}, {icon.name}, {inspectImage.name}, {isStackable}, {quantity}, \n{info}";
         }
         else
         {
-            return $"{name}, {type}, {value}, {icon.name}, {isStackable}, {quantity}, \n{info}";
+            return $"{name}, {type}, {value}, {icon.name}, {inspectImage.name}, {isStackable}, {quantity}, \n{info}";
         }
 
     }

@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
@@ -6,7 +5,7 @@ using UnityEngine.UI;
 
 public class Pocket : MonoBehaviour, IPointerEnterHandler
 {
-    private InteractionPanel interactionPanel;
+    [SerializeField] private PocketEventSO OnPocketPointerEnter;
 
     [SerializeField] private PickupData pickupData;
     [SerializeField] private Image icon;
@@ -20,21 +19,6 @@ public class Pocket : MonoBehaviour, IPointerEnterHandler
 
     public void OnPointerEnter(PointerEventData pointerEventData)
     {
-        interactionPanel = GameObject.FindGameObjectWithTag("InteractionPanel").GetComponent<InteractionPanel>();
-
-        switch (pickupData.type)
-        {
-            case PickupType.KeyItem:
-                interactionPanel.SetPocketData(this);
-                interactionPanel.ShowKeyItemPanel();
-                break;
-            case PickupType.Note:
-                interactionPanel.SetPocketData(this);
-                interactionPanel.ShowNotePanel();
-                break;
-            case PickupType.None:
-                interactionPanel.HideInteractionPanel();
-                break;
-        }
+        OnPocketPointerEnter.Raise(this);
     }
 }

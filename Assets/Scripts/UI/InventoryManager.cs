@@ -29,7 +29,7 @@ public class InventoryManager : MonoBehaviour
             case PickupType.KeyItem:
                 AddItemToInventoryList(pickupData);
                 break;
-            case PickupType.Note:
+            case PickupType.Clue:
                 AddItemToInventoryList(pickupData);
                 break;
             default:
