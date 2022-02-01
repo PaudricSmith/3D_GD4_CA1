@@ -23,18 +23,21 @@ public class InventoryManager : MonoBehaviour
     /// 
     public void HandlePickup(PickupData pickupData)
     {
-        // Use Switch to seperate actions for each pickup type
-        switch (pickupData.type)
-        {
-            case PickupType.KeyItem:
-                AddItemToInventoryList(pickupData);
-                break;
-            case PickupType.Clue:
-                AddItemToInventoryList(pickupData);
-                break;
-            default:
-                break;
-        }
+        AddItemToInventoryList(pickupData);
+
+
+        //// Use Switch to seperate actions for each pickup type
+        //switch (pickupData.type)
+        //{
+        //    case PickupType.KeyItem:
+        //        AddItemToInventoryList(pickupData);
+        //        break;
+        //    case PickupType.Clue:
+        //        AddItemToInventoryList(pickupData);
+        //        break;
+        //    default:
+        //        break;
+        //}
     }
 
 

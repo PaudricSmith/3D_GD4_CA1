@@ -11,11 +11,13 @@ public class InteractionPanel : MonoBehaviour
     private Text[] infoTexts;
     
     private bool isInfoShowing = false;
+    private bool isClueShowing = false;
 
     [SerializeField] private ListPickupDataVariableSO playerInventorySO;
     
     [SerializeField] private GameObject napKinPrefab;
-    [SerializeField] private GameObject itemInfo;
+    [SerializeField] private GameObject itemInfoPanel;
+    [SerializeField] private GameObject inspectPanel;
     
     [SerializeField] private AudioSource audioSource;
     [SerializeField] private AudioClip eatHotdogSFX;
@@ -39,8 +41,8 @@ public class InteractionPanel : MonoBehaviour
         inventoryPanelRectTransform = GameObject.FindGameObjectWithTag("InventoryPanel").GetComponent<RectTransform>();
         rectTransform = transform.GetComponent<RectTransform>();
 
-        itemInfo.SetActive(false);
-        infoTexts = itemInfo.GetComponentsInChildren<Text>();
+        itemInfoPanel.SetActive(false);
+        infoTexts = itemInfoPanel.GetComponentsInChildren<Text>();
     }
 
 
@@ -64,20 +66,20 @@ public class InteractionPanel : MonoBehaviour
     }
 
 
-    private void SetItemInfoPosition()
+    private void SetItemInfoPanelPosition()
     {
         // Set Item Info Panel position depending on if it's above or below the InteractionPanel's origin which is in center of screen
         if (transform.localPosition.y < 0)
-            itemInfo.transform.localPosition = new Vector2(itemInfo.transform.localPosition.x, rectTransform.rect.height);
+            itemInfoPanel.transform.localPosition = new Vector2(itemInfoPanel.transform.localPosition.x, rectTransform.rect.height);
         else
-            itemInfo.transform.localPosition = new Vector2(itemInfo.transform.localPosition.x, -rectTransform.rect.height);
+            itemInfoPanel.transform.localPosition = new Vector2(itemInfoPanel.transform.localPosition.x, -rectTransform.rect.height);
     }
 
 
-    private void SetInfoPanelTexts()
+    private void SetItemInfoPanelTexts()
     {
         // Set new Info Panel texts
-        infoTexts = itemInfo.GetComponentsInChildren<Text>();
+        infoTexts = itemInfoPanel.GetComponentsInChildren<Text>();
         infoTexts[0].text = pocket.PickupData.name.ToString();
         infoTexts[1].text = pocket.PickupData.info;
     }
@@ -86,38 +88,42 @@ public class InteractionPanel : MonoBehaviour
     private void SetPanels()
     {
         SetInteractionPanelPosition();
-        SetItemInfoPosition();
-        SetInfoPanelTexts();
+        SetItemInfoPanelPosition();
+        SetItemInfoPanelTexts();
+
+        if (pocket.PickupData.type == PickupType.None)
+        {
+            HideInteractionPanel();
+        }
+        else if (pocket.PickupData.name == PickupName.HotDog)
+        {
+            ShowHotdogPanel();
+        }
+        else if (pocket.PickupData.type == PickupType.Clue)
+        {
+            ShowCluePanel();
+        }
+
     }
 
 
-    public void ShowKeyItemPanel()
+    public void ShowHotdogPanel()
     {
         CancelButton.gameObject.SetActive(true);
         InfoButton.gameObject.SetActive(true);
-        InspectButton.gameObject.SetActive(true);
+        InspectButton.gameObject.SetActive(false);
         UseButton.gameObject.SetActive(true);
-        CombineButton.gameObject.SetActive(true);
+        CombineButton.gameObject.SetActive(false);
     }
 
 
-    public void ShowNotePanel()
+    public void ShowCluePanel()
     {
         CancelButton.gameObject.SetActive(true);
         InfoButton.gameObject.SetActive(true);
         InspectButton.gameObject.SetActive(true);
         UseButton.gameObject.SetActive(false);
         CombineButton.gameObject.SetActive(false);
-    }
-
-    
-    public void HideInteractionPanel()
-    {
-        // Hide this Panel off screen to left
-        transform.localPosition = new Vector3(-1000, 0, 0);
-
-        itemInfo.SetActive(false);
-        isInfoShowing = false;
     }
 
 
@@ -142,7 +148,7 @@ public class InteractionPanel : MonoBehaviour
             pocket.QuantityText.text = napkinPickupData.quantity.ToString();
 
             // Set new Info Panel texts
-            SetInfoPanelTexts();
+            SetItemInfoPanelTexts();
 
             // Play eating SFX
             audioSource.PlayOneShot(eatHotdogSFX);
@@ -151,30 +157,32 @@ public class InteractionPanel : MonoBehaviour
 
 
     /// <summary>
-    /// Called by the 'Use' button when clicked on a pocket interaction panel
+    /// Called by the 'Inspect' button when clicked on a pocket interaction panel
     /// </summary>
     /// 
     public void OnInspectButtonClicked()
     {
         if (pocket.PickupData.type == PickupType.Clue)
         {
-            // Change the hotdog pickupData to a Napkin as it has been eaten
-            var napkinPickupData = napKinPrefab.GetComponent<PickupBehaviour>().PickupData;
+            // Toggle the Inspect Panel on and off when it's button is clicked
+            if (isClueShowing == false)
+            {
+                isClueShowing = true;
+                inspectPanel.SetActive(true);
+            }
+            else
+            {
+                isClueShowing = false;
+                inspectPanel.SetActive(false);
+            }
 
-            // Using the 'Pocket' name as an index as it spans from '0 to 7' corresponding to its List index
-            // Change the pickupdata using the pocket index as they will always be in same index as each other
-            playerInventorySO.List[Int16.Parse(pocket.name)] = napkinPickupData;
+            Image[] image = inspectPanel.GetComponentsInChildren<Image>();
 
-            // Populate the same pocket with napkin data
-            pocket.PickupData = napkinPickupData;
-            pocket.Icon.sprite = napkinPickupData.icon;
-            pocket.QuantityText.text = napkinPickupData.quantity.ToString();
+            // Set pocket inspect image to UI gameObject image          
+            image[1].sprite = pocket.PickupData.inspectImage;
 
-            // Set new Info Panel texts
-            SetInfoPanelTexts();
-
-            // Play eating SFX
-            audioSource.PlayOneShot(eatHotdogSFX);
+            // Set the position of the inspect Panel to the right of the Interactive Panel by half its width
+            image[1].transform.localPosition = new Vector3(image[1].transform.localPosition.x + rectTransform.rect.width / 2, image[1].transform.localPosition.y);
         }
     }
 
@@ -188,31 +196,37 @@ public class InteractionPanel : MonoBehaviour
         if (isInfoShowing == false)
         {
             isInfoShowing = true;
-            itemInfo.SetActive(true);
+            itemInfoPanel.SetActive(true);
         }
         else
         {
             isInfoShowing = false;
-            itemInfo.SetActive(false);
+            itemInfoPanel.SetActive(false);
         }
     }
-
-
+    
+    
     /// <summary>
     /// Sets the last hovered Pocket to this instance of Pocket
-    /// and hides an interactive panel if the pocket is empty
+    /// and sets all the panels according to the item in the pocket
     /// </summary>
     /// 
     public void OnPocketPointerEnter(Pocket currentPocket)
     {
-        if (currentPocket.PickupData.type != PickupType.None)
-        {
-            pocket = currentPocket;
-            SetPanels();
-        }
-        else
-        {
-            HideInteractionPanel();
-        }
+        pocket = currentPocket;
+        SetPanels(); 
+    }
+
+
+    public void HideInteractionPanel()
+    {
+        // Hide this Panel off screen to left
+        transform.localPosition = new Vector3(-1000, 0, 0);
+
+        // Set all inactive(Invisible)
+        itemInfoPanel.SetActive(false);
+        inspectPanel.SetActive(false);
+        isInfoShowing = false;
+        isClueShowing = false;
     }
 }
