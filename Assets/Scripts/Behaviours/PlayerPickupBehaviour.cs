@@ -11,7 +11,7 @@ public class PlayerPickupBehaviour : MonoBehaviour
     private RaycastHit hitInfo;
 
     private float alertTime = 3.0f;
-    private int leftClickDistance = 7;
+    private int reachDistance = 7;
     private bool isAlertShowing = false;
 
     [SerializeField] private AudioClip pickupSFX;
@@ -48,7 +48,7 @@ public class PlayerPickupBehaviour : MonoBehaviour
                 // If the hitInfo's transform parent object's tag is 'Pickups'
                 if (hitInfo.collider.transform.root.CompareTag("Pickups"))
                 {
-                    if (hitInfo.distance < leftClickDistance) // If Player is left clicking on pickup within a certain distance
+                    if (hitInfo.distance < reachDistance) // If Player is left clicking on pickup within a certain distance
                     {
                         var pickup = hitInfo.collider.gameObject.GetComponent<PickupBehaviour>();
 

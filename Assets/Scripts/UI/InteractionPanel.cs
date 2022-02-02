@@ -164,25 +164,28 @@ public class InteractionPanel : MonoBehaviour
     {
         if (pocket.PickupData.type == PickupType.Clue)
         {
+            Image[] image = inspectPanel.GetComponentsInChildren<Image>();
+
             // Toggle the Inspect Panel on and off when it's button is clicked
             if (isClueShowing == false)
             {
+                // Set pocket inspect image to UI gameObject image          
+                image[1].sprite = pocket.PickupData.inspectImage;
+
+                // Set the position of the inspect Panel to the right of the Interactive Panel by half its width
+                image[1].transform.localPosition = new Vector3(image[1].transform.localPosition.x + rectTransform.rect.width / 2, image[1].transform.localPosition.y);
+
                 isClueShowing = true;
                 inspectPanel.SetActive(true);
             }
             else
             {
+                // Set the position of the inspect Panel back to its starting x position
+                image[1].transform.localPosition = new Vector3(image[1].transform.localPosition.x - rectTransform.rect.width / 2, image[1].transform.localPosition.y);
+
                 isClueShowing = false;
                 inspectPanel.SetActive(false);
             }
-
-            Image[] image = inspectPanel.GetComponentsInChildren<Image>();
-
-            // Set pocket inspect image to UI gameObject image          
-            image[1].sprite = pocket.PickupData.inspectImage;
-
-            // Set the position of the inspect Panel to the right of the Interactive Panel by half its width
-            image[1].transform.localPosition = new Vector3(image[1].transform.localPosition.x + rectTransform.rect.width / 2, image[1].transform.localPosition.y);
         }
     }
 
