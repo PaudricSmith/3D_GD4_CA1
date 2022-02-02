@@ -14,6 +14,9 @@ public enum PickupName : sbyte
     None,
     HotDog,
     Napkin,
+    Eye,
+    Brain,
+    Pencil,
     TypeCount
 }
 

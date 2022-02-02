@@ -45,11 +45,17 @@ public class PlayerPickupBehaviour : MonoBehaviour
             {
                 hitInfo = selector.GetHitInfo();
 
+                print(hitInfo.collider.name);
+
                 // If the hitInfo's transform parent object's tag is 'Pickups'
                 if (hitInfo.collider.transform.root.CompareTag("Pickups"))
                 {
+                   
+
                     if (hitInfo.distance < reachDistance) // If Player is left clicking on pickup within a certain distance
                     {
+                        
+
                         var pickup = hitInfo.collider.gameObject.GetComponent<PickupBehaviour>();
 
                         if (pickup != null)
