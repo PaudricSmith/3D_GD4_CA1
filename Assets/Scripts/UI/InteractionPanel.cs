@@ -8,6 +8,7 @@ public class InteractionPanel : MonoBehaviour
     private RectTransform rectTransform;
     private RectTransform inventoryPanelRectTransform;
     private Pocket pocket;
+    //private PickupData pickupData;
     private Text[] infoTexts;
     
     private bool isInfoShowing = false;
@@ -24,6 +25,7 @@ public class InteractionPanel : MonoBehaviour
 
     [SerializeField] private Button infoButton;
     [SerializeField] private Button inspectButton;
+    [SerializeField] private Button pickupButton;
     [SerializeField] private Button useButton;
     [SerializeField] private Button combineButton;
     [SerializeField] private Button cancelButton;
@@ -85,12 +87,22 @@ public class InteractionPanel : MonoBehaviour
     }
 
 
+    //private void SetItemInfoPanelTextsForPickup()
+    //{
+    //    // Set new Info Panel texts
+    //    infoTexts = itemInfoPanel.GetComponentsInChildren<Text>();
+    //    infoTexts[0].text = pickupData.name.ToString();
+    //    infoTexts[1].text = pickupData.info;
+    //}
+
+
     private void SetPanels()
     {
         SetInteractionPanelPosition();
         SetItemInfoPanelPosition();
         SetItemInfoPanelTexts();
 
+        
         if (pocket.PickupData.type == PickupType.None)
         {
             HideInteractionPanel();
@@ -112,6 +124,7 @@ public class InteractionPanel : MonoBehaviour
         CancelButton.gameObject.SetActive(true);
         InfoButton.gameObject.SetActive(true);
         InspectButton.gameObject.SetActive(false);
+        pickupButton.gameObject.SetActive(false);
         UseButton.gameObject.SetActive(true);
         CombineButton.gameObject.SetActive(false);
     }
@@ -122,6 +135,30 @@ public class InteractionPanel : MonoBehaviour
         CancelButton.gameObject.SetActive(true);
         InfoButton.gameObject.SetActive(true);
         InspectButton.gameObject.SetActive(true);
+        pickupButton.gameObject.SetActive(false);
+        UseButton.gameObject.SetActive(false);
+        CombineButton.gameObject.SetActive(false);
+    }
+
+
+    public void ShowPickupPanel(PickupData pickup)
+    {
+
+        //SetInteractionPanelPosition();
+        // Set the position of the Interaction Panel to the right of the Inventory Panel
+        transform.localPosition = new Vector3(inventoryPanelRectTransform.rect.xMax, 100);
+        SetItemInfoPanelPosition();
+        //SetItemInfoPanelTextsForPickup();
+        // Set new Info Panel texts
+        infoTexts = itemInfoPanel.GetComponentsInChildren<Text>();
+        infoTexts[0].text = pickup.name.ToString();
+        infoTexts[1].text = pickup.info;
+
+
+        CancelButton.gameObject.SetActive(true);
+        InfoButton.gameObject.SetActive(true);
+        InspectButton.gameObject.SetActive(false);
+        pickupButton.gameObject.SetActive(true);
         UseButton.gameObject.SetActive(false);
         CombineButton.gameObject.SetActive(false);
     }
@@ -172,16 +209,16 @@ public class InteractionPanel : MonoBehaviour
                 // Set pocket inspect image to UI gameObject image          
                 image[1].sprite = pocket.PickupData.inspectImage;
 
-                // Set the position of the inspect Panel to the right of the Interactive Panel by half its width
-                image[1].transform.localPosition = new Vector3(image[1].transform.localPosition.x + rectTransform.rect.width / 2, image[1].transform.localPosition.y);
+                //// Set the position of the inspect Panel to the right of the Interactive Panel by half its width
+                //image[1].transform.localPosition = new Vector3(image[1].transform.localPosition.x + rectTransform.rect.width / 2, image[1].transform.localPosition.y);
 
                 isClueShowing = true;
                 inspectPanel.SetActive(true);
             }
             else
             {
-                // Set the position of the inspect Panel back to its starting x position
-                image[1].transform.localPosition = new Vector3(image[1].transform.localPosition.x - rectTransform.rect.width / 2, image[1].transform.localPosition.y);
+                //// Set the position of the inspect Panel back to its starting x position
+                //image[1].transform.localPosition = new Vector3(image[1].transform.localPosition.x - rectTransform.rect.width / 2, image[1].transform.localPosition.y);
 
                 isClueShowing = false;
                 inspectPanel.SetActive(false);
