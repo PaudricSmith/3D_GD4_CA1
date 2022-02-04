@@ -10,6 +10,7 @@ TagManager:
   - Pickups
   - InventoryPanel
   - InteractionPanel
+  - DeadMan
   layers:
   - Default
   - TransparentFX

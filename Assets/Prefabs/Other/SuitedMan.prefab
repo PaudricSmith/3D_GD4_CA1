@@ -757,6 +757,7 @@ GameObject:
   - component: {fileID: 1335363135}
   - component: {fileID: 1918576583}
   - component: {fileID: 1918576582}
+  - component: {fileID: 1010995889561040007}
   - component: {fileID: 7853903975840730214}
   m_Layer: 3
   m_Name: SuitedMan
@@ -1037,8 +1038,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pickupSFX: {fileID: 8300000, guid: 57615b2e49bd342528393467a22c2a85, type: 3}
   pickupEvent: {fileID: 11400000, guid: 93e18878dd9fbfb49b5bc778df51c7ba, type: 2}
+  OnShowPickupPanel: {fileID: 0}
   alertPanel: {fileID: 0}
   playerInventorySO: {fileID: 0}
+--- !u!114 &1010995889561040007
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 129800}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd3afdd4c7af1f04e9a02cc95cab06d2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  alertPanel: {fileID: 0}
 --- !u!82 &7853903975840730214
 AudioSource:
   m_ObjectHideFlags: 0

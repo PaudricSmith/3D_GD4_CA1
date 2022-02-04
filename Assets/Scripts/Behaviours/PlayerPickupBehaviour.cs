@@ -22,7 +22,7 @@ public class PlayerPickupBehaviour : MonoBehaviour
     [SerializeField] private ListPickupDataVariableSO playerInventorySO;
 
 
-    private void Start()
+    private void Awake()
     {
         playerAudioSource = GetComponent<AudioSource>();
         rayProvider = GetComponent<IRayProvider>();
@@ -91,40 +91,41 @@ public class PlayerPickupBehaviour : MonoBehaviour
     /// This method gets the hit info from a pickup object, plays a SFX and raises a pickup event with the pickup data.
     /// </summary>
     /// <param name="context"></param>
-    public void OnSelectObject(InputAction.CallbackContext context)
+    public void OnSelectPickup(InputAction.CallbackContext context)
     {
-        if (context.performed)
+        if (context.performed) // If left click was performed 
         {
-            selector.Check(rayProvider.CreateRay());
+            selector.Check(rayProvider.CreateRay()); // Check if a ray was created
 
-            if (selector.GetSelection() != null)
+            if (selector.GetSelection() != null) // If selector is not null
             {
-                hitInfo = selector.GetHitInfo();
+                hitInfo = selector.GetHitInfo(); // Get the hit info
 
-                print(hitInfo.collider.name);
+                // If left clicking too far from 'Pickups' object , display alert message
+                if (hitInfo.distance > reachDistance && hitInfo.collider.transform.root.CompareTag("Pickups")) 
+                {
+                    if (isAlertShowing == false)
+                    {
+                        alertPanel.GetComponentInChildren<Text>().text = "Too far away!";
+                        StartCoroutine(AlertTimer(alertTime));
+
+                        return;
+                    }
+                }
+
+                currentPickupBehaviour = hitInfo.collider.gameObject.GetComponent<PickupBehaviour>(); // Cache the PickupBehaviour
+
+                if (currentPickupBehaviour == null) // If it's null
+                {
+                    return;
+                }
 
                 // If the hitInfo's transform parent object's tag is 'Pickups'
                 if (hitInfo.collider.transform.root.CompareTag("Pickups"))
-                {
-                    if (hitInfo.distance < reachDistance) // If Player is left clicking on pickup within a certain distance
-                    {
-                        currentPickupBehaviour = hitInfo.collider.gameObject.GetComponent<PickupBehaviour>();
-
-                        if (currentPickupBehaviour != null)
-                        {
-                            // Send Event to Show Pickup Interaction Panel
-                            OnShowPickupPanel.Raise(currentPickupBehaviour.PickupData);
-                        }
-                    }
-                    else // If left clicking too far from pickup, display alert message
-                    {
-                        if (isAlertShowing == false)
-                        {
-                            alertPanel.GetComponentInChildren<Text>().text = "Too far away!";
-                            StartCoroutine(AlertTimer(alertTime));
-                        }
-                    }
-                }
+                {  
+                    // Send Event to Show Pickup Interaction Panel
+                    OnShowPickupPanel.Raise(currentPickupBehaviour.PickupData);
+                }                
             }
         }
     }
