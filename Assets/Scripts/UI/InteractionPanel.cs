@@ -111,6 +111,10 @@ public class InteractionPanel : MonoBehaviour
         {
             ShowHotdogPanel();
         }
+        else if (pocket.PickupData.name == PickupName.Pencil || pocket.PickupData.name == PickupName.Eye || pocket.PickupData.name == PickupName.Brain)
+        {
+            ShowJustInfoButton();
+        }
         else if (pocket.PickupData.type == PickupType.Clue)
         {
             ShowCluePanel();
@@ -126,6 +130,17 @@ public class InteractionPanel : MonoBehaviour
         InspectButton.gameObject.SetActive(false);
         pickupButton.gameObject.SetActive(false);
         UseButton.gameObject.SetActive(true);
+        CombineButton.gameObject.SetActive(false);
+    }
+
+
+    public void ShowJustInfoButton()
+    {
+        CancelButton.gameObject.SetActive(true);
+        InfoButton.gameObject.SetActive(true);
+        InspectButton.gameObject.SetActive(false);
+        pickupButton.gameObject.SetActive(false);
+        UseButton.gameObject.SetActive(false);
         CombineButton.gameObject.SetActive(false);
     }
 

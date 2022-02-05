@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 6013274520831798159}
   - component: {fileID: 6013274520830785677}
   - component: {fileID: 8664842560862272992}
+  - component: {fileID: -2983664462343293206}
   m_Layer: 3
   m_Name: pencil
   m_TagString: Selectable
@@ -96,3 +97,26 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 7.839554, y: 0.8373797, z: 14.622331}
   m_Center: {x: 0.31045485, y: 0.0000014305115, z: -0.91056395}
+--- !u!114 &-2983664462343293206
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6013274520832936555}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 25c834945a993e54ca7a459c18770378, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pickupData:
+    pickup: {fileID: 0}
+    name: 5
+    type: 1
+    icon: {fileID: 21300000, guid: 7fa0ac3deed6d4f488f536a71b8a4524, type: 3}
+    inspectImage: {fileID: 0}
+    info: An artists pencil, 2B or not 2B, that is the question.
+    value: 1
+    quantity: 1
+    maxStack: 1
+    isStackable: 0

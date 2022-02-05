@@ -94,17 +94,12 @@ public class PlayerPickupBehaviour : MonoBehaviour
     /// <returns>bool</returns>
     private bool IsCloseEnough(float hitInfoDistance)
     {
-        print("In here !");
-
         if (hitInfoDistance > reachDistance)
         {
-            print("In here !");
-
             alertPanel.GetComponentInChildren<Text>().text = "Too far away!";
             StartCoroutine(AlertTimer(alertTime));
 
             return false;
-
         }
         return true;
     }

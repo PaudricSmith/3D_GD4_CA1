@@ -15,6 +15,7 @@ public class PlayerInteractionHandler : MonoBehaviour
 
     [SerializeField] private GameObject alertPanel;
     [SerializeField] private GameEventSO OnChangeToDeadBodyCam;
+    [SerializeField] private GameEventSO OnHoleInHeadClicked;
 
 
     // Start is called before the first frame update
@@ -33,17 +34,12 @@ public class PlayerInteractionHandler : MonoBehaviour
     /// <returns>bool</returns>
     private bool IsCloseEnough(float hitInfoDistance)
     {
-        print("In here !");
-
         if (hitInfoDistance > reachDistance)
         {
-            print("In here !");
-
             alertPanel.GetComponentInChildren<Text>().text = "Too far away!";
             StartCoroutine(AlertTimer(alertTime));
 
             return false;
-            
         }
         return true;
     }
@@ -82,21 +78,23 @@ public class PlayerInteractionHandler : MonoBehaviour
                 {
                     case "LeftEyeNew": // If the hitInfo's object's name is 'DeadMan'
 
-                        
-
-                        print("In here !");
+                        print("In LeftEyeNew !");
                         print(hitInfo.collider.gameObject.name);
                         print(hitInfo.distance);
-
                         
                         break;
 
                     case "RightEyeNew": // If the hitInfo's object's name is 'RightEyeNew'
 
-                        print("In here !");
+                        print("In RightEyeNew !");
                         print(hitInfo.collider.gameObject.name);
                         print(hitInfo.distance);
                         
+                        break;
+
+                    case "HoleInHead": // If the hitInfo's object's name is 'HoleInHead'
+
+                        OnHoleInHeadClicked.Raise();
 
                         break;
                 }
