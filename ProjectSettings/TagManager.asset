@@ -11,6 +11,8 @@ TagManager:
   - InventoryPanel
   - InteractionPanel
   - DeadMan
+  - OperationTableCam
+  - OperationMan
   layers:
   - Default
   - TransparentFX

@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
@@ -10,11 +9,13 @@ public class PlayerInteractionHandler : MonoBehaviour
     private ISelector selector;
     private RaycastHit hitInfo;
 
-    private float alertTime = 3.0f;
-    private int reachDistance = 7;
+    private float alertTime = 2.0f;
+    private int reachDistance = 5;
     private bool isAlertShowing = false;
 
     [SerializeField] private GameObject alertPanel;
+    [SerializeField] private GameEventSO OnChangeToDeadBodyCam;
+
 
     // Start is called before the first frame update
     void Awake()
@@ -22,6 +23,31 @@ public class PlayerInteractionHandler : MonoBehaviour
         rayProvider = GetComponent<IRayProvider>();
         selector = GetComponent<ISelector>();
     }
+
+
+    /// <summary>
+    /// Checks if the hitInfo.distance is greater than the players reach distance
+    /// If left clicking too far from object, set display text alert message 
+    /// </summary>
+    /// <param name="hitInfoDistance"></param>
+    /// <returns>bool</returns>
+    private bool IsCloseEnough(float hitInfoDistance)
+    {
+        print("In here !");
+
+        if (hitInfoDistance > reachDistance)
+        {
+            print("In here !");
+
+            alertPanel.GetComponentInChildren<Text>().text = "Too far away!";
+            StartCoroutine(AlertTimer(alertTime));
+
+            return false;
+            
+        }
+        return true;
+    }
+
 
     /// <summary>
     /// A method that is called when Left Mouse button is performed with the new Input System.
@@ -38,39 +64,57 @@ public class PlayerInteractionHandler : MonoBehaviour
             {
                 hitInfo = selector.GetHitInfo(); // Get the hit info
 
-                // If left clicking too far from 'DeadMan' object, display alert message
-                if (hitInfo.distance > reachDistance && hitInfo.collider.transform.root.CompareTag("DeadMan")) 
+                // Check the left click distance to the body and change camera's if close enough, else display alert text and return
+                if (hitInfo.collider.transform.parent.gameObject.CompareTag("OperationMan"))
                 {
-                    if (isAlertShowing == false)
+                    if (IsCloseEnough(hitInfo.distance))
                     {
-                        alertPanel.GetComponentInChildren<Text>().text = "Too far away!";
-                        StartCoroutine(AlertTimer(alertTime));
-
+                        // Raise event to change to dead body camera
+                        OnChangeToDeadBodyCam.Raise();
+                    }
+                    else
+                    {
                         return;
                     }
                 }
 
-                // If the hitInfo's transform parent object's tag is 'DeadMan'
-                if (hitInfo.collider.transform.root.CompareTag("DeadMan"))
+                switch (hitInfo.collider.gameObject.name)
                 {
-                    // Send Event to Show Pickup Interaction Panel
-                    //OnShowPickupPanel.Raise(currentPickupBehaviour.PickupData);
+                    case "LeftEyeNew": // If the hitInfo's object's name is 'DeadMan'
 
-                    print(hitInfo.collider.name);
+                        
+
+                        print("In here !");
+                        print(hitInfo.collider.gameObject.name);
+                        print(hitInfo.distance);
+
+                        
+                        break;
+
+                    case "RightEyeNew": // If the hitInfo's object's name is 'RightEyeNew'
+
+                        print("In here !");
+                        print(hitInfo.collider.gameObject.name);
+                        print(hitInfo.distance);
+                        
+
+                        break;
                 }
-
             }
         }
     }
 
     private IEnumerator AlertTimer(float alertTime)
     {
-        isAlertShowing = true;
-        alertPanel.SetActive(true);
+        if (isAlertShowing == false)
+        {
+            isAlertShowing = true;
+            alertPanel.SetActive(true);
 
-        yield return new WaitForSeconds(alertTime);
-        
-        isAlertShowing = false;
-        alertPanel.SetActive(false);
+            yield return new WaitForSeconds(alertTime);
+
+            isAlertShowing = false;
+            alertPanel.SetActive(false);
+        }  
     }
 }

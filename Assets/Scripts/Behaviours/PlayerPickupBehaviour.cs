@@ -11,8 +11,8 @@ public class PlayerPickupBehaviour : MonoBehaviour
     private ISelector selector;
     private RaycastHit hitInfo;
 
-    private float alertTime = 3.0f;
-    private int reachDistance = 7;
+    private float alertTime = 2.0f;
+    private int reachDistance = 5;
     private bool isAlertShowing = false;
 
     [SerializeField] private AudioClip pickupSFX;
@@ -87,6 +87,30 @@ public class PlayerPickupBehaviour : MonoBehaviour
 
 
     /// <summary>
+    /// Checks if the hitInfo.distance is greater than the players reach distance
+    /// If left clicking too far from object, set display text alert message 
+    /// </summary>
+    /// <param name="hitInfoDistance"></param>
+    /// <returns>bool</returns>
+    private bool IsCloseEnough(float hitInfoDistance)
+    {
+        print("In here !");
+
+        if (hitInfoDistance > reachDistance)
+        {
+            print("In here !");
+
+            alertPanel.GetComponentInChildren<Text>().text = "Too far away!";
+            StartCoroutine(AlertTimer(alertTime));
+
+            return false;
+
+        }
+        return true;
+    }
+
+
+    /// <summary>
     /// A method that is called when Left Mouse button is performed with the new Input System.
     /// This method gets the hit info from a pickup object, plays a SFX and raises a pickup event with the pickup data.
     /// </summary>
@@ -101,31 +125,27 @@ public class PlayerPickupBehaviour : MonoBehaviour
             {
                 hitInfo = selector.GetHitInfo(); // Get the hit info
 
-                // If left clicking too far from 'Pickups' object , display alert message
-                if (hitInfo.distance > reachDistance && hitInfo.collider.transform.root.CompareTag("Pickups")) 
-                {
-                    if (isAlertShowing == false)
-                    {
-                        alertPanel.GetComponentInChildren<Text>().text = "Too far away!";
-                        StartCoroutine(AlertTimer(alertTime));
-
-                        return;
-                    }
-                }
-
-                currentPickupBehaviour = hitInfo.collider.gameObject.GetComponent<PickupBehaviour>(); // Cache the PickupBehaviour
-
-                if (currentPickupBehaviour == null) // If it's null
-                {
-                    return;
-                }
-
                 // If the hitInfo's transform parent object's tag is 'Pickups'
                 if (hitInfo.collider.transform.root.CompareTag("Pickups"))
-                {  
-                    // Send Event to Show Pickup Interaction Panel
-                    OnShowPickupPanel.Raise(currentPickupBehaviour.PickupData);
-                }                
+                {
+                    // If left clicking too far from 'Pickups' object , display alert message, else return
+                    if (IsCloseEnough(hitInfo.distance))
+                    {
+                        currentPickupBehaviour = hitInfo.collider.gameObject.GetComponent<PickupBehaviour>(); // Cache the PickupBehaviour
+
+                        if (currentPickupBehaviour == null) // If it's null
+                        {
+                            return;
+                        }
+
+                        // Send Event to Show Pickup Interaction Panel
+                        OnShowPickupPanel.Raise(currentPickupBehaviour.PickupData);
+                    }
+                    else
+                    {
+                        return;
+                    }
+                }         
             }
         }
     }
@@ -133,12 +153,16 @@ public class PlayerPickupBehaviour : MonoBehaviour
 
     private IEnumerator AlertTimer(float alertTime)
     {
-        isAlertShowing = true;
-        alertPanel.SetActive(true);
+        if (isAlertShowing == false)
+        {
+            isAlertShowing = true;
+            alertPanel.SetActive(true);
 
-        yield return new WaitForSeconds(alertTime);
-        
-        isAlertShowing = false;
-        alertPanel.SetActive(false);
+            yield return new WaitForSeconds(alertTime);
+
+            isAlertShowing = false;
+            alertPanel.SetActive(false);
+        }
+         
     }
 }
