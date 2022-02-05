@@ -152,13 +152,6 @@ public class InventoryManager : MonoBehaviour
 
     public void ReplacePocketByIndex(int index)
     {
-        // Store to a Scriptable Object list that is serialized on game exit
-        //playerInventorySO.Add(pickupData);
-
-        // Change the pocket at the index position that was removed
-        //pockets[index] = emptyPocket;
-        //pockets[index].name = index.ToString();
-
         int i;
 
         // Iterate through all the player inventory data

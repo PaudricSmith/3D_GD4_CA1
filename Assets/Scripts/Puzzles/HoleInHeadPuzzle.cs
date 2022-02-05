@@ -3,45 +3,38 @@ using UnityEngine;
 
 public class HoleInHeadPuzzle : MonoBehaviour
 {
-    private bool isPuzzleSolved = false;
-    private PickupData pencilPickupData;
+    //private bool isPuzzleSolved = false;
+    //private PickupData pencilPickupData;
 
-    [SerializeField] ListPickupDataVariableSO playerInventorySO;
-    [SerializeField] GameObject pencilPrefab;
-    [SerializeField] IntEventSO OnReplacePockets;
+    //[SerializeField] private ListPickupDataVariableSO playerInventorySO;
+    //[SerializeField] private GameObject pencilPrefab;
+    //[SerializeField] private IntEventSO OnReplacePockets;
 
 
-    private void Awake()
-    {
-        pencilPickupData = pencilPrefab.GetComponent<PickupBehaviour>().PickupData;
-    }
+    //private void Awake()
+    //{
+    //    pencilPickupData = pencilPrefab.GetComponent<PickupBehaviour>().PickupData;
+    //}
 
-    public void AddPencil()
-    {
-        print("In Add Pencil");
+    //public void AddPencil()
+    //{
+    //    print("In Add Pencil");
 
-        if (isPuzzleSolved == false)
-        {
-            for (int i = 0; i < playerInventorySO.Count(); i++)
-            {
-
-                if (playerInventorySO.List.Contains(pencilPickupData))
-                {
-                    int index = playerInventorySO.List.IndexOf(pencilPickupData);
+    //    if (isPuzzleSolved == false)
+    //    {
+    //        if (playerInventorySO.List.Contains(pencilPickupData))
+    //        {
+    //            int index = playerInventorySO.List.IndexOf(pencilPickupData);
                     
-                    playerInventorySO.List.Remove(pencilPickupData);
+    //            playerInventorySO.List.Remove(pencilPickupData);
 
+    //            GetComponentInChildren<MeshRenderer>().enabled = true;
 
-                    GetComponentInChildren<MeshRenderer>().enabled = true;
+    //            isPuzzleSolved = true;
 
-                    isPuzzleSolved = true;
-
-                    OnReplacePockets.Raise(index);
-
-                    return;
+    //            OnReplacePockets.Raise(index);
                     
-                }
-            }
-        } 
-    }
+    //        }
+    //    } 
+    //}
 }

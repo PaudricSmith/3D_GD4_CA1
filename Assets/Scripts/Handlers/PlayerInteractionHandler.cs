@@ -15,6 +15,8 @@ public class PlayerInteractionHandler : MonoBehaviour
 
     [SerializeField] private GameObject alertPanel;
     [SerializeField] private GameEventSO OnChangeToDeadBodyCam;
+    [SerializeField] private GameEventSO OnLeftEyeClicked;
+    [SerializeField] private GameEventSO OnRightEyeClicked;
     [SerializeField] private GameEventSO OnHoleInHeadClicked;
 
 
@@ -81,6 +83,8 @@ public class PlayerInteractionHandler : MonoBehaviour
                         print("In LeftEyeNew !");
                         print(hitInfo.collider.gameObject.name);
                         print(hitInfo.distance);
+
+                        OnLeftEyeClicked.Raise();
                         
                         break;
 
@@ -89,6 +93,8 @@ public class PlayerInteractionHandler : MonoBehaviour
                         print("In RightEyeNew !");
                         print(hitInfo.collider.gameObject.name);
                         print(hitInfo.distance);
+
+                        OnRightEyeClicked.Raise();
                         
                         break;
 

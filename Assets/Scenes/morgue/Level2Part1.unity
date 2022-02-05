@@ -1405,6 +1405,14 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1853266719}
     - target: {fileID: 1010995889561040007, guid: 694c6c1797544fa498573ee94a74b351, type: 3}
+      propertyPath: OnLeftEyeClicked
+      value: 
+      objectReference: {fileID: 11400000, guid: 9c78069d6b28a6844939d1412931c6b4, type: 2}
+    - target: {fileID: 1010995889561040007, guid: 694c6c1797544fa498573ee94a74b351, type: 3}
+      propertyPath: OnRightEyeClicked
+      value: 
+      objectReference: {fileID: 11400000, guid: e746a7b5a07855e4581c1d9384814368, type: 2}
+    - target: {fileID: 1010995889561040007, guid: 694c6c1797544fa498573ee94a74b351, type: 3}
       propertyPath: OnHoleInHeadClicked
       value: 
       objectReference: {fileID: 11400000, guid: 4f88ba98a3640d04eb7b48523c1d72e1, type: 2}
@@ -3391,6 +3399,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 483210, guid: 188af353c4ca8674f8b83d0570eab3e5, type: 3}
   m_PrefabInstance: {fileID: 48278604}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &687308338 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8878619341014818662, guid: df35346781534ce4bbc4288686a7c371, type: 3}
+  m_PrefabInstance: {fileID: 1086992524734079095}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &692557103 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 410566, guid: 9c89dc19a6659c44da8c69f77554c254, type: 3}
@@ -3692,8 +3705,6 @@ GameObject:
   m_Component:
   - component: {fileID: 761561819}
   - component: {fileID: 761561820}
-  - component: {fileID: 761561821}
-  - component: {fileID: 761561822}
   m_Layer: 3
   m_Name: HoleInHead
   m_TagString: Selectable
@@ -3729,50 +3740,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.15, y: 0.1, z: 0.19630697}
   m_Center: {x: 0, y: 0, z: 0.023153534}
---- !u!114 &761561821
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 761561818}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 20fc50ce974d40340b448c62d97becc7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerInventorySO: {fileID: 11400000, guid: a08f0d81b0cf07645a534cab81870d5e, type: 2}
-  pencilPrefab: {fileID: 6013274520832936555, guid: 9a8992b0585ce2c4797e6f9e18ce4c03, type: 3}
-  OnReplacePockets: {fileID: 11400000, guid: 55322f0aa18458d4491a190479e7bfdb, type: 2}
---- !u!114 &761561822
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 761561818}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cf6fd5c20b82d7b4f977d32b686fbd1a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  description: Add pencil to head if its in inventory.
-  Event: {fileID: 11400000, guid: 4f88ba98a3640d04eb7b48523c1d72e1, type: 2}
-  Response:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 761561821}
-        m_TargetAssemblyTypeName: HoleInHeadPuzzle, Assembly-CSharp
-        m_MethodName: AddPencil
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!1001 &767440858
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5279,6 +5246,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 725159f8098f5a441afc3603e317460c, type: 3}
+--- !u!1 &1047913823 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7894699586697905267, guid: 01af299f038ae9b4483d6b01c242a0e3, type: 3}
+  m_PrefabInstance: {fileID: 589641557507651110}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1060593784 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 458662, guid: facf14ae9ce68b7479827bcf72fba835, type: 3}
@@ -6767,7 +6739,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1356285617}
-  m_LocalRotation: {x: 0.094647124, y: 0.7073133, z: -0.0964823, w: 0.6938595}
+  m_LocalRotation: {x: 0.09464712, y: 0.7073133, z: -0.09648229, w: 0.6938595}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -7196,6 +7168,11 @@ Transform:
 Transform:
   m_CorrespondingSourceObject: {fileID: 454382, guid: 0a163724c297a9443b380c1010de89f9, type: 3}
   m_PrefabInstance: {fileID: 141744819}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1460727393 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -4819223349682164798, guid: bc63e674788d7034fa6d45f41ad8585e, type: 3}
+  m_PrefabInstance: {fileID: 1312485108}
   m_PrefabAsset: {fileID: 0}
 --- !u!4 &1486902787 stripped
 Transform:
@@ -11536,6 +11513,113 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: bc63e674788d7034fa6d45f41ad8585e, type: 3}
   m_PrefabInstance: {fileID: 1312485108}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &919132148185158566
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 919132148185158565}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cf6fd5c20b82d7b4f977d32b686fbd1a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  description: When left eye is clicked
+  Event: {fileID: 11400000, guid: 9c78069d6b28a6844939d1412931c6b4, type: 2}
+  Response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 919132148185158567}
+        m_TargetAssemblyTypeName: OperationMan, Assembly-CSharp
+        m_MethodName: OnLeftEyeClicked
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &919132148185158567
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 919132148185158565}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd396235ec0a67a41b4eabef892bc1e5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerInventorySO: {fileID: 11400000, guid: a08f0d81b0cf07645a534cab81870d5e, type: 2}
+  OnReplacePockets: {fileID: 11400000, guid: 55322f0aa18458d4491a190479e7bfdb, type: 2}
+  pencilPrefab: {fileID: 6013274520832936555, guid: 9a8992b0585ce2c4797e6f9e18ce4c03, type: 3}
+  holeInHead: {fileID: 761561818}
+  eyePrefab: {fileID: 1765536109417727596, guid: 3414e7fe3f0f8b747a29fe25f424a287, type: 3}
+  rightEye: {fileID: 1047913823}
+  leftEye: {fileID: 687308338}
+  aliveEyes: {fileID: 1460727393}
+--- !u!114 &919132148185158568
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 919132148185158565}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cf6fd5c20b82d7b4f977d32b686fbd1a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  description: When right eye is clicked
+  Event: {fileID: 11400000, guid: e746a7b5a07855e4581c1d9384814368, type: 2}
+  Response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 919132148185158567}
+        m_TargetAssemblyTypeName: OperationMan, Assembly-CSharp
+        m_MethodName: OnRightEyeClicked
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &919132148185158569
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 919132148185158565}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cf6fd5c20b82d7b4f977d32b686fbd1a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  description: Add pencil to head if its in inventory.
+  Event: {fileID: 11400000, guid: 4f88ba98a3640d04eb7b48523c1d72e1, type: 2}
+  Response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 919132148185158567}
+        m_TargetAssemblyTypeName: OperationMan, Assembly-CSharp
+        m_MethodName: AddPencil
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1001 &1086992524734079095
 PrefabInstance:
   m_ObjectHideFlags: 0
