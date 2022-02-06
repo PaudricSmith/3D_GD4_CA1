@@ -19,6 +19,7 @@ public class PlayerInteractionHandler : MonoBehaviour
     [SerializeField] private GameEventSO OnRightEyeClicked;
     [SerializeField] private GameEventSO OnHoleInHeadClicked;
     [SerializeField] private GameEventSO OnEscapeDoorClicked;
+    [SerializeField] private GameEventSO OnKeyPadDoorClicked;
 
 
     // Start is called before the first frame update
@@ -70,30 +71,29 @@ public class PlayerInteractionHandler : MonoBehaviour
                 if (hitInfo.collider.transform.parent.gameObject.CompareTag("OperationMan"))
                 {
                     if (IsCloseEnough(hitInfo.distance))
-                    {
-                        // Raise event to change to dead body camera
-                        OnChangeToDeadBodyCam.Raise();
-                    }
+                        OnChangeToDeadBodyCam.Raise(); // Raise event to change to dead body camera
                     else
-                    {
-                        return;
-                    }
+                        return;  
                 }
-
-
                 // Check the left click distance to the escape door, else display alert text and return
                 if (hitInfo.collider.gameObject.name == "EscapeDoor") // If the hitInfo's object's name is 'EscapeDoor'
                 {
                     if (IsCloseEnough(hitInfo.distance))
-                    {
                         OnEscapeDoorClicked.Raise();
-                    }
-                    else
-                    {
-                        return;
-                    }
+                    else                 
+                        return;                   
                 }
-
+                // Check the left click distance to the keypad door, else display alert text and return
+                if (hitInfo.collider.gameObject.name == "KeyPadDoor") // If the hitInfo's object's name is 'KeyPadDoor'
+                {
+                    if (IsCloseEnough(hitInfo.distance))
+                    {
+                        print("OnKeyPadDoorClicked ************************************");
+                        OnKeyPadDoorClicked.Raise();                   
+                    }
+                    else                 
+                        return;
+                }
 
                 switch (hitInfo.collider.gameObject.name)
                 {

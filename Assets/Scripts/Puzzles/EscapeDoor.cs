@@ -49,7 +49,6 @@ public class EscapeDoor : MonoBehaviour
     }
 
 
-
     public void CheckEscapeDoor()
     {
         if (morgueLevelSO.HasEscapeKey)

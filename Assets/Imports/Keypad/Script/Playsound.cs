@@ -1,12 +1,11 @@
 ﻿using UnityEngine;
-using System.Collections;
+
 
 public class Playsound : MonoBehaviour 
-
 {
-	public void Clicky (){
+	public void PlaySound()
+	{
 		GetComponent<AudioSource>().Play();
 	}
-
 
 }

@@ -676,6 +676,85 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 188af353c4ca8674f8b83d0570eab3e5, type: 3}
+--- !u!1 &68732675
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 68732676}
+  - component: {fileID: 68732678}
+  - component: {fileID: 68732677}
+  m_Layer: 0
+  m_Name: Text
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &68732676
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 68732675}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1138973655}
+  m_RootOrder: 12
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 1}
+  m_AnchorMax: {x: 0.5, y: 1}
+  m_AnchoredPosition: {x: 0, y: -40}
+  m_SizeDelta: {x: 250, y: 50}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &68732677
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 68732675}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FontData:
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_FontSize: 14
+    m_FontStyle: 0
+    m_BestFit: 1
+    m_MinSize: 10
+    m_MaxSize: 40
+    m_Alignment: 4
+    m_AlignByGeometry: 1
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: Enter 4 Digits Please!
+--- !u!222 &68732678
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 68732675}
+  m_CullTransparentMesh: 1
 --- !u!1 &73371250
 GameObject:
   m_ObjectHideFlags: 3
@@ -1448,15 +1527,19 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 1816248011}
+    m_TransformParent: {fileID: 2105574883}
     m_Modifications:
     - target: {fileID: 186586, guid: 39aa3d34987062c438ae976f64466405, type: 3}
       propertyPath: m_Name
       value: KeyPadDoorRight
       objectReference: {fileID: 0}
+    - target: {fileID: 186586, guid: 39aa3d34987062c438ae976f64466405, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 440834, guid: 39aa3d34987062c438ae976f64466405, type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 440834, guid: 39aa3d34987062c438ae976f64466405, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1476,14 +1559,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 440834, guid: 39aa3d34987062c438ae976f64466405, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 440834, guid: 39aa3d34987062c438ae976f64466405, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 440834, guid: 39aa3d34987062c438ae976f64466405, type: 3}
       propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6535906, guid: 39aa3d34987062c438ae976f64466405, type: 3}
+      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -1737,6 +1824,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: 4f88ba98a3640d04eb7b48523c1d72e1, type: 2}
     - target: {fileID: 1010995889561040007, guid: 694c6c1797544fa498573ee94a74b351, type: 3}
+      propertyPath: OnKeyPadDoorClicked
+      value: 
+      objectReference: {fileID: 11400000, guid: 54e4f5b16d1641242b5e95b28de5ebc6, type: 2}
+    - target: {fileID: 1010995889561040007, guid: 694c6c1797544fa498573ee94a74b351, type: 3}
       propertyPath: OnChangeToDeadBodyCam
       value: 
       objectReference: {fileID: 11400000, guid: 2ea034b56fcd10e4d8f4e1687ca91349, type: 2}
@@ -1890,19 +1981,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3325951074914813570, guid: a97123874659c9d43b51976d8fc76738, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3325951074914813570, guid: a97123874659c9d43b51976d8fc76738, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3325951074914813570, guid: a97123874659c9d43b51976d8fc76738, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 70
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3325951074914813570, guid: a97123874659c9d43b51976d8fc76738, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -75
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3325951074914813571, guid: a97123874659c9d43b51976d8fc76738, type: 3}
       propertyPath: m_IsActive
@@ -1914,19 +2005,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3325951075384796298, guid: a97123874659c9d43b51976d8fc76738, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3325951075384796298, guid: a97123874659c9d43b51976d8fc76738, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3325951075384796298, guid: a97123874659c9d43b51976d8fc76738, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 50
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3325951075384796298, guid: a97123874659c9d43b51976d8fc76738, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -320
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3325951075384796299, guid: a97123874659c9d43b51976d8fc76738, type: 3}
       propertyPath: m_Name
@@ -1946,19 +2037,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3325951075418039399, guid: a97123874659c9d43b51976d8fc76738, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3325951075418039399, guid: a97123874659c9d43b51976d8fc76738, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3325951075418039399, guid: a97123874659c9d43b51976d8fc76738, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 510
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3325951075418039399, guid: a97123874659c9d43b51976d8fc76738, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -75
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3325951075418039400, guid: a97123874659c9d43b51976d8fc76738, type: 3}
       propertyPath: m_IsActive
@@ -1966,19 +2057,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3325951075426060546, guid: a97123874659c9d43b51976d8fc76738, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3325951075426060546, guid: a97123874659c9d43b51976d8fc76738, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3325951075426060546, guid: a97123874659c9d43b51976d8fc76738, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 50
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3325951075426060546, guid: a97123874659c9d43b51976d8fc76738, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -560
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3325951075426060547, guid: a97123874659c9d43b51976d8fc76738, type: 3}
       propertyPath: m_Name
@@ -1986,19 +2077,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3325951075452819797, guid: a97123874659c9d43b51976d8fc76738, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3325951075452819797, guid: a97123874659c9d43b51976d8fc76738, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3325951075452819797, guid: a97123874659c9d43b51976d8fc76738, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 50
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3325951075452819797, guid: a97123874659c9d43b51976d8fc76738, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -800
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3325951075452819798, guid: a97123874659c9d43b51976d8fc76738, type: 3}
       propertyPath: m_Name
@@ -2010,7 +2101,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3325951075473229120, guid: a97123874659c9d43b51976d8fc76738, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3325951075473229149, guid: a97123874659c9d43b51976d8fc76738, type: 3}
       propertyPath: audioSource
@@ -2062,19 +2153,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3325951075492141488, guid: a97123874659c9d43b51976d8fc76738, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3325951075492141488, guid: a97123874659c9d43b51976d8fc76738, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3325951075492141488, guid: a97123874659c9d43b51976d8fc76738, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 50
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3325951075492141488, guid: a97123874659c9d43b51976d8fc76738, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -200
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3325951075492141489, guid: a97123874659c9d43b51976d8fc76738, type: 3}
       propertyPath: m_Name
@@ -2094,19 +2185,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3325951075567793402, guid: a97123874659c9d43b51976d8fc76738, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3325951075567793402, guid: a97123874659c9d43b51976d8fc76738, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3325951075567793402, guid: a97123874659c9d43b51976d8fc76738, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 50
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3325951075567793402, guid: a97123874659c9d43b51976d8fc76738, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -440
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3325951075567793403, guid: a97123874659c9d43b51976d8fc76738, type: 3}
       propertyPath: m_Name
@@ -2142,19 +2233,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3325951075907918293, guid: a97123874659c9d43b51976d8fc76738, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3325951075907918293, guid: a97123874659c9d43b51976d8fc76738, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3325951075907918293, guid: a97123874659c9d43b51976d8fc76738, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 290
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3325951075907918293, guid: a97123874659c9d43b51976d8fc76738, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -75
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3325951075907918294, guid: a97123874659c9d43b51976d8fc76738, type: 3}
       propertyPath: m_IsActive
@@ -2190,7 +2281,7 @@ PrefabInstance:
       objectReference: {fileID: 11400000, guid: a08f0d81b0cf07645a534cab81870d5e, type: 2}
     - target: {fileID: 3325951076215293149, guid: a97123874659c9d43b51976d8fc76738, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 580
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3325951076215293150, guid: a97123874659c9d43b51976d8fc76738, type: 3}
       propertyPath: m_IsActive
@@ -2198,19 +2289,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3325951076243619301, guid: a97123874659c9d43b51976d8fc76738, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3325951076243619301, guid: a97123874659c9d43b51976d8fc76738, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3325951076243619301, guid: a97123874659c9d43b51976d8fc76738, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 180
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3325951076243619301, guid: a97123874659c9d43b51976d8fc76738, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -75
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3325951076243619302, guid: a97123874659c9d43b51976d8fc76738, type: 3}
       propertyPath: m_IsActive
@@ -2218,19 +2309,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3325951076251536398, guid: a97123874659c9d43b51976d8fc76738, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3325951076251536398, guid: a97123874659c9d43b51976d8fc76738, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3325951076251536398, guid: a97123874659c9d43b51976d8fc76738, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 50
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3325951076251536398, guid: a97123874659c9d43b51976d8fc76738, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -680
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3325951076251536399, guid: a97123874659c9d43b51976d8fc76738, type: 3}
       propertyPath: m_Name
@@ -2238,19 +2329,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3325951076284154263, guid: a97123874659c9d43b51976d8fc76738, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3325951076284154263, guid: a97123874659c9d43b51976d8fc76738, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3325951076284154263, guid: a97123874659c9d43b51976d8fc76738, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 50
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3325951076284154263, guid: a97123874659c9d43b51976d8fc76738, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -920
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3325951076284154264, guid: a97123874659c9d43b51976d8fc76738, type: 3}
       propertyPath: m_Name
@@ -2294,19 +2385,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3325951076712745632, guid: a97123874659c9d43b51976d8fc76738, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3325951076712745632, guid: a97123874659c9d43b51976d8fc76738, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3325951076712745632, guid: a97123874659c9d43b51976d8fc76738, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 50
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3325951076712745632, guid: a97123874659c9d43b51976d8fc76738, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -80
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3325951076712745633, guid: a97123874659c9d43b51976d8fc76738, type: 3}
       propertyPath: m_Name
@@ -2314,19 +2405,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9030537755727833338, guid: a97123874659c9d43b51976d8fc76738, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9030537755727833338, guid: a97123874659c9d43b51976d8fc76738, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9030537755727833338, guid: a97123874659c9d43b51976d8fc76738, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 400
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9030537755727833338, guid: a97123874659c9d43b51976d8fc76738, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -75
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9030537755727833339, guid: a97123874659c9d43b51976d8fc76738, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
@@ -2533,7 +2624,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 268492835}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2105574885}
+        m_TargetAssemblyTypeName: KeyPadDoor, Assembly-CSharp
+        m_MethodName: Number3ButtonPressed
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &268492835
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3107,7 +3210,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 395237957}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2105574885}
+        m_TargetAssemblyTypeName: KeyPadDoor, Assembly-CSharp
+        m_MethodName: Number9ButtonPressed
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &395237957
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3325,7 +3440,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 412185439}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2105574885}
+        m_TargetAssemblyTypeName: KeyPadDoor, Assembly-CSharp
+        m_MethodName: Number5ButtonPressed
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &412185439
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3625,7 +3752,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &435657717
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3821,7 +3948,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 457816005}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2105574885}
+        m_TargetAssemblyTypeName: KeyPadDoor, Assembly-CSharp
+        m_MethodName: Number7ButtonPressed
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &457816005
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4672,7 +4811,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 605683316}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2105574885}
+        m_TargetAssemblyTypeName: KeyPadDoor, Assembly-CSharp
+        m_MethodName: Number0ButtonPressed
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &605683316
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5938,7 +6089,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 878598654}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2105574885}
+        m_TargetAssemblyTypeName: KeyPadDoor, Assembly-CSharp
+        m_MethodName: Number1ButtonPressed
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &878598654
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6898,7 +7061,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 988983209}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2105574885}
+        m_TargetAssemblyTypeName: KeyPadDoor, Assembly-CSharp
+        m_MethodName: Number6ButtonPressed
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &988983209
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7561,7 +7736,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1131812610}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2105574885}
+        m_TargetAssemblyTypeName: KeyPadDoor, Assembly-CSharp
+        m_MethodName: acceptButtonPressed
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1131812610
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7641,6 +7828,7 @@ RectTransform:
   - {fileID: 1131812608}
   - {fileID: 605683314}
   - {fileID: 1250325061}
+  - {fileID: 68732676}
   m_Father: {fileID: 259435180}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -8319,6 +8507,7 @@ GameObject:
   - component: {fileID: 1250325064}
   - component: {fileID: 1250325063}
   - component: {fileID: 1250325062}
+  - component: {fileID: 1250325066}
   m_Layer: 0
   m_Name: CancelBtn
   m_TagString: Untagged
@@ -8389,7 +8578,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1250325063}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2105574885}
+        m_TargetAssemblyTypeName: KeyPadDoor, Assembly-CSharp
+        m_MethodName: CancelButtonPressed
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1250325063
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8428,6 +8629,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1250325060}
   m_CullTransparentMesh: 1
+--- !u!114 &1250325066
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1250325060}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a6bd37725f099433e9a5529db03b7185, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1254523291
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9295,7 +9508,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1356285617}
-  m_LocalRotation: {x: 0.09464712, y: 0.7073133, z: -0.09648229, w: 0.6938595}
+  m_LocalRotation: {x: 0.094647124, y: 0.7073133, z: -0.0964823, w: 0.6938595}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -9616,7 +9829,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1424767955}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2105574885}
+        m_TargetAssemblyTypeName: KeyPadDoor, Assembly-CSharp
+        m_MethodName: Number2ButtonPressed
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1424767955
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10142,7 +10367,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1510934262}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2105574885}
+        m_TargetAssemblyTypeName: KeyPadDoor, Assembly-CSharp
+        m_MethodName: Number4ButtonPressed
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1510934262
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12866,8 +13103,7 @@ Transform:
   - {fileID: 1548486446}
   - {fileID: 874636878}
   - {fileID: 686378763}
-  - {fileID: 784837409}
-  - {fileID: 859857762}
+  - {fileID: 2105574883}
   - {fileID: 1680512323}
   m_Father: {fileID: 870137713}
   m_RootOrder: 1
@@ -13701,15 +13937,19 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 1816248011}
+    m_TransformParent: {fileID: 2105574883}
     m_Modifications:
     - target: {fileID: 186586, guid: 39aa3d34987062c438ae976f64466405, type: 3}
       propertyPath: m_Name
       value: KeyPadDoorLeft
       objectReference: {fileID: 0}
+    - target: {fileID: 186586, guid: 39aa3d34987062c438ae976f64466405, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 440834, guid: 39aa3d34987062c438ae976f64466405, type: 3}
       propertyPath: m_RootOrder
-      value: 5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 440834, guid: 39aa3d34987062c438ae976f64466405, type: 3}
       propertyPath: m_LocalPosition.x
@@ -13729,7 +13969,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 440834, guid: 39aa3d34987062c438ae976f64466405, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 440834, guid: 39aa3d34987062c438ae976f64466405, type: 3}
       propertyPath: m_LocalRotation.y
@@ -13737,11 +13977,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 440834, guid: 39aa3d34987062c438ae976f64466405, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 2304662, guid: 39aa3d34987062c438ae976f64466405, type: 3}
       propertyPath: m_RenderingLayerMask
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6535906, guid: 39aa3d34987062c438ae976f64466405, type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 39aa3d34987062c438ae976f64466405, type: 3}
@@ -14019,7 +14263,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1967725718}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2105574885}
+        m_TargetAssemblyTypeName: KeyPadDoor, Assembly-CSharp
+        m_MethodName: Number8ButtonPressed
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1967725718
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14854,6 +15110,198 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2029826420}
   m_CullTransparentMesh: 1
+--- !u!1 &2105574882
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2105574883}
+  - component: {fileID: 2105574884}
+  - component: {fileID: 2105574885}
+  - component: {fileID: 2105574886}
+  - component: {fileID: 2105574887}
+  m_Layer: 3
+  m_Name: KeyPadDoor
+  m_TagString: Selectable
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2105574883
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2105574882}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 859857762}
+  - {fileID: 784837409}
+  m_Father: {fileID: 1816248011}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &2105574884
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2105574882}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.9333992, y: 2.388114, z: 0.33350945}
+  m_Center: {x: 1.8314724, y: 4.444143, z: 9.913121}
+--- !u!114 &2105574885
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2105574882}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c3b76f7b194053f48a5c7acfc575b5e1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  keypadPanel: {fileID: 435657716}
+  audioSource: {fileID: 2105574887}
+  normalButtonPressSFX: {fileID: 8300000, guid: 38fa48b3ac6ee4aeb8109c0aa792fb97, type: 3}
+  acceptbuttonSFX: {fileID: 8300000, guid: 405fd55832bac4e4e9c48d2a0e85e1a2, type: 3}
+  cancelbuttonSFX: {fileID: 8300000, guid: 405fd55832bac4e4e9c48d2a0e85e1a2, type: 3}
+  wrongPasswordSFX: {fileID: 8300000, guid: 502f1f5e90de7411dbd9af39b59be2d5, type: 3}
+--- !u!114 &2105574886
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2105574882}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cf6fd5c20b82d7b4f977d32b686fbd1a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  description: When Keypad door is clicked
+  Event: {fileID: 11400000, guid: 54e4f5b16d1641242b5e95b28de5ebc6, type: 2}
+  Response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2105574885}
+        m_TargetAssemblyTypeName: KeyPadDoor, Assembly-CSharp
+        m_MethodName: OnKeypadDoorClicked
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!82 &2105574887
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2105574882}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 0
+  m_Volume: 0.5
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 10
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1001 &2107976600
 PrefabInstance:
   m_ObjectHideFlags: 0
