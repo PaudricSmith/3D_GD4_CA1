@@ -17,4 +17,4 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 8e0b69f4faa9b9949aad570083f2b652, type: 2}
   menus:
   - {fileID: 11400000, guid: be0b044b16af01c4cb18031b69d8ec5a, type: 2}
-  CurrentLevelIndex: 1
+  CurrentLevelIndex: 2

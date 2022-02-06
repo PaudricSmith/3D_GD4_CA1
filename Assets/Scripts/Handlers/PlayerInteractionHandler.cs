@@ -49,7 +49,10 @@ public class PlayerInteractionHandler : MonoBehaviour
 
 
     /// <summary>
-    /// A method that is called when Left Mouse button is performed with the new Input System.
+    /// A method that is called when Left Mouse butt
+    /// 
+    /// 
+    /// is performed with the new Input System.
     /// This method gets the hit info from a pickup object, plays a SFX and raises a pickup event with the pickup data.
     /// </summary>
     /// <param name="context"></param>

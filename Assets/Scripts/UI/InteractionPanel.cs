@@ -87,15 +87,6 @@ public class InteractionPanel : MonoBehaviour
     }
 
 
-    //private void SetItemInfoPanelTextsForPickup()
-    //{
-    //    // Set new Info Panel texts
-    //    infoTexts = itemInfoPanel.GetComponentsInChildren<Text>();
-    //    infoTexts[0].text = pickupData.name.ToString();
-    //    infoTexts[1].text = pickupData.info;
-    //}
-
-
     private void SetPanels()
     {
         SetInteractionPanelPosition();
@@ -160,11 +151,10 @@ public class InteractionPanel : MonoBehaviour
     public void ShowPickupPanel(PickupData pickup)
     {
 
-        //SetInteractionPanelPosition();
         // Set the position of the Interaction Panel to the right of the Inventory Panel
         transform.localPosition = new Vector3(inventoryPanelRectTransform.rect.xMax, 100);
         SetItemInfoPanelPosition();
-        //SetItemInfoPanelTextsForPickup();
+
         // Set new Info Panel texts
         infoTexts = itemInfoPanel.GetComponentsInChildren<Text>();
         infoTexts[0].text = pickup.name.ToString();

@@ -14,11 +14,6 @@ public class InventoryManager : MonoBehaviour
     private void Awake()
     {
         PopulateInventoryUI();
-
-        //PickupData emptyPickupData = new PickupData();
-        //emptyPocket.PickupData = emptyPickupData;
-        //emptyPocket.Icon.sprite = emptyPickupData.icon;
-        //emptyPocket.QuantityText.text = emptyPickupData.quantity.ToString();
     }
 
 
@@ -28,11 +23,6 @@ public class InventoryManager : MonoBehaviour
     /// 
     public void PopulateInventoryUI()
     {
-        //// Player Inventory SO count is 
-        //if ()
-        //{
-
-        //}
 
         // Iterate through all the player inventory data
         for (int i = 0; i < playerInventorySO.Count(); i++)
@@ -138,7 +128,6 @@ public class InventoryManager : MonoBehaviour
         {
             if (playerInventorySO.Count() < playerInventorySO.maxPickupDataSlots)
             {
-                // Store to a Scriptable Object list that is serialized on game exit
                 playerInventorySO.Add(pickupData);
 
                 // Populate the pocket at the same position as player inventory's last index

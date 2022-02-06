@@ -21,6 +21,7 @@ public class OperationMan : MonoBehaviour
     [SerializeField] private GameObject rightEye;
     [SerializeField] private GameObject leftEye;
     [SerializeField] private GameObject aliveEyes;
+    [SerializeField] private GameObject escapeKey;
 
     [SerializeField] private AudioClip insertionSFX;
     [SerializeField] private AudioClip zombieSFX;
@@ -65,6 +66,9 @@ public class OperationMan : MonoBehaviour
                 // Play Jump scare SFX
                 audioSource.clip = zombieSFX;
                 audioSource.PlayDelayed(0.5f);
+
+                // Show escape key
+                escapeKey.SetActive(true);
             }
         }
     }
@@ -103,6 +107,9 @@ public class OperationMan : MonoBehaviour
                 // Play Jump scare SFX
                 audioSource.clip = zombieSFX;
                 audioSource.PlayDelayed(0.5f);
+
+                // Show escape key
+                escapeKey.SetActive(true);
             }
         }
     }
@@ -139,6 +146,9 @@ public class OperationMan : MonoBehaviour
                 // Play Jump scare SFX
                 audioSource.clip = zombieSFX;
                 audioSource.PlayDelayed(0.5f);
+
+                // Show escape key
+                escapeKey.SetActive(true);
             }
         }
     }

@@ -19,10 +19,11 @@ public class GameScene : ScriptableObject
     [Range(0.0f, 1.0f)]
     [SerializeField] private float musicVolume;
 
-
+    
     public string SceneName { get => sceneName; set => sceneName = value; }
     public float MusicVolume { get => musicVolume; set => musicVolume = value; }
 
     //[Header("Visuals")]
     //public PostProcessProfile postprocess;
+
 }
