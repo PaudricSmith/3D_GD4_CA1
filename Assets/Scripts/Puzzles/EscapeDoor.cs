@@ -7,29 +7,47 @@ public class EscapeDoor : MonoBehaviour
     private bool isAlertShowing;
     private bool isWinMusicPlaying;
     private float alertTime = 2.0f;
-
-    private PickupData escapeKeyPickupData;
+    private float timer = 0.0f;
 
     [SerializeField] private Level morgueLevelSO;
     [SerializeField] private ListPickupDataVariableSO playerInventorySO;
-    [SerializeField] private GameObject escapeKeyPrefab;
+
+    [SerializeField] private GameObject timerText;
     [SerializeField] private GameObject alertPanel;
     [SerializeField] private GameObject morgueMusic;
     [SerializeField] private GameObject escapePanel;
+
     [SerializeField] private AudioSource audioSource;
     [SerializeField] private AudioClip doorLockedSFX;
     [SerializeField] private AudioClip winMusic;
 
+    public float Timer { get => timer; set => timer = value; }
+
 
     private void Awake()
     {
-        //escapeKeyPickupData = escapeKeyPrefab.GetComponent<PickupData>();
-
         escapePanel.SetActive(false);
         Time.timeScale = 1;
+        Timer = 0.0f;
         morgueLevelSO.HasEscapeKey = false;
-
     }
+
+
+    void Update()
+    {
+        Timer += Time.deltaTime;
+
+        print(GetTimerText());
+    }
+
+    
+    public string GetTimerText()
+    {
+        double roundedTime = System.Math.Round(Timer, 2);
+
+        return roundedTime.ToString();
+    }
+
 
 
     public void CheckEscapeDoor()
@@ -43,6 +61,9 @@ public class EscapeDoor : MonoBehaviour
                 // Show Escape win text 
                 escapePanel.SetActive(true);
 
+                // Show Time completed in
+                timerText.GetComponent<Text>().text = GetTimerText();
+
                 // Stop morgue music
                 morgueMusic.GetComponent<AudioSource>().Stop();
 
@@ -52,8 +73,6 @@ public class EscapeDoor : MonoBehaviour
                 // Stop time
                 Time.timeScale = 0;
 
-                // Remove key form inventory
-                int index = playerInventorySO.List.IndexOf(escapeKeyPickupData);
 
                 for (int i = 0; i < playerInventorySO.Count(); i++)
                 {
