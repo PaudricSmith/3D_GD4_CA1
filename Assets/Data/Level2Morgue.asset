@@ -15,5 +15,5 @@ MonoBehaviour:
   sceneName: Level2Part1
   shortDescription: Morgue building downtown.
   music: {fileID: 8300000, guid: ee578920ee06f3443ae6f28d60f1b298, type: 3}
-  musicVolume: 0.3
-  enemiesCount: 2
+  musicVolume: 0.2
+  enemiesCount: 1

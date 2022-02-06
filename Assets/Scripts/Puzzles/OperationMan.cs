@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class OperationMan : MonoBehaviour
 {
+    private AudioSource audioSource;
     private PickupData eyePickupData;
     private PickupData pencilPickupData;
 
@@ -21,9 +22,13 @@ public class OperationMan : MonoBehaviour
     [SerializeField] private GameObject leftEye;
     [SerializeField] private GameObject aliveEyes;
 
+    [SerializeField] private AudioClip insertionSFX;
+    [SerializeField] private AudioClip zombieSFX;
+
 
     private void Awake()
     {
+        audioSource = GetComponent<AudioSource>();
         pencilPickupData = pencilPrefab.GetComponent<PickupBehaviour>().PickupData;
         eyePickupData = eyePrefab.GetComponent<PickupBehaviour>().PickupData;
     }
@@ -46,6 +51,9 @@ public class OperationMan : MonoBehaviour
 
                 OnReplacePockets.Raise(index);
 
+                // Play scary SFX
+                audioSource.PlayOneShot(insertionSFX);
+
             }
 
             if (isRightEyeVisible && isLeftEyeVisible && isPencilVisible && isAliveEyesVisible == false)
@@ -53,6 +61,10 @@ public class OperationMan : MonoBehaviour
                 aliveEyes.GetComponent<MeshRenderer>().enabled = true;
 
                 isAliveEyesVisible = true;
+
+                // Play Jump scare SFX
+                audioSource.clip = zombieSFX;
+                audioSource.PlayDelayed(0.5f);
             }
         }
     }
@@ -77,6 +89,9 @@ public class OperationMan : MonoBehaviour
 
                 OnReplacePockets.Raise(index);
 
+                // Play scary SFX
+                audioSource.PlayOneShot(insertionSFX);
+
             }
 
             if (isRightEyeVisible && isLeftEyeVisible && isPencilVisible && isAliveEyesVisible == false)
@@ -84,6 +99,10 @@ public class OperationMan : MonoBehaviour
                 aliveEyes.GetComponent<MeshRenderer>().enabled = true;
 
                 isAliveEyesVisible = true;
+
+                // Play Jump scare SFX
+                audioSource.clip = zombieSFX;
+                audioSource.PlayDelayed(0.5f);
             }
         }
     }
@@ -106,6 +125,9 @@ public class OperationMan : MonoBehaviour
                 isPencilVisible = true;
 
                 OnReplacePockets.Raise(index);
+
+                // Play scary SFX
+                audioSource.PlayOneShot(insertionSFX);
             }
 
             if (isRightEyeVisible && isLeftEyeVisible && isPencilVisible && isAliveEyesVisible == false)
@@ -113,6 +135,10 @@ public class OperationMan : MonoBehaviour
                 aliveEyes.GetComponent<MeshRenderer>().enabled = true;
 
                 isAliveEyesVisible = true;
+
+                // Play Jump scare SFX
+                audioSource.clip = zombieSFX;
+                audioSource.PlayDelayed(0.5f);
             }
         }
     }
