@@ -18,6 +18,7 @@ public class PlayerInteractionHandler : MonoBehaviour
     [SerializeField] private GameEventSO OnLeftEyeClicked;
     [SerializeField] private GameEventSO OnRightEyeClicked;
     [SerializeField] private GameEventSO OnHoleInHeadClicked;
+    [SerializeField] private GameEventSO OnEscapeDoorClicked;
 
 
     // Start is called before the first frame update
@@ -76,37 +77,37 @@ public class PlayerInteractionHandler : MonoBehaviour
                     }
                 }
 
+
+                // Check the left click distance to the escape door, else display alert text and return
+                if (hitInfo.collider.gameObject.name == "EscapeDoor") // If the hitInfo's object's name is 'EscapeDoor'
+                {
+                    if (IsCloseEnough(hitInfo.distance))
+                    {
+                        OnEscapeDoorClicked.Raise();
+                    }
+                    else
+                    {
+                        return;
+                    }
+                }
+
+
                 switch (hitInfo.collider.gameObject.name)
                 {
                     case "LeftEyeNew": // If the hitInfo's object's name is 'DeadMan'
-
-                        print("In LeftEyeNew !");
-                        print(hitInfo.collider.gameObject.name);
-                        print(hitInfo.distance);
-
                         OnLeftEyeClicked.Raise();
-                        
                         break;
-
                     case "RightEyeNew": // If the hitInfo's object's name is 'RightEyeNew'
-
-                        print("In RightEyeNew !");
-                        print(hitInfo.collider.gameObject.name);
-                        print(hitInfo.distance);
-
                         OnRightEyeClicked.Raise();
-                        
                         break;
-
                     case "HoleInHead": // If the hitInfo's object's name is 'HoleInHead'
-
                         OnHoleInHeadClicked.Raise();
-
                         break;
                 }
             }
         }
     }
+
 
     private IEnumerator AlertTimer(float alertTime)
     {

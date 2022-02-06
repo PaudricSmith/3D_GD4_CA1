@@ -111,7 +111,8 @@ public class InteractionPanel : MonoBehaviour
         {
             ShowHotdogPanel();
         }
-        else if (pocket.PickupData.name == PickupName.Pencil || pocket.PickupData.name == PickupName.Eye || pocket.PickupData.name == PickupName.Brain)
+        else if (pocket.PickupData.name == PickupName.Pencil || pocket.PickupData.name == PickupName.Eye 
+            || pocket.PickupData.name == PickupName.Brain || pocket.PickupData.name == PickupName.EscapeKey)
         {
             ShowJustInfoButton();
         }

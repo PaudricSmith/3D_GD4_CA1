@@ -20,6 +20,7 @@ public class PlayerPickupBehaviour : MonoBehaviour
     [SerializeField] private PickupEventSO OnShowPickupPanel;
     [SerializeField] private GameObject alertPanel;
     [SerializeField] private ListPickupDataVariableSO playerInventorySO;
+    [SerializeField] private Level morgueLevelSO;
 
 
     private void Awake()
@@ -131,6 +132,12 @@ public class PlayerPickupBehaviour : MonoBehaviour
                         if (currentPickupBehaviour == null) // If it's null
                         {
                             return;
+                        }
+
+                        // If pickup is the Escape Key, set the bool value to true on the levels scriptable object Class
+                        if (currentPickupBehaviour.PickupData.name == PickupName.EscapeKey)
+                        {
+                            morgueLevelSO.HasEscapeKey = true;
                         }
 
                         // Send Event to Show Pickup Interaction Panel

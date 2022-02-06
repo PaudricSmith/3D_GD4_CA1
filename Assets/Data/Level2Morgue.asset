@@ -17,3 +17,4 @@ MonoBehaviour:
   music: {fileID: 8300000, guid: ee578920ee06f3443ae6f28d60f1b298, type: 3}
   musicVolume: 0.2
   enemiesCount: 1
+  hasEscapeKey: 0
