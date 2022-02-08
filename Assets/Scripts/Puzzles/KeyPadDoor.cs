@@ -14,6 +14,10 @@ public class KeyPadDoor : MonoBehaviour
     [SerializeField] private AudioClip acceptbuttonSFX;
     [SerializeField] private AudioClip cancelbuttonSFX;
     [SerializeField] private AudioClip wrongPasswordSFX;
+    [SerializeField] private AudioClip doorsOpeningSFX;
+
+    [SerializeField] private Animator leftDoorOpen;
+    [SerializeField] private Animator rightDoorOpen;
 
 
 
@@ -93,12 +97,18 @@ public class KeyPadDoor : MonoBehaviour
         if (inputPassword.Equals(correctPassword))
         {
             isDoorOpen = true;
-
-            // Open Keypad Door
-
             audioSource.PlayOneShot(acceptbuttonSFX);
-
             keypadPanel.SetActive(false);
+
+            // Turn off the double door collider so the player can pass through
+            GetComponent<BoxCollider>().enabled = false;
+
+            // Open Keypad Door 
+            leftDoorOpen.Play("KPDoorL_Open", 0, 0.0f);
+            rightDoorOpen.Play("KPDoorR_Open", 0, 0.0f);
+
+            // Play doors opening SFX
+            audioSource.PlayOneShot(doorsOpeningSFX);
         }
         else
         {
