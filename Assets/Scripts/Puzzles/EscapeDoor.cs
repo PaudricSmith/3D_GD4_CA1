@@ -37,7 +37,7 @@ public class EscapeDoor : MonoBehaviour
     {
         Timer += Time.deltaTime;
 
-        print(GetTimerText());
+        //print(GetTimerText());
     }
 
     
