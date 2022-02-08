@@ -8,6 +8,9 @@ public class KeyPadDoor : MonoBehaviour
     private string correctPassword = "3612";
     private string inputPassword = "";
 
+    [SerializeField] private GameObject hidenWall1;
+    [SerializeField] private GameObject hidenWall2;
+    [SerializeField] private GameObject hidenWall3;
     [SerializeField] private GameObject keypadPanel;
     [SerializeField] private AudioSource audioSource;
     [SerializeField] private AudioClip normalButtonPressSFX;
@@ -111,6 +114,11 @@ public class KeyPadDoor : MonoBehaviour
 
             // Play doors opening SFX
             audioSource.PlayOneShot(doorsOpeningSFX);
+
+            // Remove walls that hide the Ghoul
+            hidenWall1.SetActive(false);
+            hidenWall2.SetActive(false);
+            hidenWall3.SetActive(false);
 
             // Make Ghoul chase Player
             OnGhoulChasePlayer.Raise();
