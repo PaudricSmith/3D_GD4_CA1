@@ -14,6 +14,7 @@ public class OperationMan : MonoBehaviour
 
     [SerializeField] private ListPickupDataVariableSO playerInventorySO;
     [SerializeField] private IntEventSO OnReplacePockets;
+    [SerializeField] private GameEventSO OnStartHallLightFlicker;
 
     [SerializeField] private GameObject pencilPrefab;
     [SerializeField] private GameObject holeInHead;
@@ -37,7 +38,6 @@ public class OperationMan : MonoBehaviour
 
     public void OnRightEyeClicked()
     {
-        print("In OnRightEyeClicked() *************************************");
         if (isRightEyeVisible == false)
         {
             if (playerInventorySO.List.Contains(eyePickupData))
@@ -69,6 +69,9 @@ public class OperationMan : MonoBehaviour
 
                 // Show escape key
                 escapeKey.SetActive(true);
+
+                // Start the hall light flickering where the Ghoul is
+                OnStartHallLightFlicker.Raise();
             }
         }
     }
@@ -76,9 +79,6 @@ public class OperationMan : MonoBehaviour
 
     public void OnLeftEyeClicked()
     {
-
-        print("In OnLeftEyeClicked() *************************************");
-
         if (isLeftEyeVisible == false)
         {
             if (playerInventorySO.List.Contains(eyePickupData))
@@ -110,6 +110,9 @@ public class OperationMan : MonoBehaviour
 
                 // Show escape key
                 escapeKey.SetActive(true);
+
+                // Start the hall light flickering where the Ghoul is
+                OnStartHallLightFlicker.Raise();
             }
         }
     }
@@ -117,8 +120,6 @@ public class OperationMan : MonoBehaviour
 
     public void AddPencil()
     {
-        print("In Add Pencil");
-
         if (isPencilVisible == false)
         {
             if (playerInventorySO.List.Contains(pencilPickupData))
@@ -149,6 +150,9 @@ public class OperationMan : MonoBehaviour
 
                 // Show escape key
                 escapeKey.SetActive(true);
+
+                // Start the hall light flickering where the Ghoul is
+                OnStartHallLightFlicker.Raise();
             }
         }
     }
