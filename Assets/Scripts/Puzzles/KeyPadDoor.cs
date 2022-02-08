@@ -19,6 +19,8 @@ public class KeyPadDoor : MonoBehaviour
     [SerializeField] private Animator leftDoorOpen;
     [SerializeField] private Animator rightDoorOpen;
 
+    [SerializeField] private GameEventSO OnGhoulChasePlayer;
+
 
 
     public void OnKeypadDoorClicked()
@@ -109,6 +111,9 @@ public class KeyPadDoor : MonoBehaviour
 
             // Play doors opening SFX
             audioSource.PlayOneShot(doorsOpeningSFX);
+
+            // Make Ghoul chase Player
+            OnGhoulChasePlayer.Raise();
         }
         else
         {
