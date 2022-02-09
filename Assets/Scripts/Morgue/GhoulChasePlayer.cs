@@ -132,9 +132,10 @@ public class GhoulChasePlayer : MonoBehaviour
         {
             contactWithPlayer = true;
 
-            StartCoroutine(PlayerDeathTimer(3));
-
-            print(other.gameObject.name + "*****************************************************************");
+            if (hasPlayerYellowGem == false)
+            {
+                StartCoroutine(PlayerDeathTimer(3));
+            }
         }
     }
 
@@ -149,8 +150,6 @@ public class GhoulChasePlayer : MonoBehaviour
         yield return new WaitForSeconds(2);
 
         // After 3 seconds, end game
-        print(" GAME OVER *****************************************************************");
-
         OnPlayerDeath.Raise();
     }
 }
