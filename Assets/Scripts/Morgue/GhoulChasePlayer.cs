@@ -4,7 +4,13 @@ using UnityEngine.AI;
 
 public class GhoulChasePlayer : MonoBehaviour
 {
+    private float deathDistance = 2.0f;
+
+    private bool isDying = false;
     private bool canChasePlayer = false;
+    private bool hasPlayerYellowGem = false;
+
+    [SerializeField] private ListPickupDataVariableSO playerInventorySO;
 
     [SerializeField] private AudioSource audioSource;
     [SerializeField] private AudioClip walkSFX;
@@ -34,31 +40,61 @@ public class GhoulChasePlayer : MonoBehaviour
             // If the Ghoul is not moving so has stopped at the Player
             if (ghoulAgent.velocity.x == 0 && ghoulAgent.velocity.z == 0)
             {
-                // If the walking SFX clip is playing then stop it so the attack clip can play as soon as the Ghoul attacks
-                if (audioSource.clip == walkSFX)
-                    audioSource.Stop();
+                float distance = Vector3.Distance(player.transform.position, transform.position);
 
-                // Wait till a clip has stopped playing untill playing it again
-                if (!audioSource.isPlaying)
+                
+                if (distance <= deathDistance && hasPlayerYellowGem && isDying == false)
                 {
-                    audioSource.clip = attackSFX;
+                    print("In if (hasPlayerYellowGem && isDying == false)");
+
+                    isDying = true;
+
+                    if (audioSource.clip == walkSFX)
+                        audioSource.Stop();
+
+                    audioSource.clip = deathSFX;
                     audioSource.Play();
+
+                    // 
+                    ghoulAnimation.Play("Death");
+
+                    canChasePlayer = false;
+
+                    return;
+                }
+                else 
+                {
+                    // If the walking SFX clip is playing then stop it so the attack clip can play as soon as the Ghoul attacks
+                    if (audioSource.clip == walkSFX)
+                        audioSource.Stop();
+
+                    // Wait till a clip has stopped playing untill playing it again
+                    if (!audioSource.isPlaying)
+                    {
+                        audioSource.clip = attackSFX;
+                        audioSource.Play();
+                    }
+
+                    // Play Attack animation
+                    ghoulAnimation.Play("Attack1");
                 }
 
-                // Play Attack animation
-                ghoulAnimation.Play("Attack1");
+                
             }
             else // If the Ghoul is chasing the Player
             {
-                // Wait till a clip has stopped playing untill playing it again
-                if (!audioSource.isPlaying)
-                {
-                    audioSource.clip = walkSFX;
-                    audioSource.Play();
-                }
+                
+                    // Wait till a clip has stopped playing untill playing it again
+                    if (!audioSource.isPlaying)
+                    {
+                        audioSource.clip = walkSFX;
+                        audioSource.Play();
+                    }
 
-                // Play Attack animation
-                ghoulAnimation.Play("Walk");
+                    // Play Attack animation
+                    ghoulAnimation.Play("Walk");
+                
+                
             }
         }
     }
@@ -72,5 +108,15 @@ public class GhoulChasePlayer : MonoBehaviour
     {
         canChasePlayer = true;
         ghoulAgent.speed = 0.75f;
+    }
+
+
+    /// <summary>
+    /// Called by the Game Event Listener Component attached to this game object
+    /// Sets the player gem bool to true
+    /// </summary>
+    public void PlayerHasYellowGem()
+    {
+        hasPlayerYellowGem = true;
     }
 }

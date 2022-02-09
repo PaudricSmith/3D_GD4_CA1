@@ -19,6 +19,7 @@ public class DogPicture : MonoBehaviour
 
 
     [SerializeField] private ListPickupDataVariableSO playerInventorySO;
+    [SerializeField] private GameEventSO OnPlayerGotYellowGem;
 
     //[SerializeField] private GameEventSO OnYellowGemTaken;
 
@@ -64,6 +65,9 @@ public class DogPicture : MonoBehaviour
 
             // Set new Info Panel texts
             SetItemInfoPanelTexts();
+
+            // Send event to Ghoul to let him know the player has the gem and to set his bool to true;
+            OnPlayerGotYellowGem.Raise();
         }
         
     }

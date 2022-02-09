@@ -7653,6 +7653,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b2a3d24f90f34d4dbf190aae7354122, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerInventorySO: {fileID: 0}
   audioSource: {fileID: 955300620}
   walkSFX: {fileID: 8300000, guid: 579a85b888c2b489a906a2721694262d, type: 3}
   attackSFX: {fileID: 8300000, guid: 90105c98a76ad4dec9ec990d26140a70, type: 3}
@@ -7807,6 +7808,48 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!65 &955300621
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 955300616}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 0
+  serializedVersion: 2
+  m_Size: {x: 1.6269917, y: 4.009381, z: 2.4659743}
+  m_Center: {x: -0.093757406, y: 1.5046895, z: 0.22775888}
+--- !u!114 &955300622
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 955300616}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cf6fd5c20b82d7b4f977d32b686fbd1a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  description: OnPlayerGotYellowGem
+  Event: {fileID: 11400000, guid: efd5bbd8d023bfc4d9d6f05fc642ca10, type: 2}
+  Response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 955300617}
+        m_TargetAssemblyTypeName: GhoulChasePlayer, Assembly-CSharp
+        m_MethodName: PlayerHasYellowGem
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!4 &956180753 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 491830, guid: a86da915c3eab8445a2c36519941510c, type: 3}
@@ -10492,7 +10535,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1313366353}
-  m_LocalRotation: {x: 0.10121914, y: -0.0025646237, z: 0.00026093714, w: 0.9948608}
+  m_LocalRotation: {x: 0.10121914, y: -0.0025646237, z: 0.0002609371, w: 0.9948608}
   m_LocalPosition: {x: 3.4931357, y: 2.506, z: -6.4999843}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -10910,7 +10953,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1356285617}
-  m_LocalRotation: {x: 0.13472192, y: 0.0010216986, z: -0.00013891165, w: 0.99088293}
+  m_LocalRotation: {x: 0.13472192, y: 0.0010216815, z: -0.00013890934, w: 0.99088293}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -16931,6 +16974,7 @@ MonoBehaviour:
   audioSource: {fileID: 2069920369}
   pluckSFX: {fileID: 8300000, guid: 47b02a2c2292b47fba44eb73dc8a73be, type: 3}
   playerInventorySO: {fileID: 11400000, guid: a08f0d81b0cf07645a534cab81870d5e, type: 2}
+  OnPlayerGotYellowGem: {fileID: 11400000, guid: efd5bbd8d023bfc4d9d6f05fc642ca10, type: 2}
 --- !u!114 &2069920368
 MonoBehaviour:
   m_ObjectHideFlags: 0
