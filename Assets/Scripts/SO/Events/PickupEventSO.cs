@@ -14,6 +14,8 @@ public enum PickupName : sbyte
     None,
     HotDog,
     Napkin,
+    DogPic,
+    YellowGem,
     Eye,
     Brain,
     Pencil,

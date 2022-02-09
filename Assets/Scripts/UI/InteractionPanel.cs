@@ -18,7 +18,8 @@ public class InteractionPanel : MonoBehaviour
     
     [SerializeField] private GameObject napKinPrefab;
     [SerializeField] private GameObject itemInfoPanel;
-    [SerializeField] private GameObject inspectPanel;
+    [SerializeField] private GameObject inspectPanelNapkin;
+    [SerializeField] private GameObject inspectPanelDog;
     
     [SerializeField] private AudioSource audioSource;
     [SerializeField] private AudioClip eatHotdogSFX;
@@ -29,6 +30,8 @@ public class InteractionPanel : MonoBehaviour
     [SerializeField] private Button useButton;
     [SerializeField] private Button combineButton;
     [SerializeField] private Button cancelButton;
+
+    [SerializeField] private PocketEventSO OnInspectDogPanelOpened;
 
 
     public Button InfoButton { get => infoButton; set => infoButton = value; }
@@ -103,7 +106,7 @@ public class InteractionPanel : MonoBehaviour
             ShowHotdogPanel();
         }
         else if (pocket.PickupData.name == PickupName.Pencil || pocket.PickupData.name == PickupName.Eye 
-            || pocket.PickupData.name == PickupName.Brain || pocket.PickupData.name == PickupName.EscapeKey)
+            || pocket.PickupData.name == PickupName.Brain || pocket.PickupData.name == PickupName.EscapeKey || pocket.PickupData.name == PickupName.YellowGem)
         {
             ShowJustInfoButton();
         }
@@ -205,9 +208,9 @@ public class InteractionPanel : MonoBehaviour
     /// 
     public void OnInspectButtonClicked()
     {
-        if (pocket.PickupData.type == PickupType.Clue)
+        if (pocket.PickupData.name == PickupName.Napkin)
         {
-            Image[] image = inspectPanel.GetComponentsInChildren<Image>();
+            Image[] image = inspectPanelNapkin.GetComponentsInChildren<Image>();
 
             // Toggle the Inspect Panel on and off when it's button is clicked
             if (isClueShowing == false)
@@ -219,7 +222,7 @@ public class InteractionPanel : MonoBehaviour
                 //image[1].transform.localPosition = new Vector3(image[1].transform.localPosition.x + rectTransform.rect.width / 2, image[1].transform.localPosition.y);
 
                 isClueShowing = true;
-                inspectPanel.SetActive(true);
+                inspectPanelNapkin.SetActive(true);
             }
             else
             {
@@ -227,7 +230,29 @@ public class InteractionPanel : MonoBehaviour
                 //image[1].transform.localPosition = new Vector3(image[1].transform.localPosition.x - rectTransform.rect.width / 2, image[1].transform.localPosition.y);
 
                 isClueShowing = false;
-                inspectPanel.SetActive(false);
+                inspectPanelNapkin.SetActive(false);
+            }
+        }
+        else if (pocket.PickupData.name == PickupName.DogPic)
+        {
+            Image[] image = inspectPanelDog.GetComponentsInChildren<Image>();
+
+            // Toggle the Inspect Panel on and off when it's button is clicked
+            if (isClueShowing == false)
+            {
+                // Set pocket inspect image to UI gameObject image          
+                image[1].sprite = pocket.PickupData.inspectImage;
+
+                isClueShowing = true;
+                inspectPanelDog.SetActive(true);
+
+                // Send pocket info to dog panel
+                OnInspectDogPanelOpened.Raise(pocket);
+            }
+            else
+            {
+                isClueShowing = false;
+                inspectPanelDog.SetActive(false);
             }
         }
     }
@@ -271,7 +296,8 @@ public class InteractionPanel : MonoBehaviour
 
         // Set all inactive(Invisible)
         itemInfoPanel.SetActive(false);
-        inspectPanel.SetActive(false);
+        inspectPanelNapkin.SetActive(false);
+        inspectPanelDog.SetActive(false);
         isInfoShowing = false;
         isClueShowing = false;
     }
