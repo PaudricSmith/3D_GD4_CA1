@@ -25,3 +25,112 @@ The colour scheme portrays a rustic used and authentic aura.
 
 ### Link to YouTube video on design 
 [YouTube Design Video](https://youtu.be/olU73hwBrbA)
+
+### References
+
+	MODELS
+Corpse with head gunshot wound
+https://www.turbosquid.com/3d-models/victim-patient-obj-free/834793
+
+City builder Urban
+https://assetstore.unity.com/packages/3d/environments/urban/city-builder-urban-180722
+
+Man in suit
+https://assetstore.unity.com/packages/3d/characters/humanoids/humans/man-in-a-suit-51662
+
+Ghoul
+https://assetstore.unity.com/packages/3d/characters/ghoul-zombie-114531
+
+Morgue
+https://assetstore.unity.com/packages/3d/environments/morgue-room-pbr-65817
+
+Surgical Instruments
+https://assetstore.unity.com/packages/3d/props/tools/surgical-instruments-free-hospital-props-199472
+
+Hand painted keys
+https://assetstore.unity.com/packages/3d/handpainted-keys-42044
+
+Keypad
+https://assetstore.unity.com/packages/2d/gui/keypad-62942
+
+Deoderant can
+https://assetstore.unity.com/packages/3d/props/tools/deodorant-body-spray-67412
+
+
+	TEXTURES
+Hotdog icon
+https://www.flaticon.com/free-icon/hotdog_5470081
+
+Napkin icon
+https://www.flaticon.com/free-icon/napkin_537097?term=napkin&related_id=537097#
+
+Simple icons
+https://assetstore.unity.com/packages/2d/gui/icons/simple-icons-classic-209472
+
+Eye ball icon
+https://www.flaticon.com/free-icon/eyeball_2044531?term=eyeball&related_id=2044531
+
+Brain icon
+https://www.flaticon.com/free-icon/brain_4206131?term=brain&page=1&position=23&page=1&position=23&related_id=4206131&origin=search
+
+Key icon
+https://www.flaticon.com/premium-icon/key_1643186?term=key&related_id=1643186
+
+Dog Picture Icon
+https://www.flaticon.com/premium-icon/dog_3010429?term=dog%20picture&related_id=3010429
+
+Yellow Gem
+https://www.flaticon.com/premium-icon/gem_934497?term=gem&related_id=934497
+
+Spray can Icon
+https://www.flaticon.com/free-icon/spray_1434757?term=spray&related_id=1434757
+
+Scalpel Icon
+https://www.flaticon.com/free-icon/scalpel_139440?term=scalpel&page=1&position=5&page=1&position=5&related_id=139440&origin=search
+
+
+	AUDIO
+Various Genres Music Collection
+https://assetstore.unity.com/packages/audio/music/various-genres-music-collection-free-191462#content
+
+UI SFX
+https://assetstore.unity.com/packages/audio/sound-fx/ui-sfx-36989#content
+
+Horror SFX
+https://assetstore.unity.com/packages/audio/sound-fx/horror-sfx-32834
+
+Footsteps
+https://assetstore.unity.com/packages/audio/sound-fx/foley/footsteps-essentials-189879#content
+
+Fears
+https://assetstore.unity.com/packages/audio/music/fears-202495
+
+Urban Jazz
+https://assetstore.unity.com/packages/audio/music/urban-jazz-jazz-soundtrack-202235
+
+Eating hotdog
+https://freesound.org/people/rubenvvuuren/sounds/594424/
+
+Door Locked
+https://freesound.org/people/BenjaminNelan/sounds/321087/?page=1
+
+Doors opening
+https://freesound.org/people/Lokicutter/sounds/518462/
+
+spray can
+https://freesound.org/people/Kiyoshiakira/sounds/436774/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
