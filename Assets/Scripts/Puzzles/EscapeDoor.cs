@@ -38,8 +38,6 @@ public class EscapeDoor : MonoBehaviour
     void Update()
     {
         Timer += Time.deltaTime;
-
-        //print(GetTimerText());
     }
 
     

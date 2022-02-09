@@ -8,6 +8,7 @@ public class GhoulChasePlayer : MonoBehaviour
 
     private bool isDying = false;
     private bool canChasePlayer = false;
+    private bool contactWithPlayer = false;
     private bool hasPlayerYellowGem = false;
 
     [SerializeField] private ListPickupDataVariableSO playerInventorySO;
@@ -40,11 +41,8 @@ public class GhoulChasePlayer : MonoBehaviour
 
             // If the Ghoul is not moving so has stopped at the Player
             if (ghoulAgent.velocity.x == 0 && ghoulAgent.velocity.z == 0)
-            {
-                float distance = Vector3.Distance(player.transform.position, transform.position);
-
-                
-                if (distance <= deathDistance && hasPlayerYellowGem && isDying == false)
+            {                
+                if (contactWithPlayer && hasPlayerYellowGem && isDying == false)
                 {
                     print("In if (hasPlayerYellowGem && isDying == false)");
 
@@ -82,24 +80,19 @@ public class GhoulChasePlayer : MonoBehaviour
 
                     // Play Attack animation
                     ghoulAnimation.Play("Attack1");
-                }
-
-                
+                }              
             }
             else // If the Ghoul is chasing the Player
             {
-                
-                    // Wait till a clip has stopped playing untill playing it again
-                    if (!audioSource.isPlaying)
-                    {
-                        audioSource.clip = walkSFX;
-                        audioSource.Play();
-                    }
+                // Wait till a clip has stopped playing untill playing it again
+                if (!audioSource.isPlaying)
+                {
+                    audioSource.clip = walkSFX;
+                    audioSource.Play();
+                }
 
-                    // Play Attack animation
-                    ghoulAnimation.Play("Walk");
-                
-                
+                // Play Attack animation
+                ghoulAnimation.Play("Walk");
             }
         }
     }
@@ -123,5 +116,20 @@ public class GhoulChasePlayer : MonoBehaviour
     public void PlayerHasYellowGem()
     {
         hasPlayerYellowGem = true;
+    }
+
+
+    /// <summary>
+    /// When the Ghoul comes in contact with Player
+    /// </summary>
+    /// <param name="other"></param>
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.name == "SuitedMan")
+        {
+            contactWithPlayer = true;
+
+            print(other.gameObject.name + "*****************************************************************");
+        }
     }
 }

@@ -18,3 +18,4 @@ MonoBehaviour:
   musicVolume: 0.2
   enemiesCount: 1
   hasEscapeKey: 0
+  hasDefeatedGhoul: 0

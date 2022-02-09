@@ -2008,7 +2008,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 884896436, guid: 694c6c1797544fa498573ee94a74b351, type: 3}
       propertyPath: m_IsTrigger
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1335363135, guid: 694c6c1797544fa498573ee94a74b351, type: 3}
       propertyPath: m_ActionEvents.Array.data[0].m_PersistentCalls.m_Calls.Array.size
@@ -5760,6 +5760,22 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 129800, guid: 694c6c1797544fa498573ee94a74b351, type: 3}
   m_PrefabInstance: {fileID: 249330234}
   m_PrefabAsset: {fileID: 0}
+--- !u!54 &658862024
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 658862014}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!4 &667702603 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 410566, guid: 9c89dc19a6659c44da8c69f77554c254, type: 3}
@@ -7733,8 +7749,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b2a3d24f90f34d4dbf190aae7354122, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerInventorySO: {fileID: 0}
-  morgueLevelSO: {fileID: 0}
+  playerInventorySO: {fileID: 11400000, guid: a08f0d81b0cf07645a534cab81870d5e, type: 2}
+  morgueLevelSO: {fileID: 11400000, guid: 8e0b69f4faa9b9949aad570083f2b652, type: 2}
   audioSource: {fileID: 955300620}
   walkSFX: {fileID: 8300000, guid: 579a85b888c2b489a906a2721694262d, type: 3}
   attackSFX: {fileID: 8300000, guid: 90105c98a76ad4dec9ec990d26140a70, type: 3}
@@ -7898,10 +7914,10 @@ BoxCollider:
   m_GameObject: {fileID: 955300616}
   m_Material: {fileID: 0}
   m_IsTrigger: 1
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.6269917, y: 4.009381, z: 2.4659743}
-  m_Center: {x: -0.093757406, y: 1.5046895, z: 0.22775888}
+  m_Size: {x: 1.6269917, y: 4.009381, z: 3.230569}
+  m_Center: {x: -0.093757406, y: 1.5046895, z: 0.6100557}
 --- !u!114 &955300622
 MonoBehaviour:
   m_ObjectHideFlags: 0
