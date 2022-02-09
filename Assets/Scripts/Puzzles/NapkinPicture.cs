@@ -16,18 +16,18 @@ public class NapkinPicture : MonoBehaviour
 
     public void ShowAfterImage()
     {
-        for (int i = 0; i < playerInventorySO.Count(); i++)
+        if (isPuzzleDone == false)
         {
-            if (playerInventorySO.List[i].name == PickupName.Deodorant)
+            for (int i = 0; i < playerInventorySO.Count(); i++)
             {
-                playerInventorySO.Remove(playerInventorySO.List[i]);
-
-                hasSprayCan = true;
-
-                break;
+                if (playerInventorySO.List[i].name == PickupName.Deodorant)
+                {
+                    hasSprayCan = true;
+                    break;
+                }
             }
         }
-
+            
         if (isPuzzleDone == false && hasSprayCan)
         {
             isPuzzleDone = true;

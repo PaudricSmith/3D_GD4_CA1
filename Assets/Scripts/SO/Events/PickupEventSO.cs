@@ -21,6 +21,7 @@ public enum PickupName : sbyte
     Brain,
     Pencil,
     EscapeKey,
+    Scalpel,
     TypeCount
 }
 

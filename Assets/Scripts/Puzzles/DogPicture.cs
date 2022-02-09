@@ -4,6 +4,9 @@ using UnityEngine.UI;
 
 public class DogPicture : MonoBehaviour
 {
+    private bool isPuzzleDone = false;
+    private bool hasScalpel = false;
+
     private Pocket currentPocket;
     private Text[] infoTexts;
 
@@ -28,25 +31,41 @@ public class DogPicture : MonoBehaviour
 
     public void ShowAfterImage()
     {
-        afterImage.GetComponent<Image>().enabled = true;
-
-        // Change the Dog picture to a yellow gem 
-        var yellowGemPickupData = yellowGemPrefab.GetComponent<PickupBehaviour>().PickupData;
-
-        // Using the 'Pocket' name as an index as it spans from '0 to 7' corresponding to its List index
-        // Change the pickupdata using the pocket index as they will always be in same index as each other
-        playerInventorySO.List[Int16.Parse(currentPocket.name)] = yellowGemPickupData;
-
-        // Populate the same pocket with napkin data
-        currentPocket.PickupData = yellowGemPickupData;
-        currentPocket.Icon.sprite = yellowGemPickupData.icon;
-        currentPocket.QuantityText.text = yellowGemPickupData.quantity.ToString();
-
-        // Play pluck SFX
-        audioSource.PlayOneShot(pluckSFX);
+        if (isPuzzleDone == false)
+        {
+            for (int i = 0; i < playerInventorySO.Count(); i++)
+            {
+                if (playerInventorySO.List[i].name == PickupName.Scalpel)
+                {
+                    hasScalpel = true;
+                    break;
+                }
+            }
+        }
         
-        // Set new Info Panel texts
-        SetItemInfoPanelTexts();
+        if (isPuzzleDone == false && hasScalpel)
+        {
+            afterImage.GetComponent<Image>().enabled = true;
+
+            // Change the Dog picture to a yellow gem 
+            var yellowGemPickupData = yellowGemPrefab.GetComponent<PickupBehaviour>().PickupData;
+
+            // Using the 'Pocket' name as an index as it spans from '0 to 7' corresponding to its List index
+            // Change the pickupdata using the pocket index as they will always be in same index as each other
+            playerInventorySO.List[Int16.Parse(currentPocket.name)] = yellowGemPickupData;
+
+            // Populate the same pocket with napkin data
+            currentPocket.PickupData = yellowGemPickupData;
+            currentPocket.Icon.sprite = yellowGemPickupData.icon;
+            currentPocket.QuantityText.text = yellowGemPickupData.quantity.ToString();
+
+            // Play pluck SFX
+            audioSource.PlayOneShot(pluckSFX);
+
+            // Set new Info Panel texts
+            SetItemInfoPanelTexts();
+        }
+        
     }
 
 
