@@ -13,6 +13,7 @@ public class EscapeDoor : MonoBehaviour
     [SerializeField] private ListPickupDataVariableSO playerInventorySO;
 
     [SerializeField] private GameObject timerText;
+    [SerializeField] private GameObject ghoulDefeatedText;
     [SerializeField] private GameObject alertPanel;
     [SerializeField] private GameObject morgueMusic;
     [SerializeField] private GameObject escapePanel;
@@ -30,6 +31,7 @@ public class EscapeDoor : MonoBehaviour
         Time.timeScale = 1;
         Timer = 0.0f;
         morgueLevelSO.HasEscapeKey = false;
+        morgueLevelSO.HasDefeatedGhoul = false;
     }
 
 
@@ -62,6 +64,17 @@ public class EscapeDoor : MonoBehaviour
 
                 // Show Time completed in
                 timerText.GetComponent<Text>().text = GetTimerText();
+
+                // Show if defeated Ghoul or not
+                string ghoulText;
+                if (morgueLevelSO.HasDefeatedGhoul)
+                    ghoulText = "Ghoul Defeated!";
+                else
+                {
+                    ghoulText = "Ghoul Undefeated!";
+                    ghoulDefeatedText.GetComponent<Text>().color = Color.red;
+                }
+                ghoulDefeatedText.GetComponent<Text>().text = ghoulText;
 
                 // Stop morgue music
                 morgueMusic.GetComponent<AudioSource>().Stop();

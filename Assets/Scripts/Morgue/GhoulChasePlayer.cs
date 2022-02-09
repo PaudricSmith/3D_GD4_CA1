@@ -11,6 +11,7 @@ public class GhoulChasePlayer : MonoBehaviour
     private bool hasPlayerYellowGem = false;
 
     [SerializeField] private ListPickupDataVariableSO playerInventorySO;
+    [SerializeField] private Level morgueLevelSO;
 
     [SerializeField] private AudioSource audioSource;
     [SerializeField] private AudioClip walkSFX;
@@ -52,13 +53,17 @@ public class GhoulChasePlayer : MonoBehaviour
                     if (audioSource.clip == walkSFX)
                         audioSource.Stop();
 
+                    // Play ghoul dying SFX
                     audioSource.clip = deathSFX;
                     audioSource.Play();
 
-                    // 
+                    // Play death animation
                     ghoulAnimation.Play("Death");
 
                     canChasePlayer = false;
+
+                    // Update the level data
+                    morgueLevelSO.HasDefeatedGhoul = true;
 
                     return;
                 }
