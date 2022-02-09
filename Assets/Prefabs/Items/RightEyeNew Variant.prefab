@@ -65,7 +65,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1765536109417727596, guid: 3414e7fe3f0f8b747a29fe25f424a287, type: 3}
       propertyPath: m_Name
-      value: RightEyeNew
+      value: RightEyeNew Variant
+      objectReference: {fileID: 0}
+    - target: {fileID: 1765536109417727639, guid: 3414e7fe3f0f8b747a29fe25f424a287, type: 3}
+      propertyPath: pickupData.name
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3414e7fe3f0f8b747a29fe25f424a287, type: 3}

@@ -32,6 +32,7 @@ public class InteractionPanel : MonoBehaviour
     [SerializeField] private Button cancelButton;
 
     [SerializeField] private PocketEventSO OnInspectDogPanelOpened;
+    [SerializeField] private PocketEventSO OnInspectNapkinPanelOpened;
 
 
     public Button InfoButton { get => infoButton; set => infoButton = value; }
@@ -210,39 +211,27 @@ public class InteractionPanel : MonoBehaviour
     {
         if (pocket.PickupData.name == PickupName.Napkin)
         {
-            Image[] image = inspectPanelNapkin.GetComponentsInChildren<Image>();
-
             // Toggle the Inspect Panel on and off when it's button is clicked
             if (isClueShowing == false)
             {
-                // Set pocket inspect image to UI gameObject image          
-                image[1].sprite = pocket.PickupData.inspectImage;
-
-                //// Set the position of the inspect Panel to the right of the Interactive Panel by half its width
-                //image[1].transform.localPosition = new Vector3(image[1].transform.localPosition.x + rectTransform.rect.width / 2, image[1].transform.localPosition.y);
-
                 isClueShowing = true;
                 inspectPanelNapkin.SetActive(true);
+
+                // Send pocket info to napkin panel
+                OnInspectNapkinPanelOpened.Raise(pocket);
             }
             else
             {
-                //// Set the position of the inspect Panel back to its starting x position
-                //image[1].transform.localPosition = new Vector3(image[1].transform.localPosition.x - rectTransform.rect.width / 2, image[1].transform.localPosition.y);
-
                 isClueShowing = false;
                 inspectPanelNapkin.SetActive(false);
             }
         }
         else if (pocket.PickupData.name == PickupName.DogPic)
         {
-            Image[] image = inspectPanelDog.GetComponentsInChildren<Image>();
-
+            
             // Toggle the Inspect Panel on and off when it's button is clicked
             if (isClueShowing == false)
-            {
-                // Set pocket inspect image to UI gameObject image          
-                image[1].sprite = pocket.PickupData.inspectImage;
-
+            {               
                 isClueShowing = true;
                 inspectPanelDog.SetActive(true);
 

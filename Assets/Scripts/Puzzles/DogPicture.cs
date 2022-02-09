@@ -22,21 +22,13 @@ public class DogPicture : MonoBehaviour
 
     public void ShowBeforeImage(Pocket pocket)
     {
-
         currentPocket = pocket;
-
-        
     }
 
 
     public void ShowAfterImage()
     {
         afterImage.GetComponent<Image>().enabled = true;
-
-
-        // Send Event to Interaction panel
-        //OnYellowGemTaken.Raise();
-
 
         // Change the Dog picture to a yellow gem 
         var yellowGemPickupData = yellowGemPrefab.GetComponent<PickupBehaviour>().PickupData;
@@ -52,11 +44,9 @@ public class DogPicture : MonoBehaviour
 
         // Play pluck SFX
         audioSource.PlayOneShot(pluckSFX);
-
         
         // Set new Info Panel texts
         SetItemInfoPanelTexts();
-
     }
 
 
