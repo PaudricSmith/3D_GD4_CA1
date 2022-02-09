@@ -17,4 +17,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/morgue/Level2Part1.unity
     guid: 845128cf95f90184697fffb609346de8
+  - enabled: 1
+    path: Assets/Scenes/EndingScene/Level3Part1.unity
+    guid: f5e18176a4246f045b6552907accfa10
   m_configObjects: {}

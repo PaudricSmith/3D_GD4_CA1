@@ -106,13 +106,6 @@ public class InteractionPanel : MonoBehaviour
         {
             ShowHotdogPanel();
         }
-        //else if (pocket.PickupData.name == PickupName.Pencil || pocket.PickupData.name == PickupName.Eye 
-        //    || pocket.PickupData.name == PickupName.Brain || pocket.PickupData.name == PickupName.EscapeKey 
-        //    || pocket.PickupData.name == PickupName.YellowGem || pocket.PickupData.name == PickupName.Deodorant
-        //    || pocket.PickupData.name == PickupName.Scalpel)
-        //{
-        //    ShowJustInfoButton();
-        //}
         else if (pocket.PickupData.type == PickupType.Clue)
         {
             ShowCluePanel();

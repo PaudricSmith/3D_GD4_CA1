@@ -1,20 +1,23 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.AI;
 
 
 public class GhoulChasePlayer : MonoBehaviour
 {
-    private float deathDistance = 2.0f;
-
     private bool isDying = false;
     private bool canChasePlayer = false;
     private bool contactWithPlayer = false;
     private bool hasPlayerYellowGem = false;
 
+    [SerializeField] private GameEventSO OnPlayerDeath;
+
     [SerializeField] private ListPickupDataVariableSO playerInventorySO;
     [SerializeField] private Level morgueLevelSO;
 
     [SerializeField] private AudioSource audioSource;
+    [SerializeField] private AudioSource playerAudioSource;
+    [SerializeField] private AudioClip playerDeathSFX;
     [SerializeField] private AudioClip walkSFX;
     [SerializeField] private AudioClip attackSFX;
     [SerializeField] private AudioClip deathSFX;
@@ -129,7 +132,25 @@ public class GhoulChasePlayer : MonoBehaviour
         {
             contactWithPlayer = true;
 
+            StartCoroutine(PlayerDeathTimer(3));
+
             print(other.gameObject.name + "*****************************************************************");
         }
+    }
+
+
+    private IEnumerator PlayerDeathTimer(float alertTime)
+    {
+        yield return new WaitForSeconds(1);
+
+        // Player scream SFX
+        playerAudioSource.PlayOneShot(playerDeathSFX);
+
+        yield return new WaitForSeconds(2);
+
+        // After 3 seconds, end game
+        print(" GAME OVER *****************************************************************");
+
+        OnPlayerDeath.Raise();
     }
 }

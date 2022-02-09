@@ -3,13 +3,14 @@ using UnityEngine;
 
 public class Level1Audio : MonoBehaviour
 {
-    [SerializeField] private Level level1;
+    [SerializeField] private Level level;
     [SerializeField] private AudioSource audioSource;
 
 
     private void Start()
     {
-        audioSource.volume = level1.MusicVolume;
+        audioSource.volume = level.MusicVolume;
+        
     }
 
 }
